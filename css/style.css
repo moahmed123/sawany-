@@ -5607,7 +5607,7 @@ td {
 .header {
 	font-size: 11px;
 	line-height: 1.2;
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 	position: relative;
 	color: #202020;
 	will-change: transform;
@@ -14101,3 +14101,61 @@ header .minicart-title {
 .no-scroll-popups{
 	overflow: hidden;
 }
+/** Start Login **/
+.login-page #d_social_login{
+	justify-content: center;
+}
+.theme-card .theme-form{
+	width: 33%;
+    display: block;
+    margin: 0 auto;	
+}
+.title-login{
+	padding: 20px 0;
+}
+.title-login span.page-title{
+	border-bottom: 1px solid #b9b7b7;
+	padding: 10px 0;
+	margin: 0;
+}
+.pragraph-login{
+	font-size: 15px;
+    margin: 0 0 25px;
+    width: 35%;
+    line-height: 25px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.login-page .input-box select, 
+.login-page .input-box textarea, 
+.login-page .input-box .input-text, 
+.login-page select, 
+.login-page textarea,
+.login-page .input-text{
+	box-shadow: none;
+}
+.login-page .btn {
+    height: 35px;
+    width: 100%;
+	border-radius: 30px;
+	font-weight: 600 !important;
+}
+.login-page .register-btn{
+    margin: 20px 0 !important;
+    height: auto;
+    padding: 8px 0;
+    color: #fff;
+	font-weight: 600 !important;
+	color: #333;
+    background: transparent;
+}
+.login-page .forgotten-Pass{
+	color: #999;
+    text-align: right;
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    margin-top: -10px;
+}
+/** End Login **/

@@ -128,6 +128,10 @@
   "notifications":"Notifications",
   "name":"Name",
   "create_account":"Create account",
-  "mark_read":"Mark all as read"
+  "mark_read":"Mark all as read",
+  "Sign_In":"Sign In",
+  "With_Social":"With Social",
+  "Prag_An_easier":"An easier way to login without having to remember passwords or email addresses.",
+  "OrWithYourEmail":"Or With Your Email"
 
 }
