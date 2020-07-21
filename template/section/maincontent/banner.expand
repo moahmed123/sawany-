@@ -1,0 +1,32 @@
+<ul class="homepagev7-hero-wrap" data-cs="homepageHero">
+	<li class="homepagev7-hero color-schema-light ">
+	   <a href="{{ fields.bannerLink.field_value }}">
+		  <picture class="cs-picture lazyload-block">
+			 <img src="{{ fields.bannerImg.field_value }}" class="lazyautosizes lazyloaded">
+		  </picture>
+		  <div class="copy">
+			 <div class="copy-wrap">
+				<h1 class="title">{{ fields.bannerTitle.field_value }}</h1>
+				<div class="btn btn-white" data-event-action="Shop Hero" data-event-label="Call to Action">
+				   <span>{{ fields.bannerBtn.field_value }}
+				   </span>
+				</div>
+			 </div>
+		  </div>
+	   </a>
+	   <a href="{{ fields.bannerLink.field_value }}">
+		<picture class="cs-picture lazyload-block">
+		   <img src="{{ fields.bannerImg.field_value }}" class="lazyautosizes lazyloaded">
+		</picture>
+		<div class="copy">
+		   <div class="copy-wrap">
+			  <h1 class="title">{{ fields.bannerTitle.field_value }}</h1>
+			  <div class="btn btn-white" data-event-action="Shop Hero" data-event-label="Call to Action">
+				 <span>{{ fields.bannerBtn.field_value }}
+				 </span>
+			  </div>
+		   </div>
+		</div>
+	 </a>
+	</li>
+ </ul>

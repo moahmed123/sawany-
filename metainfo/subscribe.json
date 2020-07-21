@@ -1,0 +1,86 @@
+{
+    "code": "subscribe",
+    "name": "parallax banner",
+    "type": ["available","live"],
+    "state": "enabled",
+    "is-collection": 0,
+    "description": {
+        "name": "@locales.subscribe",
+        "description": "",
+        "collection-name": "",
+        "item-name": "",
+        "button-name": "",
+        "image": "N/A",
+        "thumbnail": "N/A"
+    },
+    "fields": [   
+        {
+            "code": "subscribeTitle",
+            "type": "text",
+            "option-id": "",                    
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.subscribeTitle",
+                "description": "",
+                "value": "@locales.subscribeTitle_val"
+            }
+        },    
+        {
+            "code": "subscribeText",
+            "type": "text",
+            "option-id": "",                    
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.subscribeText",
+                "description": "",
+                "value": "@locales.subscribeText_val"
+            }
+        },    
+        {
+            "code": "subText",
+            "type": "text",
+            "option-id": "",                    
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.subText",
+                "description": "",
+                "value": "@locales.subText_val"
+            }
+        },
+        {
+            "code": "itemLink",
+            "type": "link",
+            "option-id": "",
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.itemLink",
+                "description": "",
+                "value": "#"
+            }
+        }
+               
+    ],
+    "locales": {
+        "en": {
+            "subscribe": "subscribe",
+            "subscribeTitle":"Name",
+            "subscribeTitle_val":"Email us",
+            "subscribeText":"Text",
+            "subscribeText_val":"Your customer service is the best I have ever experienced. Fast, efficient, careful, polite and thoughtful. My favourite children’s store by far!",
+            "subText":"Sub text",
+            "subText_val":"USA",
+            "itemLink":"Link"
+        },
+        "ar": {
+            "subscribe": "توصيات",
+            "subscribeTitle":"الاسم",
+            "subscribeTitle_val":"راسلنا",
+            "subscribeText":"النص",
+            "subscribeText_val":"Your customer service is the best I have ever experienced. Fast, efficient, careful, polite and thoughtful. My favourite children’s store by far!",
+            "subText":"نص فرعي",
+            "subText_val":"الولايات المتحدة",
+            "itemLink":"الرابط",
+            "subscribeImg_name":"لوجو التوصيات"
+        }
+    }
+}

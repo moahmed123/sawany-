@@ -1,0 +1,18 @@
+<div class="homepagev7-designers">
+    <h2 class="home-title">{{ fields.sectiontitle.field_value }}</h2>
+    <ul class="items partners-slider">
+        {% for collection in collections %}
+        {% if collection.itemImage.field_value != '' %}
+       <li class="item">
+          <a href="{{ collection.itemLink.field_value }}">
+             <span>
+                    <img src="{{ collection.itemImage.field_value }}" class=" lazyloaded" alt="">
+               
+             </span>
+          </a>
+       </li>
+       {% endif %}
+       {% endfor %}
+    </ul>
+    <a href="{{ fields.moreLink.field_value }}" class="btn btn-dark" data-event-action="Shop All Designers" data-event-label="Call to Action"><span>{{ fields.btnText.field_value }}</span></a>
+ </div>

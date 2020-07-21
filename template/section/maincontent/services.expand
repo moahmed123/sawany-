@@ -1,0 +1,47 @@
+<!-- service layout -->
+<div class="container">
+    <section class="service border-section small-section">
+        <div class="row">
+            <div class="col-md-4 service-block">
+                <div class="media">
+                    {% if fields.servicesImage.field_value != '' %}
+                    <img src="{{fields.servicesImage.field_value}}" />
+                    {% endif %}
+                    {% if fields.servicesTitle.field_value != '' %}
+                    <div class="media-body">
+                        <h4>{{fields.servicesTitle.field_value}}</h4>
+                        <p>{{fields.servicesText.field_value}}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-4 service-block">
+                <div class="media">
+                    {% if fields.servicesImage2.field_value != '' %}
+                    <img src="{{fields.servicesImage2.field_value}}" />
+                    {% endif %}
+                    {% if fields.servicesTitle2.field_value != '' %}
+                    <div class="media-body">
+                        <h4>{{fields.servicesTitle2.field_value}}</h4>
+                        <p>{{fields.servicesText2.field_value}}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-4 service-block">
+                <div class="media">
+                    {% if fields.servicesImage3.field_value != '' %}
+                    <img src="{{fields.servicesImage3.field_value}}" />
+                    {% endif %}
+                    {% if fields.servicesTitle3.field_value != '' %}
+                    <div class="media-body">
+                        <h4>{{fields.servicesTitle3.field_value}}</h4>
+                        <p>{{fields.servicesText3.field_value}}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- service layout  end -->

@@ -1,0 +1,13 @@
+<a href="{{fields.itemLink.field_value}}" class="homepagev7-feature">
+   <picture class="cs-picture lazyload-block">
+       <img src="{{fields.featuresImg.field_value}}" class=" lazyloaded" alt="" >
+   </picture>
+   <div class="copy">
+      <div class="copy-wrap">
+         <h2 class="home-title">{{fields.featuresTitle.field_value}}</h2>
+         <p class="subtitle">{{fields.featuresText.field_value}}</p>
+         <span class="link" data-event-action="Feature Section" data-event-label="Call to Action">
+             {{fields.featuresBtn.field_value}}</span> 
+      </div>
+   </div>
+</a>

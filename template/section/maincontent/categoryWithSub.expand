@@ -1,0 +1,51 @@
+
+<section class="blog blog-block">
+
+    <!-- === header === -->
+
+    <header class="hidden">
+        <div class="text-center"><h2 class="title">{{fields.headerTitle1.field_value}}</h2></div>
+    </header>
+
+    <div class="row row-clean">
+
+        <!-- === blog item === -->
+        {% for collection in collections %}
+        <div class="col-md">
+            <article>
+                <div>
+                    <div class="image">
+
+                        <!--Desktop image-->
+                        <img src="{{ collection.sectionImage.field_value }}" alt="" class="hidden-xs" />
+
+                        <!--Mobile image-->
+                        <img src="{{ collection.sectionImageMobile.field_value }}" alt="" class="visible-xs" />
+
+                    </div>
+                    <div class="entry entry-block">
+                        <div class="date">{{ collection.mainheading.field_value }}</div>
+                        {% set category =  getCategoryAndChilds(collection['categories']['field_value'], 500, 500) %}
+                        <div class="title">
+                            <h2 class="h3">{{ category[loop.index -1].name }}</h2>
+                        </div>
+                        <div class="description">
+                            <ul>
+                                {% for sub_categories in category[loop.index -1]["sub_categories"]|slice(0, 7) %}
+                                <li>
+                                    <a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a>
+                                </li>
+                                {% endfor %}
+                                <li class="more">
+                                    <a href="{{ category[loop.index -1].href }}">{{ collection.button.field_value }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        {% endfor %}
+
+    </div> <!--/row-->
+</section>

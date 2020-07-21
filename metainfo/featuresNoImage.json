@@ -1,0 +1,85 @@
+{
+    "code": "featuresNoImage",
+    "name": "parallax banner",
+    "type": ["available","live"],
+    "state": "enabled",
+    "is-collection": 0,
+    "description": {
+        "name": "@locales.featuresNoImage",
+        "description": "",
+        "collection-name": "",
+        "item-name": "",
+        "button-name": "",
+        "image": "N/A",
+        "thumbnail": "N/A"
+    },
+    "fields": [ 
+        {
+            "code": "featuresNoImageTitle",
+            "type": "text",
+            "option-id": "",                    
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.featuresNoImageTitle",
+                "description": "",
+                "value": "@locales.featuresNoImageTitle_val"
+            }
+        },    
+        {
+            "code": "featuresNoImageText",
+            "type": "text",
+            "option-id": "",                    
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.featuresNoImageText",
+                "description": "",
+                "value": "@locales.featuresNoImageText_val"
+            }
+        },    
+        {
+            "code": "featuresNoImageBtn",
+            "type": "text",
+            "option-id": "",                    
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.featuresNoImageBtn",
+                "description": "",
+                "value": "@locales.featuresNoImageBtn_val"
+            }
+        },
+        {
+            "code": "itemLink",
+            "type": "link",
+            "option-id": "",
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.itemLink",
+                "description": "",
+                "value": "#"
+            }
+        }
+               
+    ],
+    "locales": {
+        "en": {
+            "featuresNoImage": "featuresNoImage",
+            "featuresNoImageTitle":"Title",
+            "featuresNoImageTitle_val":"Happy Campers",
+            "featuresNoImageText":"Text",
+            "featuresNoImageText_val":"For a cool and comfortable night’s sleep, look no further than our collection of summer nightwear for boys, girls and babies.",
+            "featuresNoImageBtn":"Button",
+            "featuresNoImageBtn_val":"Read full story",
+            "itemLink":"Link"
+        },
+        "ar": {
+            "featuresNoImage": "خدمات",
+            "featuresNoImageTitle":"العنوان",
+            "featuresNoImageTitle_val":"قصتنا",
+            "featuresNoImageText":"النص",
+            "featuresNoImageText_val":"For a cool and comfortable night’s sleep, look no further than our collection of summer nightwear for boys, girls and babies.",
+            "featuresNoImageBtn":"الزر",
+            "featuresNoImageBtn_val":"القصة كاملة",
+            "itemLink":"الرابط"
+        }
+    }
+}

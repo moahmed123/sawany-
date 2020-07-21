@@ -1,0 +1,34 @@
+ <ul class="homepagev7-hero-wrap" data-cs="homepageHero">
+	<li class="homepagev7-hero home-slider color-schema-light ">
+        {% for collection in collections %}
+        {% if collection.displayBackgroundOnly.field_value == '1' %}
+ 
+        <a href="{{ collection.backgroundlink.field_value }}">
+           <picture class="cs-picture lazyload-block">
+               <img src="{{collection.slideimage.field_value}}" class="lazyautosizes lazyloaded">
+            </picture>
+    </a>
+   {% else %}
+	   <a href="{{collection.firstButtonLink.field_value}}">
+		<picture class="cs-picture lazyload-block">
+		   <img src="{{collection.slideimage.field_value}}" class="lazyautosizes lazyloaded login-modal-desktop">
+		   <img src="{{collection.mobileimage.field_value}}" class="login-modal-mobile">
+		</picture>
+		
+		<div class="copy">
+		   <div class="copy-wrap">
+              <h1 class="title">{{collection.mainheading.field_value}}</h1>
+              <p>{{collection.pargheading1.field_value}}</p>
+			  <div class="btn btn-white">
+				 <span>{{collection.firstButton.field_value}}
+				 </span>
+			  </div>
+		   </div>
+		</div>
+     </a>
+     {% endif %}
+     {% endfor %}
+	</li>
+ </ul>
+
+ 

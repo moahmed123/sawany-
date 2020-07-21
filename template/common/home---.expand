@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="{{ lang('code') }}" class="{{ lang('direction') == 'rtl' ? 'cms-rtl rtl' : '' }}">
+
+<head>
+	<title>{{ document_title }}</title>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<base href="{{ base_url }}" />
+	{% if document_description != '' %}
+	<meta name="description" content="{{ document_description }}" />
+	{% endif %}
+
+	{% if document_keywords != '' %}
+	<meta name="keywords" content="{{ document_keywords }}" />
+	{% endif %}
+
+	{% if store_icon != '' %}
+	<link href="{{ store_icon }}" rel="icon" />
+	{% endif %}
+
+	{% for link in document_links %}
+	<link href="{{ link.href }}" rel="{{ link.rel }}" />
+	{% endfor %}
+
+	{% for style in document_styles %}
+	<link rel="{{ style.rel }}" type="text/css" href="{{ style.href }}" media="{{ style.media }}" />
+	{% endfor %}
+	
+	{% if route == "product/product" %}
+	<meta property="og:image" content="{{ ChildData.thumb }}" />
+	<meta property="og:url" content="{{ link('product/product', 'product_id=' ~ ChildData.product_id) }}" />
+	<meta property="og:title" content="{{ ChildData.product_name }}" />
+	<meta property="og:description" content="{{ ChildData.short_description|e }}" />
+
+	<style>
+		.con-home,
+		.notific {
+			background-color: #fff !important;
+		}
+	</style>
+	{% endif %}
+
+
+	<!-- Style CSS  -->
+	<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/libs/animate.css') }}" />
+	<!-- <link rel="stylesheet" type="text/css" href="{{ csslink('css/mycustom.css') }}" /> -->
+	<!--multicart theme-->
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/theme/fontawesome.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/theme/linearicons.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/theme/slick.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/theme/slick-theme.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/theme/animate.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/theme/themify-icons.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/theme/bootstrap.css') }}" />
+	<link rel="stylesheet" type="text/css" href="index.php?route=common/style{{ isdraft == 1 ? '&isdraft=1' : '' }}">
+
+	{% if lang('code') == 'ar' %}
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/rtl.css') }}" />
+	{%endif%}
+	<!-- Jquery For Wekiee New, Old Version Related By App Filter  -->
+	<script src="{{ jslink('js/external/jquery/jquery.min.js') }}"></script> 
+	<script type="text/javascript" src="{{ jslink('js/jquery.min.js') }}"></script>
+	<script type="text/javascript" src="{{ jslink('js/jquery-ui.min.js') }}"></script>
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/jquery-ui-1.8.16.custom.css') }}" />
+	<link rel="stylesheet" type="text/css"
+		href="{{ csslink('js/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css') }}" />
+
+	{% for script in document_scripts %}
+	<script type="text/javascript" src="{{ script }}"></script>
+	{% endfor %}
+	<!-- Inline Script:Start -->
+	{% for script in inline_scripts %}
+	{% if script['type'] == 'callable' %}
+	{{ script['script']|base64_decode }}
+	{% endif %}
+	{% endfor %}
+	<!-- Inline Script:End -->
+
+	<!--[if IE]>
+	<style>
+		.inner-adv-color-info {
+			left:-30px;
+		}
+	</style>
+	<![endif]-->
+	{{ google_analytics }}
+</head>
+
+<body>
+	<div class="page-loader loaded"></div>
+	<div class="wrapper">
+	<div>
+		
+		<nav>
+
+			<div class="clearfix">
+
+				<a href="{{ link('common/home') }}" class="logo"><img src="{{ image(header_data.headermain.fields.logo.value) }}" alt=""></a>
+
+				<!-- ==========  Pre navigation ========== -->
+
+				<div class="navigation navigation-pre clearfix">
+					<div class="row">
+						{% if header_data.topLinks.section_state == 'enabled' %}
+						{% for collection in header_data.topLinks.collections %}
+						<div class="col">
+							<a href="{{ collection.itemlink.value }}"><i class="{{ collection.socialIcon.value }}"></i> {{ collection.itemname.value }}</a>
+						</div>
+						{% endfor %}
+						{% endif %}
+					</div>
+				</div>
+
+				<!-- ==========  Top navigation ========== -->
+
+				<div class="navigation navigation-top clearfix">
+					<ul>
+						<!--add active class for current page-->
+						{% if header_data.headermain.fields.hasIconLogo.value == 1 %}
+						<li class="left-side"><a href="{{ link('common/home') }}" class="logo-icon"><img src="{{ image(header_data.headermain.fields.iconLogo.value) }}" alt="Alternate Text"></a></li>
+						{% endif %}
+						{% if header_data.mainMenuLink.section_state == 'enabled' %}
+						{% for collection in header_data.mainMenuLink.collections %}
+						<li class="left-side simple-links">
+							<a href="{{ collection.itemlink.value }}">{{ collection.itemname.value }}</a>
+						</li>
+						{% endfor %}
+						{% endif %}
+						<!--login-->
+						
+						<li><a href="javascript:void(0);" class="open-login"><i class="lnr lnr-user"></i></a></li>
+						
+						<!--/login-->
+
+						<li><a href="javascript:void(0);" class="open-search"><i class="lnr lnr-magnifier"></i></a></li>
+						<li><a href="javascript:void(0);" class="open-cart"><i class="lnr lnr-cart"></i> <span id="counterLabel">{{ cart.countProducts() }}</span></a></li>
+					</ul>
+				</div>
+
+				<!-- ==========  Main navigation ========== -->
+
+				<div class="navigation navigation-main">
+					<a href="#" class="open-login"><i class="lnr lnr-user"></i></a>
+					<a href="#" class="open-search"><i class="lnr lnr-magnifier"></i></a>
+					<a href="#" class="open-cart"><i class="lnr lnr-cart"></i> <span>4</span></a>
+					<a href="#" class="open-menu mobile-main-menu panel-menu"><i class="lnr lnr-menu"></i></a>
+					<div class="floating-menu">
+						<!--mobile toggle menu trigger-->
+						<div class="close-menu-wrapper">
+							<span class="close-menu"><i class="lnr lnr-cross"></i></span>
+						</div>
+						<ul>
+							{% if header_data.mainMenuCategories.section_state == 'enabled' %}
+							{% for collection in header_data.mainMenuCategories.collections %}
+							{% set featured_categories =  getCategoryAndChilds(collection['categories']['value'], 500, 500) %}							
+							<li>
+							
+								<a href="{{ featured_categories[loop.index -1].href }}">{{ featured_categories[loop.index -1].name }} <span class="open-dropdown"><i class="fa fa-angle-down"></i></span></a>
+								{% if featured_categories[loop.index -1]["sub_categories"]|length > 0 %}
+								<div class="navbar-dropdown navbar-dropdown-single">
+									<div class="navbar-box">
+										<div class="box-full">
+											<div class="box clearfix">
+												<ul>
+													{% for sub_categories in featured_categories[loop.index -1]["sub_categories"]|slice(0, 7) %}
+													<li><a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a></li>
+													{% endfor %}
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								{% endif %}
+							</li>
+							{% endfor %}
+							{% endif %}
+							{% if header_data.boxMenu.section_state == 'enabled' %}
+							{% for collection in header_data.boxMenu.collections %}
+							<li>
+								<a href="javascript:void(0)">
+									{{ collection.linkName.value }}
+									<span class="open-dropdown"><i class="fa fa-angle-down"></i></span>
+								</a>
+								<div class="navbar-dropdown">
+									<div class="navbar-box">
+										<div class="box-lg">
+											<div class="box clearfix">
+												<div class="row">
+													{% set categories1 =  getCategoryAndChilds(collection['categories1']['value'], 500, 500) %}
+													<div class="col-lg-4">
+														<ul>
+															<li class="label"><i class="{{ collection.boxIcon1.value }}"></i> {{ categories1[loop.index -1].name }}</li>
+															{% for sub_categories in categories1[loop.index -1]["sub_categories"]|slice(0, 7) %}
+															<li><a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a></li>
+															{% endfor %}
+															<li class="more"><a href="{{ categories1[loop.index -1].href }}"><i class="lnr lnr-chevron-right"></i> {{ collection.moreLink.value }}</a></li>
+														</ul>
+													</div>
+													{% set categories2 =  getCategoryAndChilds(collection['categories2']['value'], 500, 500) %}
+													<div class="col-lg-4">
+														<ul>
+															<li class="label"><i class="{{ collection.boxIcon2.value }}"></i> {{ categories2[loop.index -1].name }}</li>
+															{% for sub_categories in categories2[loop.index -1]["sub_categories"]|slice(0, 7) %}
+															<li><a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a></li>
+															{% endfor %}
+															<li class="more"><a href="{{ categories2[loop.index -1].href }}"><i class="lnr lnr-chevron-right"></i> {{ collection.moreLink.value }}</a></li>
+														</ul>
+													</div>
+													{% set categories3 =  getCategoryAndChilds(collection['categories3']['value'], 500, 500) %}
+													<div class="col-lg-4">
+														<ul>
+															<li class="label"><i class="{{ collection.boxIcon3.value }}"></i> {{ categories3[loop.index -1].name }}</li>
+															{% for sub_categories in categories3[loop.index -1]["sub_categories"]|slice(0, 7) %}
+															<li><a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a></li>
+															{% endfor %}
+															<li class="more"><a href="{{ categories3[loop.index -1].href }}"><i class="lnr lnr-chevron-right"></i> {{ collection.moreLink.value }}</a></li>
+														</ul>
+													</div>
+													{% set categories4 =  getCategoryAndChilds(collection['categories4']['value'], 500, 500) %}
+													<div class="col-lg-4">
+														<ul>
+															<li class="label"><i class="{{ collection.boxIcon4.value }}"></i> {{ categories4[loop.index -1].name }}</li>
+															{% for sub_categories in categories4[loop.index -1]["sub_categories"]|slice(0, 7) %}
+															<li><a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a></li>
+															{% endfor %}
+															<li class="more"><a href="{{ categories4[loop.index -1].href }}"><i class="lnr lnr-chevron-right"></i> {{ collection.moreLink.value }}</a></li>
+														</ul>
+													</div>
+													{% set categories5 =  getCategoryAndChilds(collection['categories5']['value'], 500, 500) %}
+													<div class="col-lg-4">
+														<ul>
+															<li class="label"><i class="{{ collection.boxIcon5.value }}"></i> {{ categories5[loop.index -1].name }}</li>
+															{% for sub_categories in categories5[loop.index -1]["sub_categories"]|slice(0, 7) %}
+															<li><a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a></li>
+															{% endfor %}
+															<li class="more"><a href="{{ categories5[loop.index -1].href }}"><i class="lnr lnr-chevron-right"></i> {{ collection.moreLink.value }}</a></li>
+														</ul>
+													</div>
+													{% set categories6 =  getCategoryAndChilds(collection['categories6']['value'], 500, 500) %}
+													<div class="col-lg-4">
+														<ul>
+															<li class="label"><i class="{{ collection.boxIcon6.value }}"></i> {{ categories6[loop.index -1].name }}</li>
+															{% for sub_categories in categories6[loop.index -1]["sub_categories"]|slice(0, 7) %}
+															<li><a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a></li>
+															{% endfor %}
+															<li class="more"><a href="{{ categories6[loop.index -1].href }}"><i class="lnr lnr-chevron-right"></i> {{ collection.moreLink.value }}</a></li>
+														</ul>
+													</div>
+													{% set categories7 =  getCategoryAndChilds(collection['categories7']['value'], 500, 500) %}
+													<div class="col-lg-4">
+														<ul>
+															<li class="label"><i class="{{ collection.boxIcon7.value }}"></i> {{ categories7[loop.index -1].name }}</li>
+															{% for sub_categories in categories7[loop.index -1]["sub_categories"]|slice(0, 7) %}
+															<li><a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a></li>
+															{% endfor %}
+															<li class="more"><a href="{{ categories7[loop.index -1].href }}"><i class="lnr lnr-chevron-right"></i> {{ collection.moreLink.value }}</a></li>
+														</ul>
+													</div>
+													{% set categories8 =  getCategoryAndChilds(collection['categories8']['value'], 500, 500) %}
+													<div class="col-lg-4">
+														<ul>
+															<li class="label"><i class="{{ collection.boxIcon8.value }}"></i> {{ categories8[loop.index -1].name }}</li>
+															{% for sub_categories in categories8[loop.index -1]["sub_categories"]|slice(0, 7) %}
+															<li><a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a></li>
+															{% endfor %}
+															<li class="more"><a href="{{ categories8[loop.index -1].href }}"><i class="lnr lnr-chevron-right"></i> {{ collection.moreLink.value }}</a></li>
+														</ul>
+													</div>
+													{% set categories9 =  getCategoryAndChilds(collection['categories9']['value'], 500, 500) %}
+													<div class="col-lg-4">
+														<ul>
+															<li class="label"><i class="{{ collection.boxIcon9.value }}"></i> {{ categories9[loop.index -1].name }}</li>
+															{% for sub_categories in categories9[loop.index -1]["sub_categories"]|slice(0, 7) %}
+															<li><a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a></li>
+															{% endfor %}
+															<li class="more"><a href="{{ categories9[loop.index -1].href }}"><i class="lnr lnr-chevron-right"></i> {{ collection.moreLink.value }}</a></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="box-sm">
+											<div class="image">
+												{% if collection.adOption1.value == 1 %}
+												<a href="{{ collection.adOptionLink1.value }}">
+												<img src="{{ image(collection.adOptionImg1.value) }}" alt="Alternate Text">
+											</a>
+											{% endif %}
+											{% if collection.adOption2.value == 1 %}
+												<a href="{{ collection.adOptionLink2.value }}">
+												<img src="{{ image(collection.adOptionImg2.value) }}" alt="Alternate Text">
+											</a>
+											{% endif %}
+											</div>
+											<div class="box">
+												<div class="h2">{{ collection.textBoxTitle.value }}</div>
+												<div class="clearfix">
+													<p>{{ collection.textBoxText.value }}</p>
+													<a class="btn btn-clean btn-big" href="{{ collection.textBoxLink.value }}">{{ collection.textBoxBtn.value }}</a>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+							{% endif %}
+							{% if header_data.megaMenuLink.section_state == 'enabled' %}
+							{% for collection in header_data.megaMenuLink.collections %}
+							<li>
+								<a href="javascript:void(0)">
+									{{ collection.menuText.value }}
+									<span class="open-dropdown"><i class="fa fa-angle-down"></i></span>
+								</a>
+								<div class="navbar-dropdown">
+									<div class="navbar-box">
+										<div class="box-full">
+											<div class="box clearfix">
+												<div class="row">
+														{% set categories1 =  getCategoryAndChilds(collection['categories1']['value'], 500, 500) %}
+														<div class="col-lg-3">
+															<ul>
+																<li class="label"><i class="lnr lnr-star"></i> {{ categories1[loop.index -1].name }}</li>
+																{% for sub_categories in categories1[loop.index -1]["sub_categories"]|slice(0, 7) %}
+																<li><a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a></li>
+																{% endfor %}
+																<li class="more"><a href="{{ categories1[loop.index -1].href }}"><i class="lnr lnr-chevron-right"></i> {{ collection.ColumnTitle1.value }}</a></li>
+															</ul>
+														</div>
+														{% set categories2 =  getCategoryAndChilds(collection['categories2']['value'], 500, 500) %}
+														<div class="col-lg-3">
+															<ul>
+																<li class="label"><i class="lnr lnr-star"></i> {{ categories2[loop.index -1].name }}</li>
+																{% for sub_categories in categories2[loop.index -1]["sub_categories"]|slice(0, 7) %}
+																<li><a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a></li>
+																{% endfor %}
+																<li class="more"><a href="{{ categories2[loop.index -1].href }}"><i class="lnr lnr-chevron-right"></i> {{ collection.ColumnTitle2.value }}</a></li>
+															</ul>
+														</div>
+														{% set categories3 =  getCategoryAndChilds(collection['categories3']['value'], 500, 500) %}
+														<div class="col-lg-3">
+															<ul>
+																<li class="label"><i class="lnr lnr-star"></i> {{ categories3[loop.index -1].name }}</li>
+																{% for sub_categories in categories3[loop.index -1]["sub_categories"]|slice(0, 7) %}
+																<li><a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a></li>
+																{% endfor %}
+																<li class="more"><a href="{{ categories3[loop.index -1].href }}"><i class="lnr lnr-chevron-right"></i> {{ collection.ColumnTitle3.value }}</a></li>
+															</ul>
+														</div>
+														{% set categories4 =  getCategoryAndChilds(collection['categories4']['value'], 500, 500) %}
+														<div class="col-lg-3">
+															<ul>
+																<li class="label"><i class="lnr lnr-star"></i> {{ categories4[loop.index -1].name }}</li>
+																{% for sub_categories in categories4[loop.index -1]["sub_categories"]|slice(0, 7) %}
+																<li><a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a></li>
+																{% endfor %}
+																<li class="more"><a href="{{ categories4[loop.index -1].href }}"><i class="lnr lnr-chevron-right"></i> {{ collection.ColumnTitle4.value }}</a></li>
+															</ul>
+														</div>
+													
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+							{% endif %}
+							{% if header_data.mainMenuLink2.section_state == 'enabled' %}
+							{% for collection in header_data.mainMenuLink2.collections %}
+							<li>
+								<a href="{{ collection.itemlink.value }}">{{ collection.itemname.value }}</a>
+							</li>
+							{% endfor %}
+							{% endif %}
+							{% if currencies|length > 1 %}
+							<li class="nav-settings">
+								
+								<a href="javascript:void(0);"><span class="nav-settings-value">{{ current_currency.title }}</span> <span class="open-dropdown"><i class="fa fa-angle-down"></i></span></a>
+								<form action="{{ link('common/home') }}" method="post" enctype="multipart/form-data">
+								<div class="navbar-dropdown navbar-dropdown-single">
+									<div class="navbar-box">
+										<div class="box-full">
+											<div class="box clearfix">
+												<ul class="nav-settings-list">
+													{% for currency in currencies %}
+													<li>
+														<a href="#" onclick="$('input[name=\'currency_code\']').attr('value', '{{ currency.code }}'); $(this).closest('form').submit(); return false;">
+															{{ currency.title }}
+														</a></li>
+													{% endfor %}
+													<input type="hidden" name="currency_code" value="" />
+													<input type="hidden" name="redirect" value="{{ redirect }}" />
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							</li>
+							{% endif %}
+							{% if languages|length > 1 %}
+							
+							<li class="nav-settings">
+								
+								<a href="javascript:void(0);"><span class="nav-settings-value">{{current_language.name}}</span> <span class="open-dropdown"><i class="fa fa-angle-down"></i></span></a>
+								<form method="post" enctype="multipart/form-data">
+								<div class="navbar-dropdown navbar-dropdown-single">
+									<div class="navbar-box">
+										<div class="box-full">
+											<div class="box clearfix">
+												<ul class="nav-settings-list">
+													{% for language in languages %}
+													<li>
+													<a href="#" title="{{ language.name }}"
+															onclick="$('input[name=\'language_code\']').attr('value', '{{ language.code }}'); $(this).closest('form').submit(); return false;">
+															{{ language.name }}
+														</a>
+													</li>
+													{% endfor %}
+													<input type="hidden" name="language_code" value="" />
+													<input type="hidden" name="redirect" value="{{ redirect }}" />
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							</li>
+						
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+
+				<!-- ==========  Search wrapper ========== -->
+				<form class="ajax-search">
+				<div class="search-wrapper">				
+						<div id="search">
+							<input type="text" name="search" class="form-control" id="exampleInputPassword1" 
+							placeholder=" {{ lang('text_search') }} " value="{{ search }}">
+						</div>
+						<button class="btn">
+							
+							<span class="fa fa-search"></span>
+						</button>										
+				</div>
+			</form>
+
+				<!-- ==========  Login wrapper ========== -->
+
+				<div class="login-wrapper">
+					{% if logged == false  %}
+					<div class="h4">{{ lang('button_login') }}</div>
+					<form class="theme-form" action="{{ link('account/login', '', 'SSL') }}" method="post" enctype="multipart/form-data" id="login" novalidate="novalidate">
+						<div class="form-group">
+							<input type="text" name="email" class="form-control" id="loginInputName" placeholder="{{ lang('entry_email') }}" value="{{ email }}">
+						</div>
+						<div class="form-group">
+							<input type="password" name="password" class="form-control" id="loginInputEmail" placeholder="{{ lang('entry_password') }}" value="{{ password }}">
+						</div>
+						<div class="form-group">
+							<a href="{{ link('account/register', '', 'SSL') }}" class="open-popup">{{ lang('Account_Register')  }}</a>
+						</div>
+						<button type="submit" class="btn btn-block btn-main">{{ lang('button_login')  }}</button>
+						{% if redirect %}
+                        <input type="hidden" name="redirect" value="{{ redirect }}" />
+                    {% endif %}
+					</form>
+					{% else %}
+					<div class="form-group">
+						<a href="{{ link('account/logout', '', 'SSL') }}" class="open-popup">
+							{{ lang('AccountLogout')|format(link('account/account', '', 'SSL'), customer.getFirstName(), link('account/logout', '', 'SSL')) }}
+						</a>
+					</div>
+					{% endif %}
+				</div>
+
+				<!-- ==========  Cart wrapper ========== -->
+
+				<div class="cart-wrapper" id="cartDropList">				
+							<!--cart item-->
+
+							<div class="row">
+								{{ cart_content }}
+								<!-- <div class="cart-block cart-block-item clearfix">
+									<div class="image">
+										<a href="product.html"><img src="assets/images/product-1.png" alt=""></a>
+									</div>
+									<div class="title">
+										<div><a href="product.html">Product item</a></div>
+										<small>Product category</small>
+									</div>
+									<div class="quantity">
+										<input type="number" value="2" class="form-control form-quantity">
+									</div>
+									<div class="price">
+										<span class="final">$ 1.998</span>
+										<span class="discount">$ 2.666</span>
+									</div>
+									<!--delete-this-item-->
+									
+								</div> 
+							</div>
+
+							<hr>
+
+							<!--cart prices -->
+
+							<!-- <div class="clearfix">
+								<div class="cart-block cart-block-footer clearfix">
+									<div>
+										<strong>Discount 15%</strong>
+									</div>
+									<div>
+										<span>$ 159,00</span>
+									</div>
+								</div>
+
+								<div class="cart-block cart-block-footer clearfix">
+									<div>
+										<strong>Shipping</strong>
+									</div>
+									<div>
+										<span>$ 30,00</span>
+									</div>
+								</div>
+
+								<div class="cart-block cart-block-footer clearfix">
+									<div>
+										<strong>VAT</strong>
+									</div>
+									<div>
+										<span>$ 59,00</span>
+									</div>
+								</div>
+							</div> -->
+
+							<!--cart final price -->
+
+							<!-- <div class="clearfix">
+								<div class="cart-block cart-block-footer clearfix">
+									<div>
+										<strong>Total</strong>
+									</div>
+									<div>
+										<div class="h4 title">$ 1259,00</div>
+									</div>
+								</div>
+							</div> -->
+
+
+							<!--cart navigation -->
+
+							
+
+						
+					
+				</div>
+			</div>
+		</nav>
+	
+
+	<!-- ========================  Header content ======================== -->
+	<!-- ========================  Body content ======================== -->
+	
+	{% if is_home_page %}
+	{{ regions_data.maincontent.content }}
+	{% else %}
+ 
+		<div class='row'>
+			{% if route == "product/category" %}
+			{% if modules.filter.enabled or modules.mega_filter.enabled %}
+			<div class="col-md-3 filters">
+				{{ regions_data.sidecontent.content }}
+				{% if modules.mega_filter.enabled %}{{ modules.mega_filter.content }}{% endif %}
+				{% if modules.filter.enabled %}{{ modules.filter.content }}{% endif %}
+			</div>
+			{% endif %}
+			<div id="content"
+				class="{{ modules.filter.enabled or modules.mega_filter.enabled ? 'col-md-9' : 'col-md-12' }}">
+				{{ page_content }}
+			</div>
+			{% else %}
+			<div id="content"
+				class="col-md-12">
+				{{ page_content }}
+			</div>
+			{% endif %}
+		
+	
+	{% endif %}
+{% if route == "product/product" %}
+
+<div class="bottom-content">
+	{{ regions_data.bottomcontent.content }}
+</div>
+{% endif %}
+	<!-- ========================  Body content ======================== -->
+	       <!-- ================== Footer  ================== -->
+
+        <footer>
+            <!--footer showroom-->
+            <!-- <div class="footer-showroom hidden">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h2>Visit our showroom</h2>
+                        <p>200 12th Ave, New York, NY 10001, USA</p>
+                        <p>Mon - Sat: 10 am - 6 pm &nbsp; &nbsp; | &nbsp; &nbsp; Sun: 12pm - 2 pm</p>
+                    </div>
+                    <div class="col-sm-4 text-center">
+                        <a href="#" class="btn btn-clean"><span class="lnr lnr-map-marker"></span> Get directions</a>
+                        <div class="call-us h4"><span class="lnr lnr-phone-handset"></span> 333.278.06622</div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!--footer links-->
+            <div class="footer-links">
+                <div class="row">
+					{% if footer_data.columnlinks.section_state == 'enabled' %}
+                    <div class="col-sm-4 col-md-2">
+                        <h5>{{ footer_data.columnlinks.fields.columnTitle.value }}</h5>
+                        <ul>
+                        {% for collection in footer_data.columnlinks.collections %}
+						<li><a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a></li>
+						{%endfor%}
+                        </ul>
+					</div>
+					{% endif %}
+					{% if footer_data.columnlinksTwo.section_state == 'enabled' %}
+                    <div class="col-sm-4 col-md-2">
+                        <h5>{{ footer_data.columnlinksTwo.fields.columnTitle.value }}</h5>
+                        <ul>
+                        {% for collection in footer_data.columnlinksTwo.collections %}
+						<li><a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a></li>
+						{%endfor%}
+                        </ul>
+					</div>
+					{% endif %}
+					{% if footer_data.columnlinks3.section_state == 'enabled' %}
+                    <div class="col-sm-4 col-md-2">
+                        <h5>{{ footer_data.columnlinks3.fields.columnTitle.value }}</h5>
+                        <ul>
+                        {% for collection in footer_data.columnlinks3.collections %}
+						<li><a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a></li>
+						{%endfor%}
+                        </ul>
+					</div>
+					{% endif %}
+					{% if footer_data.columnlinks4.section_state == 'enabled' %}
+                    <div class="col-sm-4 col-md-2">
+                        <h5>{{ footer_data.columnlinks4.fields.columnTitle.value }}</h5>
+                        <ul>
+                        {% for collection in footer_data.columnlinks4.collections %}
+						<li><a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a></li>
+						{%endfor%}
+                        </ul>
+					</div>
+					{% endif %}
+					{% if footer_data.footerAbout.section_state == 'enabled' %}
+                    <div class="col-sm-12 col-md-4">
+                        <h5>{{ footer_data.footerAbout.fields.footerAboutTitle.value }}</h5>
+                        <p><i>
+							{{ footer_data.footerAbout.fields.footerAboutText.value }}</i></p>
+					</div>
+					{% endif %}
+                </div>
+            </div>
+
+            <!--footer social-->
+
+            <div class="footer-social">
+                <div class="row">
+					{% if footer_data.footerSecondMenu.section_state == 'enabled' %}
+                    <div class="col-sm-6">
+						{% for collection in footer_data.footerSecondMenu.collections %}
+						<a href="{{ collection.link.value }}" target="_blank"> {{ collection.namelink.value }}</a> &nbsp; | &nbsp;
+						{%endfor%}
+					</div>
+					{% endif %}
+					{% if footer_data.socialColumn.section_state == 'enabled' %}
+                    <div class="col-sm-6 links">
+                        <ul>
+							{% for collection in footer_data.socialColumn.collections %}
+							<li><a href="{{ collection.socialLink.value }}"><i class="{{ collection.socialIcon.value }}"></i></a></li>
+							{%endfor%}
+                        </ul>
+					</div>
+					{% endif %}
+                </div>
+            </div>
+        </footer>
+
+
+</div>
+
+
+	<script type="text/javascript" src="{{ jslink('js/slick.js') }}"></script>
+	<script type="text/javascript" src="{{ jslink('js/theme.js') }}"></script>
+
+	<!--  Common - ExpandCart Default 		-->
+	<script src="{{ jslink('js/theme/jquery-3.3.1.min.js') }}"></script>
+	<script src="{{ jslink('js/theme/jquery-ui.min.js') }}"></script>
+	<script type="text/javascript" src="{{ jslink('js/common.js') }}"></script>
+	<script type="text/javascript" src="{{ commonLink('js/common.js') }}"></script>
+
+	<script type="text/javascript" src="{{ jslink('js/main-custom.js') }}"></script>
+
+	<form id="contact-form" action="{{ link('information/contact') }}" method="POST" enctype="multipart/form-data">
+		<input type="hidden" name="no-validate" value="1" />
+		<input type="hidden" name="name" value="{{ (customer.getFirstname() ~ ' ' ~ customer.getLastname())|e }}" />
+		<input type="hidden" name="email" value="{{ customer.getEmail() }}" />
+		<input type="hidden" name="enquiry" />
+		<input type="hidden" name="captcha" />
+	</form>
+	<script type="text/javascript">
+		function contact_us(id) {
+			$('#contact-form input[name="enquiry"]').val($('#enquiry-' + id).html() + '\n');
+			$('#contact-form').submit();
+		}
+	</script>
+	<!--- Js Wokiee -->
+	<script src="{{ jslink('js/external/jquery/jquery.min.js') }}"></script>
+	<script src="{{ jslink('js/external/bootstrap/js/bootstrap.min.js') }}"></script>
+	<script src="{{ jslink('js/external/slick/slick.min.js') }}"></script>
+	<script src="{{ jslink('js/external/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+	<script src="{{ jslink('js/external/panelmenu/panelmenu.js') }}"></script>
+	<script src="{{ jslink('js/external/instafeed/instafeed.min.js') }}"></script>
+	<script src="{{ jslink('js/external/rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>
+	<script src="{{ jslink('js/external/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+	<script src="{{ jslink('js/external/countdown/jquery.plugin.min.js') }}"></script>
+	<script src="{{ jslink('js/external/countdown/jquery.countdown.min.js') }}"></script>
+	<script src="{{ jslink('js/external/lazyLoad/lazyload.min.js') }}"></script>
+	<!--- multicart  -->
+
+
+	<!---sawany-->
+	<script src="{{ jslink('js/theme/main.js') }}"></script>
+	<script src="{{ jslink('js/theme/ec.js') }}"></script>
+	<script src="{{ jslink('js/theme/core.js') }}"></script>
+	<script src="{{ jslink('js/theme/9f4efc1c-a53a-4a5f-a26f-9b3ecf252563.js') }}"></script>
+	<script src="{{ jslink('js/theme/OneSignalSDK.js') }}"></script>
+	<script src="{{ jslink('js/theme/ab8c92c473fac04d.js') }}"></script>
+	<script src="{{ jslink('js/theme/fbevents.js') }}"></script>
+	<script src="{{ jslink('js/theme/snippet.js') }}"></script>
+	<script src="{{ jslink('js/theme/analytics.js') }}"></script>
+	<script src="{{ jslink('js/theme/trackjs.js') }}"></script>
+	<script src="{{ jslink('js/theme/piwik.js') }}"></script>
+	<script src="{{ jslink('js/theme/gtm.js') }}"></script>
+	<script src="{{ jslink('js/theme/gtm.js') }}"></script>
+	<script src="{{ jslink('js/theme/gtm.js') }}"></script>
+	<script src="{{ jslink('js/theme/gtm.js') }}"></script>
+	<script src="{{ jslink('js/theme/gtm.js') }}"></script>
+	<script src="{{ jslink('js/theme/gtm.js') }}"></script>
+	<script src="{{ jslink('js/theme/gtm.js') }}"></script>
+	<script src="{{ jslink('js/theme/gtm.js') }}"></script>
+
+	<!---/sawany-->
+
+	<script>
+		$(window).on('load',function(){
+			$('#exampleModal').modal('show');
+		});
+		function openSearch() {
+			document.getElementById("search-overlay").style.display = "block";
+		}
+	
+		function closeSearch() {
+			document.getElementById("search-overlay").style.display = "none";
+		}
+	</script>
+	{% if route == "product/product" %}
+	<script src="{{ jslink('js/external/elevatezoom/jquery.elevatezoom.js') }}"></script>
+	<script src="{{ jslink('js/external/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+	{% endif %}
+	<script src="{{ jslink('js/main-custom.js') }}"></script>
+
+	<!--- Js Wokiee -->
+	{{ body_scripts }}
+
+</body>
+
+</html>

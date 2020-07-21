@@ -1,0 +1,77 @@
+{% if fields.sectiontype.field_value == 'getLatestProducts' %}
+{% set sliderProducts = getLatestProducts(8, 280, 350) %}
+
+{% elseif fields.sectiontype.field_value == 'getBestSellerProducts' %}
+{% set sliderProducts = getBestSellerProducts(8, 280, 350) %}
+
+{% elseif fields.sectiontype.field_value == 'getSpecialProducts' %}
+{% set sliderProducts = getSpecialProducts(8, 280, 350) %}
+
+{% elseif fields.sectiontype.field_value == 'getProductsByCategoryId' %}
+{% set allFeaturedCategories = getFeaturedCategories(fields['categories']['field_value'], 280, 350) %}
+{% set Cats = allFeaturedCategories|length %}
+{% set sliderProducts = getProductsByCategoryId(fields['categories']['field_value'], 20, 280, 350) %}
+{% elseif fields.sectiontype.field_value == 'getFeaturedProducts' %}
+{% set sliderProducts = getFeaturedProducts(fields['products']['field_value'], 280, 350) %}
+{% endif %}
+
+{% set items_count = sliderProducts|length %}
+{% if items_count > 0 %}
+
+<!-- === header title === -->
+{% if fields.displaysectiontitle.field_value == '1' %}
+<h2 class="title">{{ fields.sectiontitle.field_value }}</h2>
+{% endif %}
+
+<div class="homepagev7-featureproducts">
+    <div class="container">
+        <div class="related-slider items">
+
+            <!-- === product-item === -->
+            {% for item_product in sliderProducts|slice(0, 6) %}
+            <div class="item product-item bx-clone">
+                <div class="product-item-cont">
+                    <a href="{{ item_product.href}}">
+                        <div class="image">
+                            <div class="img">
+                                <img class=" ls-is-cached lazyloaded" src="{{ item_product.thumb }}" alt="">
+                            </div>
+                        </div>
+                    </a>
+                    <div class="name"><span>{{ item_product.name}}</span></div>
+                    <div class="price-box">
+                        <p class="price"> {{ item_product.price}}</p>
+                        <!-- <p class="special-price"> <span class="price"> ج.م.&rlm;&nbsp;623.44 </span> </p> -->
+                    </div>
+                    <!-- <div class="detail-qty radius form-qty qty-box">
+                   <div class="input-group">
+                       <span class="input-group-prepend minus-btn">
+                           <button type="button" class="btn-number qty-down qtyminus btn quantity-left-minus" data-type="minus" >
+                               <i class="lnr lnr-chevron-left" aria-hidden="true"></i></button>
+                       </span>
+                   <input type="text" name="quantity" class="input-qty"
+                       value='{{ minimum_limit }}' id="qty1" name="qty1" maxlength="12"
+                       minlength="1" class="form-control input-number">
+                       <span class="input-group-prepend plus-btn">
+                   <button type="button" class="btn-number qty-up qtyplus btn quantity-right-plus" data-type="plus">
+                       <i class="lnr lnr-chevron-right" aria-hidden="true"></i></button>
+               </span>
+               </div>
+               </div> -->
+                    <a onclick="event.preventDefault(); addToCart({{ item_product.product_id }},1, {{ ('-1' in item_product.price) or ('-1' in item_product.special) ? 'true' : 'false' }}); return false;"
+                        href="#" class="tt-btn-addtocart">
+                        {{ ('-1' in item_product.price) or ('-1' in item_product.special) ? lang('button_req_quote') : lang('button_cart') }}
+                    </a>
+                    <a class="icon-btn" onclick="addToWishList('{{ item_product.product_id }}'); return false;"
+                        title="{{ lang('button_wishlist') }}" data-tooltip="{{ lang('button_wishlist') }}"
+                        data-tposition="{{lang('lang_webtt')}}">
+                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</div>
+{% endif %}

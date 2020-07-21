@@ -1,0 +1,487 @@
+{
+    "code": "partners",
+    "name": "Multiple Widgets",
+    "type": ["available", "live"],
+    "state": "enabled",
+    "is-collection": 1,
+    "description": {
+        "name": "@locales.partners",
+        "description": "",
+        "collection-name": "@locales.partners_cn",
+        "item-name": "@locales.partners_in",
+        "button-name": "@locales.partners_bn",
+        "image": "N/A",
+        "thumbnail": "N/A"
+    },
+    "fields":[
+        {
+            "code": "sectiontitle",
+            "type": "text",
+            "option-id": "",
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.sectiontitle_name",
+                "description": "",
+                "value": "@locales.sectiontitle_name_val"
+            }
+        },              
+        {
+            "code": "moreLink",
+            "type": "link",
+            "option-id": "",
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.moreLink_name",
+                "description": "",
+                "value": "#"
+            }
+        },
+        {
+            "code": "btnText",
+            "type": "text",
+            "option-id": "",
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.btnText_name",
+                "description": "",
+                "value": "@locales.btnText_name_val"
+            }
+        }
+    ],
+    "collections": [
+        {
+            "name": "Gallery item",
+            "thumbnail": "N/A",
+            "is-default": 1,
+            "fields": [               
+                {
+                    "code": "itemLink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemLink_name",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "itemImage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemImage_name",
+                        "description": "",
+                        "value": "data/custom-sawany/partner1.png"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Gallery item",
+            "thumbnail": "N/A",
+            "is-default": 0,
+            "fields": [               
+                {
+                    "code": "itemLink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemLink_name",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "itemImage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemImage_name",
+                        "description": "",
+                        "value": "data/custom-sawany/partner1.png"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Gallery item",
+            "thumbnail": "N/A",
+            "is-default": 0,
+            "fields": [               
+                {
+                    "code": "itemLink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemLink_name",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "itemImage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemImage_name",
+                        "description": "",
+                        "value": "data/custom-sawany/partner1.png"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Gallery item",
+            "thumbnail": "N/A",
+            "is-default": 0,
+            "fields": [               
+                {
+                    "code": "itemLink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemLink_name",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "itemImage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemImage_name",
+                        "description": "",
+                        "value": "data/custom-sawany/partner1.png"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Gallery item",
+            "thumbnail": "N/A",
+            "is-default": 0,
+            "fields": [               
+                {
+                    "code": "itemLink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemLink_name",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "itemImage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemImage_name",
+                        "description": "",
+                        "value": "data/custom-sawany/partner1.png"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Gallery item",
+            "thumbnail": "N/A",
+            "is-default": 0,
+            "fields": [               
+                {
+                    "code": "itemLink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemLink_name",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "itemImage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemImage_name",
+                        "description": "",
+                        "value": "data/custom-sawany/partner1.png"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Gallery item",
+            "thumbnail": "N/A",
+            "is-default": 0,
+            "fields": [               
+                {
+                    "code": "itemLink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemLink_name",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "itemImage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemImage_name",
+                        "description": "",
+                        "value": "data/custom-sawany/partner2.png"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Gallery item",
+            "thumbnail": "N/A",
+            "is-default": 0,
+            "fields": [               
+                {
+                    "code": "itemLink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemLink_name",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "itemImage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemImage_name",
+                        "description": "",
+                        "value": "data/custom-sawany/partner3.png"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Gallery item",
+            "thumbnail": "N/A",
+            "is-default": 0,
+            "fields": [               
+                {
+                    "code": "itemLink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemLink_name",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "itemImage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemImage_name",
+                        "description": "",
+                        "value": "data/custom-sawany/partner1.png"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Gallery item",
+            "thumbnail": "N/A",
+            "is-default": 0,
+            "fields": [               
+                {
+                    "code": "itemLink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemLink_name",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "itemImage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemImage_name",
+                        "description": "",
+                        "value": "data/custom-sawany/partner2.png"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Gallery item",
+            "thumbnail": "N/A",
+            "is-default": 0,
+            "fields": [               
+                {
+                    "code": "itemLink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemLink_name",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "itemImage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemImage_name",
+                        "description": "",
+                        "value": "data/custom-sawany/partner3.png"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Gallery item",
+            "thumbnail": "N/A",
+            "is-default": 0,
+            "fields": [               
+                {
+                    "code": "itemLink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemLink_name",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "itemImage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemImage_name",
+                        "description": "",
+                        "value": "data/custom-sawany/partner1.png"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Gallery item",
+            "thumbnail": "N/A",
+            "is-default": 0,
+            "fields": [               
+                {
+                    "code": "itemLink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemLink_name",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "itemImage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemImage_name",
+                        "description": "",
+                        "value": "data/custom-sawany/partner2.png"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Gallery item",
+            "thumbnail": "N/A",
+            "is-default": 0,
+            "fields": [               
+                {
+                    "code": "itemLink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemLink_name",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "itemImage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.itemImage_name",
+                        "description": "",
+                        "value": "data/custom-sawany/partner3.png"
+                    }
+                }
+            ]
+        }       
+    ],
+    "locales": {
+        "en": {
+            "partners": "Partners",
+            "title_name":"Section title",
+            "title_val":"# instagram",
+            "itemLink_name":"Item link",
+            "itemImage_name":"Item image",
+            "icon_font":"Icon",
+            "sectiontitle_name":"Section title",
+            "sectiontitle_name_val":"Designers",
+            "moreLink_name":"Button link",
+            "btnText_name":"Button text",
+            "btnText_name_val":"All designers"
+        },
+        "ar": {
+            "partners": "عرض الشرائح",
+            "title_name":"عنوان القسم",
+            "title_val":"# انستجرام",
+            "itemLink_name":"رابط الوحدة",
+            "itemImage_name":"صورة الوحدة",
+            "icon_font":"الايقونة",
+            "sectiontitle_name":"عنوان القسم",
+            "sectiontitle_name_val":"Designers",
+            "moreLink_name":"رابط الزرار",
+            "btnText_name":"نص الزرار",
+            "btnText_name_val":"All designers"
+        }
+    }
+}

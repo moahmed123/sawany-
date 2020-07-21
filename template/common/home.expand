@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="{{ lang('code') }}" class="{{ lang('direction') == 'rtl' ? 'cms-rtl rtl' : '' }}">
+
+<head>
+	<title>{{ document_title }}</title>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<base href="{{ base_url }}" />
+	{% if document_description != '' %}
+	<meta name="description" content="{{ document_description }}" />
+	{% endif %}
+
+	{% if document_keywords != '' %}
+	<meta name="keywords" content="{{ document_keywords }}" />
+	{% endif %}
+
+	{% if store_icon != '' %}
+	<link href="{{ store_icon }}" rel="icon" />
+	{% endif %}
+
+	{% for link in document_links %}
+	<link href="{{ link.href }}" rel="{{ link.rel }}" />
+	{% endfor %}
+
+	{% for style in document_styles %}
+	<link rel="{{ style.rel }}" type="text/css" href="{{ style.href }}" media="{{ style.media }}" />
+	{% endfor %}
+	
+	{% if route == "product/product" %}
+	<meta property="og:image" content="{{ ChildData.thumb }}" />
+	<meta property="og:url" content="{{ link('product/product', 'product_id=' ~ ChildData.product_id) }}" />
+	<meta property="og:title" content="{{ ChildData.product_name }}" />
+	<meta property="og:description" content="{{ ChildData.short_description|e }}" />
+
+	<style>
+		.con-home,
+		.notific {
+			background-color: #fff !important;
+		}
+	</style>
+	{% endif %}
+
+
+	<!-- Style CSS  -->
+	<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/libs/animate.css') }}" />
+	<!-- <link rel="stylesheet" type="text/css" href="{{ csslink('css/mycustom.css') }}" /> -->
+	<!--multicart theme-->
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/theme/fontawesome.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/theme/linearicons.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/theme/slick.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/theme/slick-theme.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/theme/animate.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/theme/bootstrap.css') }}" />
+	
+	
+	<link rel="stylesheet" type="text/css" href="index.php?route=common/style{{ isdraft == 1 ? '&isdraft=1' : '' }}">
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/theme/265c7c52c569352c208d173d6f83928d-SSL-1593076927.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/theme/d822da9a4aa493d71d6f7960dfa704a0-SSL-1593076926.css') }}" />
+	
+	{% if lang('code') == 'ar' %}
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/rtl.css') }}" />
+	{%endif%}
+	<!-- Jquery For Wekiee New, Old Version Related By App Filter  -->
+	<script src="{{ jslink('js/external/jquery/jquery.min.js') }}"></script> 
+	<script type="text/javascript" src="{{ jslink('js/jquery-ui.min.js') }}"></script>
+	<link rel="stylesheet" type="text/css" href="{{ csslink('css/jquery-ui-1.8.16.custom.css') }}" />
+	<link rel="stylesheet" type="text/css"
+		href="{{ csslink('js/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css') }}" />
+
+	{% for script in document_scripts %}
+	<script type="text/javascript" src="{{ script }}"></script>
+	{% endfor %}
+	<!-- Inline Script:Start -->
+	{% for script in inline_scripts %}
+	{% if script['type'] == 'callable' %}
+	{{ script['script']|base64_decode }}
+	{% endif %}
+	{% endfor %}
+	<!-- Inline Script:End -->
+
+	<!--[if IE]>
+	<style>
+		.inner-adv-color-info {
+			left:-30px;
+		}
+	</style>
+	<![endif]-->
+	{{ google_analytics }}
+</head>
+<script>
+ var Childrensalon = Childrensalon || {}; window.ajaxCartDisabled = false; window.lazySizesConfig = {loadMode: 1}; Childrensalon.isMobileApp = false; Childrensalon.isIOSApp = false; Childrensalon.isAndroidApp = false; Childrensalon.startTime = Date.now(); Childrensalon.isOutletSite = false; Childrensalon.locale = 'en'; Childrensalon.skinUrl = 'https://cdn.childrensalon.com/skin/frontend/default/childrensalon/'; Childrensalon.baseUrl = 'https://www.childrensalon.com/'; window['ga'] = window['ga']||function(){(window['ga'].q=window['ga'].q||[]).push(arguments)};window['ga'].l=1*new Date(); if(document.fonts) { (function(a,b){for(var c=0;c<a.length;c++){var d=new FontFace(a[c][0],"url("+b+a[c][1]+"), url("+b+a[c][2]+")",a[c][3]);document.fonts.add(d);d.load()}})([["Childrensalon-Icons","iconfont\/font\/Childrensalon-Icons_v1581927059.woff2","iconfont\/font\/Childrensalon-Icons_v1581927059.woff",null],["Kakadu","fonts\/Kakadu\/Regular.woff2","fonts\/Kakadu\/Regular.woff",{"style":"normal","weight":"normal"}],["Kakadu","fonts\/Kakadu\/Medium.woff2","fonts\/Kakadu\/Medium.woff",{"style":"normal","weight":"500"}],["Kakadu","fonts\/Kakadu\/Bold.woff2","fonts\/Kakadu\/Bold.woff",{"style":"normal","weight":"bold"}]], Childrensalon.skinUrl); } var csModule=function(){csModule.q.push(arguments)};csModule.q=[]; Childrensalon.utilsConfig = { BASE_URL: 'https://www.childrensalon.com/api', CSRF_TOKEN: 'cq7OcKqOcromegyn' }; csModule('utilsConfig', Childrensalon.utilsConfig); (function (w) { var ua = w.navigator.userAgent.toLowerCase(), match=/(edge)\/([\w.]+)/.exec(ua)||/(opr)[\/]([\w.]+)/.exec(ua)||/(chrome)[ \/]([\w.]+)/.exec(ua)||/(iemobile)[\/]([\w.]+)/.exec(ua)||/(version)(applewebkit)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec(ua)||/(webkit)[ \/]([\w.]+).*(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec(ua)||/(webkit)[ \/]([\w.]+)/.exec(ua)||/(opera)(?:.*version|)[ \/]([\w.]+)/.exec(ua)||/(msie) ([\w.]+)/.exec(ua)||0<=ua.indexOf("trident")&&/(rv)(?::| )([\w.]+)/.exec(ua)||ua.indexOf("compatible")<0&&/(mozilla)(?:.*? rv:([\w.]+)|)/.exec(ua)||[], platform_match=/(ipad)/.exec(ua)||/(ipod)/.exec(ua)||/(windows phone)/.exec(ua)||/(iphone)/.exec(ua)||/(kindle)/.exec(ua)||/(silk)/.exec(ua)||/(android)/.exec(ua)||/(win)/.exec(ua)||/(mac)/.exec(ua)||/(linux)/.exec(ua)||/(cros)/.exec(ua)||/(playbook)/.exec(ua)||/(bb)/.exec(ua)||/(blackberry)/.exec(ua)||[]; Childrensalon.agent = { browser: match[ 5 ] || match[ 3 ] || match[ 1 ] || "", version: match[ 2 ] || match[ 4 ] || "0", versionNumber: match[ 4 ] || match[ 2 ] || "0", platform: platform_match[ 0 ] || "" }; })(window); window.ABTest={init:function(){var t,e=location.hash;if(-1!==e.indexOf("#ABTest=")&&(t=e.substring(8)),!t){var a;try{a=JSON.parse(window.localStorage.getItem("absgmt"))}catch(t){}a&&a.expiry>(new Date).getTime()&&a.value&&(t=a.value)}if(!t){t="seg"+(Math.floor(2*Math.random())+1);try{window.localStorage.setItem("absgmt",JSON.stringify({value:t,expiry:(new Date).getTime()+7776e6}))}catch(t){}}this.segment=t},addBodyClass:function(){document.body.className+=" "+this.segment}};window.ABTest.init();
+</script>
+<body class="browser-desktop  cmsadvanced-page-view lang-en logged-out cms-landing-homepagev7 hide-mobileapp-back-btn main-store homepage-v7 browser-chrome platform-win seg1 with-top-info-bar">
+	<!---------------cart side menu--------------------->
+	
+	   <!---->
+	   <div class="curtain" ></div>
+	   <!----> <!---->
+	   <div class="minicart side-menu-cart">
+		  <header>
+			 <button type="button" id="cart-widget-close" class="cart-widget-close" 
+			 > <span class="icon"></span> </button> 
+			 <div class="minicart-title" id="minicart-title" >
+				 <span class="user-free-text">Cart					  
+				 </span>
+			   </div>
+		  </header>
+		  <section class="cart-content">
+			 <div>
+				<!----> 
+			 </div>
+			 <!---->
+			 <div class="ajax-cart">
+			   {{ cart_content }}
+		  </div>
+			 <!----> <!----> 
+			 <div>
+				<!----> 
+			 </div>
+		  </section>
+		  <!----> 
+	   </div>
+	   <!----> 
+	
+	<!---------------cart side menu--------------------->
+   <div class="stick-to-top">
+   <div class="box-header-nav">
+	   {% if header_data.stickyMenuLogo.section_state == 'enabled' %}
+	   <!-- logo -->
+	   <strong class="logo">
+		   <a href="{{ link('common/home') }}"><img 
+			  src="{{ image(header_data.stickyMenuLogo.fields.logo.value) }}" title="{{ document_title }}" alt="{{ document_title }}"></a>
+		   </strong>
+		   <!-- logo -->
+		   {% endif %}
+	   {% if categories|length > 0 and header_data.sliderCategories.section_state == 'enabled' %}
+	   <span data-action="toggle-nav-cat" class="nav-toggle-menu nav-toggle-cat">
+		   <span>{{ lang('text_categories') }}</span><i aria-hidden="true" class="fa fa-bars"></i></span>
+	   <div class="block-nav-categori">
+		   <div class="block-title">
+			   <span></span>
+		   </div>
+		   <div class="block-content">
+			   <ul class="ui-categori">
+				   {% set featured_categories =  getCategoryAndChilds( header_data.sliderCategories.fields['categories']['value'], 500, 500) %}
+				   {% for item_category in featured_categories %}
+				   <li class="{{item_category["sub_categories"]|length > 0 ? 'parent' : '' }} {{ loop.index > 7 ? 'cat-link-orther' : '' }}">
+					   <a href="{{ item_category.href }}">
+						   {{ item_category.name }}
+					   </a>
+					   {% if item_category["sub_categories"]|length > 0 %}
+					   <span class="toggle-submenu"></span>
+					   <div class="submenu">
+						   <ul class="categori-list">
+							   <li class="col-sm-3">
+								   <ul>
+									   {% for sub_categories in item_category["sub_categories"] %}
+									   <li><a href="{{ sub_categories.href }}" title="{{sub_categories.name}}">{{ sub_categories.name }}</a></li>
+									   {% endfor %}
+								   </ul>
+							   </li>
+						   </ul>
+					   </div>
+					   {% endif %}
+				   </li>
+				   {% endfor %}
+			   </ul>
+
+			   {% if featured_categories|length > 7 %}
+			   <div class="view-all-categori">
+				   <a  class="open-cate btn-view-all">{{ lang('text_all_categories') }}</a>
+			   </div>
+			   {% endif %}
+		   </div>
+	   </div>
+	   {% endif %}
+	   <nav class="nav-container mobile-menu search-fade-out" data-cs="mainNav">
+		   <div class="nav-container-inner">
+			  <ul id="nav" class="mobile-menu to-mobile-menu" data-swipe-position=".mobile-topmenu">	
+				 {% if header_data.mainMenuLink.section_state == 'enabled' %}
+					 {% for collection in header_data.mainMenuLink.collections %}
+					 <li class="level0 nav-9 top-level">
+						 <a href="{{ collection.itemlink.value }}">
+						 <span>{{ collection.itemname.value }}</span>
+					 </a>
+				 </li>
+					 {% endfor %}
+					 {% endif %}
+					 {% if header_data.dropDownLink.section_state == 'enabled' %}
+					 <li class="level0 nav-2 top-level parent">
+						 <a href="{{ header_data.dropDownLink.fields.itemlink.value }}"><span>{{ header_data.dropDownLink.fields.itemname.value }}</span></a>
+						 <ul class="level0 mobile-menu mobile-dropdown" style="height: 0px; padding-top: 0px; padding-bottom: 0px;">
+							 {% for collection in header_data.dropDownLink.collections %}
+							<li class="level1 "><a href="{{ collection.itemlink.value }}">
+							 <span>{{ collection.itemname.value }}</span>
+						 </a>
+					 </li>
+					 {% endfor %}
+						 </ul>
+					  </li>
+					  {% endif %}
+					  
+					 {% if header_data.dropDownLink2.section_state == 'enabled' %}
+					 <li class="level0 nav-2 top-level parent">
+						 <a href="{{ header_data.dropDownLink2.fields.itemlink.value }}"><span>{{ header_data.dropDownLink2.fields.itemname.value }}</span></a>
+						 <ul class="level0 mobile-menu mobile-dropdown" style="height: 0px; padding-top: 0px; padding-bottom: 0px;">
+							 {% for collection in header_data.dropDownLink2.collections %}
+							<li class="level1 "><a href="{{ collection.itemlink.value }}">
+							 <span>{{ collection.itemname.value }}</span>
+						 </a>
+					 </li>
+					 {% endfor %}
+						 </ul>
+					  </li>
+					  {% endif %}
+					  {% if header_data.boxMenu.section_state == 'enabled' %}
+					  {% for collection in header_data.boxMenu.collections %}
+					  <li class="level0 nav-2 top-level parent">
+						 <a href="javascript:void(0)"><span>{{ collection.linkName.value }}</span></a>
+						 <div class="level0 dropdown mobile-menu mobile-dropdown">
+							<a class="dropdown-back desktop-hide" 
+							href="{{ link('common/home') }}"><i class="fi fi-left"></i>
+							Back to Main Menu</a> 
+							<div class="dropdown-inner">
+							 {% set categories1 =  getCategoryAndChilds(collection['categories1']['value'], 500, 500) %}
+							   <div class="col-2">
+								  <p class="title mtitle">{{ categories1[loop.index -1].name }}</p>
+								  <div class="dropdown-links jm-dropdown-links"> 
+									 {% for sub_categories in categories1[loop.index -1]["sub_categories"]|slice(0, 7) %}
+									  <a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a> 
+									  {% endfor %}
+									  <a class="view-all-link" href="{{ categories1[loop.index -1].href }}">
+										 {{ collection.moreLink.value }}</a>
+									  </div>
+							   </div>
+							   {% set categories2 =  getCategoryAndChilds(collection['categories2']['value'], 500, 500) %}
+							   <div class="col-2">
+								 <p class="title mtitle">{{ categories2[loop.index -1].name }}</p>
+								 <div class="dropdown-links jm-dropdown-links"> 
+									{% for sub_categories in categories2[loop.index -1]["sub_categories"]|slice(0, 7) %}
+									 <a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a> 
+									 {% endfor %}
+									 <a class="view-all-link" href="{{ categories2[loop.index -1].href }}">
+										{{ collection.moreLink.value }}</a>
+									 </div>
+								 </div>
+								 {% set categories3 =  getCategoryAndChilds(collection['categories3']['value'], 500, 500) %}
+							   <div class="col-2">
+								 <p class="title mtitle">{{ categories3[loop.index -1].name }}</p>
+								 <div class="dropdown-links jm-dropdown-links"> 
+									{% for sub_categories in categories3[loop.index -1]["sub_categories"]|slice(0, 7) %}
+									 <a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a> 
+									 {% endfor %}
+									 <a class="view-all-link" href="{{ categories3[loop.index -1].href }}">
+										{{ collection.moreLink.value }}</a>
+									 </div>
+								 </div>
+								 {% if collection.adOption1.value == 1 %}
+							   <a class="menu-banner mobile-hide" href="{{ collection.adOptionLink1.value }}"> 
+								   <img alt="" class="lazyload" src="{{ image(collection.adOptionImg1.value) }}"> 
+								   <span class="menu-banner-text" style="color:#000000;font-size:2em;">{{ collection.adOptionTitle.value }}</span> 
+								   <span class="menu-banner-shop">{{ collection.adOptionText.value }}</span> 
+								 </a> 
+								 {% endif %}
+							</div>
+						 </div>
+					  </li>
+					  {% endfor %}
+					  {% endif %}
+			  </ul>
+		   </div>
+		</nav>
+
+		<span data-action="toggle-nav" class="nav-toggle-menu"><span>{{ lang('text_menu') }}</span><i aria-hidden="true" class="fa fa-bars"></i></span>
+
+		<!-- block mini cart -->
+		<div class="block-minicart">
+			<a class="dropdown-toggle cart-li" href="javascript:void(0);">
+				<span class="cart-icon"></span>
+			</a>
+		   
+		</div><!-- block mini cart -->
+
+		<div class="block-search">
+			<div class="block-title">
+			</div>
+			<div class="block-content">
+				<div class="form-search">
+					<form>
+						<div class="box-group" id="search">
+							<input type="text" name="search" class="form-control" placeholder="{{ lang('text_search') }}" value="{{ search }}">
+							<button class="btn btn-search" type="button">
+								</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="dropdown setting">
+			<a data-toggle="dropdown" role="button" href="#" class="dropdown-toggle "><span>{{ lang('text_settings') }}</span> <i aria-hidden="true" class="fa fa-user"></i></a>
+			<div class="dropdown-menu  ">
+				{% if languages|length > 1 %}
+				<div class="switcher  switcher-language">
+					<strong class="title">{{ lang('text_select_language') }}</strong>
+					<form method="post" enctype="multipart/form-data">
+						<ul class="switcher-options ">
+							{% for language in languages %}
+							<li class="switcher-option {{ current_language['code'] == language['code'] ? 'switcher-active' : '' }}">
+								<a href="#" onclick="$('input[name=\'language_code\']').attr('value', '{{ language['code'] }}'); $(this).closest('form').submit(); return false;">
+									<img class="switcher-flag" alt="{{ language['name'] }}" src="admin/view/image/flags/{{ language['image'] }}">
+								</a>
+							</li>
+							{% endfor %}
+							<input type="hidden" name="language_code" value="" />
+							<input type="hidden" name="redirect" value="{{ redirect }}" />
+						</ul>
+					</form>
+				</div>
+				{% endif %}
+
+				{% if currencies|length > 1 %}
+				<div class="switcher  switcher-currency">
+					<strong class="title">{{ lang('text_select_currency') }}</strong>
+					<form action="{{ link('common/home') }}" method="post" enctype="multipart/form-data">
+						<ul class="switcher-options ">
+							{% for currency in currencies %}
+							<li class="switcher-option s{{ current_currency['code'] == currency['code'] ? 'switcher-active' : '' }}">
+								<a href="#" onclick="$('input[name=\'currency_code\']').attr('value', '{{ currency['code'] }}'); $(this).closest('form').submit(); return false;">
+									{{ currency['symbol'] }}
+								</a>
+							</li>
+							{% endfor %}
+							<input type="hidden" name="currency_code" value="" />
+							<input type="hidden" name="redirect" value="{{ redirect }}" />
+						</ul>
+					</form>
+				</div>
+				{% endif %}
+
+				<ul class="account">
+					<li><a href="{{ link('account/wishlist') }}">{{ lang('text_wishlist') }}</a></li>
+					<li><a href="{{ link('account/account') }}">{{ lang('text_account') }}</a></li>
+					<li><a href="{{ link('checkout/checkout') }}">{{ lang('text_checkout') }}</a></li>
+					{% if logged == false  %}
+						<li><a href="{{ link('account/login') }}">{{ lang('text_login') }}</a></li>
+					{% else %}
+						<li><a href="{{ link('account/logout') }}">{{ lang('text_logout') }}</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+   </div>
+   </div>
+   <div class="header">
+   {% if header_data.topBar.section_state == 'enabled' %}
+   <div class="top-info-bar">
+	   <div class="top-info-bar-carousel" >
+		  <a href="{{ header_data.topBar.fields.topBar_link.value }}" class="top-info-bar-item">
+			 <div class="copy-wrap copy-wrap-multi"> 
+			   {{ header_data.topBar.fields.topBar_txt.value }}
+			   </div>
+		  </a>
+	   </div>
+	</div>
+	{% endif %}
+	{% if header_data.loginBar.section_state == 'enabled' %}
+	<div class="header-top">
+	   <div class="container hidden-xs">
+		  <ul class="hotline nav-left">
+			 <li>
+				<span class="wellcome">
+				   {{ header_data.loginBar.fields.loginBar_txt.value }}
+				<a href="{{ link('account/login') }}">{{ lang('Account_Login') }}</a> 
+				or 
+				<a href="{{ link('account/register') }}">{{ lang('Account_Register') }}</a>				 
+				</span>
+			 </li>
+		  </ul>
+		  <ul class="links nav-right">
+		   <li class="dropdown switcher  switcher-language">
+				   <a href="#" class="dropdown-toggle switcher-trigger">
+					<i class="fa fa-bell-o"></i>
+					<i aria-hidden="true" class="fa fa-angle-down"></i>
+				   </a>
+				   <div class="dropdown-menu switcher-options notification-dropdown">
+					   <div class="notification-head">
+						   <h4>{{ lang('notifications') }}</h4>
+						   <a href="#">{{ lang('mark_read') }}</a>
+					   </div>
+					   <ul class="notification-list">
+					   <li class="notification-li">
+						   <a href="#">
+							   <i class="fa fa-window-maximize" aria-hidden="true"></i>
+							   <div class="item-details">
+								   <p>You have 4 orders</p>
+								   <p class="view-notification">View orders</p>
+								   <p class="notification-time">7 hours ago</p>
+							   </div>
+						   </a>
+					   </li>
+					   <li class="notification-li">
+						   <a href="#">
+							   <i class="fa fa-window-maximize" aria-hidden="true"></i>
+							   <div class="item-details">
+								   <p>You have 4 orders</p>
+								   <p class="view-notification">View orders</p>
+								   <p class="notification-time">7 hours ago</p>
+							   </div>
+							   <span class="unread-sign"></span>
+						   </a>
+					   </li>
+					   <li class="notification-li">
+						   <a href="#">
+							   <i class="fa fa-window-maximize" aria-hidden="true"></i>
+							   <div class="item-details">
+								   <p>You have 4 orders</p>
+								   <p class="view-notification">View orders</p>
+								   <p class="notification-time">7 hours ago</p>
+							   </div>
+						   </a>
+					   </li>
+					   <li class="notification-li">
+						   <a href="#">
+							   <i class="fa fa-window-maximize" aria-hidden="true"></i>
+							   <div class="item-details">
+								   <p>You have 4 orders</p>
+								   <p class="view-notification">View orders</p>
+								   <p class="notification-time">7 hours ago</p>
+							   </div>
+						   </a>
+					   </li>
+					   <li class="notification-li">
+						   <a href="#">
+							   <i class="fa fa-window-maximize" aria-hidden="true"></i>
+							   <div class="item-details">
+								   <p>You have 4 orders</p>
+								   <p class="view-notification">View orders</p>
+								   <p class="notification-time">7 hours ago</p>
+							   </div>
+						   </a>
+					   </li>
+				   </ul>
+			   </div>
+		   </li>
+		   {% if languages|length > 1 %}
+		   <li class="dropdown switcher  switcher-language">
+			   <a data-toggle="dropdown" role="button" href="#" class="dropdown-toggle switcher-trigger" aria-expanded="false">
+				   <img class="switcher-flag" alt="{{ current_language.name }}" src="admin/view/image/flags/{{ current_language.image }}">
+				   <span>{{ current_language.name }}</span>
+				   <i aria-hidden="true" class="fa fa-angle-down"></i>
+			   </a>
+			   <form method="post" enctype="multipart/form-data">
+				   <ul class="dropdown-menu switcher-options ">
+					   {% for language in languages %}
+					   <li class="switcher-option">
+						   <a href="#" onclick="$('input[name=\'language_code\']').attr('value', '{{ language.code }}'); $(this).closest('form').submit(); return false;">
+							   <img class="switcher-flag" alt="{{ language.name }}" src="admin/view/image/flags/{{ language.image }}">{{ language.name }}
+						   </a>
+					   </li>
+					   {% endfor %}
+					   <input type="hidden" name="language_code" value="" />
+					   <input type="hidden" name="redirect" value="{{ redirect }}" />
+				   </ul>
+			   </form>
+		   </li>
+		   {% endif %}
+
+		   {% if currencies|length > 1 %}
+		   <li class="dropdown switcher  switcher-currency">
+			   <a data-toggle="dropdown" role="button" href="#" class="dropdown-toggle switcher-trigger"><span>{{ current_currency.symbol }}</span> <i aria-hidden="true" class="fa fa-angle-down"></i></a>
+			   <form action="{{ link('common/home') }}" method="post" enctype="multipart/form-data">
+				   <ul class="dropdown-menu switcher-options ">
+					   {% for currency in currencies %}
+					   <li class="switcher-option">
+						   <a href="#" onclick="$('input[name=\'currency_code\']').attr('value', '{{ currency.code }}'); $(this).closest('form').submit(); return false;">
+							   {{ currency.title }}
+						   </a>
+					   </li>
+					   {% endfor %}
+					   <input type="hidden" name="currency_code" value="" />
+					   <input type="hidden" name="redirect" value="{{ redirect }}" />
+				   </ul>
+			   </form>
+		   </li>
+		   {% endif %}
+		  </ul>
+	   </div>
+	</div>
+	{% endif %}
+	<div class="header-content">
+	   <div class="container">
+		  <div class="row">
+		   {% if header_data.headermain.section_state == 'enabled' %}
+			 <div class="col-md-4 nav-left hidden-xs">
+				<!-- logo -->
+				<strong class="logo">
+				<a href="{{ link('common/home') }}"><img 
+				   src="{{ image(header_data.headermain.fields.logo.value) }}" title="{{ document_title }}" alt="{{ document_title }}"></a>
+				</strong><!-- logo -->
+			 </div>
+			 {% endif %}
+			 <div class="col-md-5 col-lg-6  nav-mind">
+				<!-- block search -->
+				<div class="block-search">
+				   <div class="block-title">
+				   </div>
+				   <div class="block-content">
+					  <div class="form-search">
+						 <form>
+							<div class="box-group" id="search">
+							   <input type="text" name="search" class="form-control" placeholder="Search" 
+							   value="">
+							   <button class="btn btn-search button-search" type="button"></button>
+							</div>
+						 </form>
+					  </div>
+				   </div>
+				</div>
+				<!-- block search -->
+			 </div>
+			 <div class="col-md-3 col-lg-2  nav-right">
+				<!-- block mini cart -->
+				<ul class="links">
+					<li>
+					   <li class="link-wishlist"><a href="{{ link('account/wishlist') }}" >
+						   <i class="fa fa-heart-o" aria-hidden="true"></i>
+						   <span id="wishlist-total">
+							   {{wishlist_count }}</span></a></li>
+					</li>
+				   <li class="cart-li"> 
+					   <div class="header-dropdown-container">
+						   <a class=" header-dropdown-inner open-cart" href="javascript:void(0);" id="btn_shopping_bag">
+						   <i class="fa fa-opencart"></i>
+						   <span class="dropdown-link-label">
+							{{ lang('bag') }}                
+						   <strong class="ios-bag-items" id="counterLabel">{{ cart.countProducts() }} {{ lang('items') }}</strong>
+						   </span>
+						   </a>
+						</div>
+					  </li>
+				   <li class="first ">
+					  {% if logged == false  %}                
+					  <a type="button" href="javascript:void(0);" class="login-modal-desktop" 
+					  data-toggle="modal" data-target="#login_modal"></a> 
+					  <a type="button" href="{{ link('account/login', '', 'SSL') }}" class="login-modal-mobile">
+				   </a>
+					  {% else %}
+					  <a type="button" href="{{ link('account/logout', '', 'SSL') }}">
+						  {{ lang('AccountLogout')|format(link('account/account', '', 'SSL'), customer.getFirstName(), link('account/logout', '', 'SSL')) }}
+					  </a>
+					  <span>|</span> 
+					   
+					  {% endif %}
+				  </li>
+					  <li class=" last "> 
+						  <a href="{{ link('account/register', '', 'SSL') }}">
+							  <span>{{ lang('Account_Register') }}</span>
+						  </a>     
+					  </li>
+					  
+				</ul>
+				<!-- block mini cart -->
+			 </div>
+		  </div>
+	   </div>
+	</div>
+   <div class="header-nav mid-header">
+		   <div class=" container">
+			   <div class="box-header-nav">
+				   {% if categories|length > 0 and header_data.sliderCategories.section_state == 'enabled' %}
+				   <span data-action="toggle-nav-cat" class="nav-toggle-menu nav-toggle-cat"><span>{{ lang('text_categories') }}</span><i aria-hidden="true" class="fa fa-bars"></i></span>
+				   <div class="block-nav-categori">
+					   {% if header_data.sliderCategories.fields.displaysectiontitle.value == 1 %}
+					   <div class="block-title">
+						   <span>{{ header_data.sliderCategories.fields.sectiontitle.value }}</span>
+					   </div>
+					   {% endif %}
+					   <div class="block-content">
+						   <ul class="ui-categori">
+							   {% set featured_categories =  getCategoryAndChilds( header_data.sliderCategories.fields['categories']['value'], 500, 500) %}
+							   {% for item_category in featured_categories %}
+							   <li class="{{item_category["sub_categories"]|length > 0 ? 'parent' : '' }} {{ loop.index > 7 ? 'cat-link-orther' : '' }}">
+								   <a href="{{ item_category.href }}">
+									   {{ item_category.name }}
+								   </a>
+								   {% if item_category["sub_categories"]|length > 0 %}
+								   <span class="toggle-submenu"></span>
+								   <div class="submenu">
+									   <ul class="categori-list">
+										   <li class="col-sm-3">
+											   <ul>
+												   {% for sub_categories in item_category["sub_categories"] %}
+												   <li><a href="{{ sub_categories.href }}" title="{{sub_categories.name}}">{{ sub_categories.name }}</a></li>
+												   {% endfor %}
+											   </ul>
+										   </li>
+									   </ul>
+								   </div>
+								   {% endif %}
+							   </li>
+							   {% endfor %}
+						   </ul>
+   
+						   {% if featured_categories|length > 7 %}
+						   <div class="view-all-categori">
+							   <a  class="open-cate btn-view-all">{{ lang('text_all_categories') }}</a>
+						   </div>
+						   {% endif %}
+					   </div>
+				   </div>
+				   {% endif %}
+				   <nav class="nav-container mobile-menu search-fade-out" data-cs="mainNav">
+					   <div class="nav-container-inner">
+						  <ul id="nav" class="mobile-menu to-mobile-menu" data-swipe-position=".mobile-topmenu">	
+							 {% if header_data.mainMenuLink.section_state == 'enabled' %}
+								 {% for collection in header_data.mainMenuLink.collections %}
+								 <li class="level0 nav-9 top-level">
+									 <a href="{{ collection.itemlink.value }}">
+									 <span>{{ collection.itemname.value }}</span>
+								 </a>
+							 </li>
+								 {% endfor %}
+								 {% endif %}
+								 {% if header_data.dropDownLink.section_state == 'enabled' %}
+								 <li class="level0 nav-2 top-level parent">
+									 <a href="{{ header_data.dropDownLink.fields.itemlink.value }}"><span>{{ header_data.dropDownLink.fields.itemname.value }}</span></a>
+									 <ul class="level0 mobile-menu mobile-dropdown" style="height: 0px; padding-top: 0px; padding-bottom: 0px;">
+										 {% for collection in header_data.dropDownLink.collections %}
+										<li class="level1 "><a href="{{ collection.itemlink.value }}">
+										 <span>{{ collection.itemname.value }}</span>
+									 </a>
+								 </li>
+								 {% endfor %}
+									 </ul>
+								  </li>
+								  {% endif %}
+								  
+								 {% if header_data.dropDownLink2.section_state == 'enabled' %}
+								 <li class="level0 nav-2 top-level parent">
+									 <a href="{{ header_data.dropDownLink2.fields.itemlink.value }}"><span>{{ header_data.dropDownLink2.fields.itemname.value }}</span></a>
+									 <ul class="level0 mobile-menu mobile-dropdown" style="height: 0px; padding-top: 0px; padding-bottom: 0px;">
+										 {% for collection in header_data.dropDownLink2.collections %}
+										<li class="level1 "><a href="{{ collection.itemlink.value }}">
+										 <span>{{ collection.itemname.value }}</span>
+									 </a>
+								 </li>
+								 {% endfor %}
+									 </ul>
+								  </li>
+								  {% endif %}
+								  {% if header_data.boxMenu.section_state == 'enabled' %}
+								  {% for collection in header_data.boxMenu.collections %}
+								  <li class="level0 nav-2 top-level parent">
+									 <a href="javascript:void(0)"><span>{{ collection.linkName.value }}</span></a>
+									 <div class="level0 dropdown mobile-menu mobile-dropdown">
+										<a class="dropdown-back desktop-hide" 
+										href="{{ link('common/home') }}"><i class="fi fi-left"></i>
+										Back to Main Menu</a> 
+										<div class="dropdown-inner">
+										 {% set categories1 =  getCategoryAndChilds(collection['categories1']['value'], 500, 500) %}
+										   <div class="col-2">
+											  <p class="title mtitle">{{ categories1[loop.index -1].name }}</p>
+											  <div class="dropdown-links jm-dropdown-links"> 
+												 {% for sub_categories in categories1[loop.index -1]["sub_categories"]|slice(0, 7) %}
+												  <a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a> 
+												  {% endfor %}
+												  <a class="view-all-link" href="{{ categories1[loop.index -1].href }}">
+													 {{ collection.moreLink.value }}</a>
+												  </div>
+										   </div>
+										   {% set categories2 =  getCategoryAndChilds(collection['categories2']['value'], 500, 500) %}
+										   <div class="col-2">
+											 <p class="title mtitle">{{ categories2[loop.index -1].name }}</p>
+											 <div class="dropdown-links jm-dropdown-links"> 
+												{% for sub_categories in categories2[loop.index -1]["sub_categories"]|slice(0, 7) %}
+												 <a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a> 
+												 {% endfor %}
+												 <a class="view-all-link" href="{{ categories2[loop.index -1].href }}">
+													{{ collection.moreLink.value }}</a>
+												 </div>
+											 </div>
+											 {% set categories3 =  getCategoryAndChilds(collection['categories3']['value'], 500, 500) %}
+										   <div class="col-2">
+											 <p class="title mtitle">{{ categories3[loop.index -1].name }}</p>
+											 <div class="dropdown-links jm-dropdown-links"> 
+												{% for sub_categories in categories3[loop.index -1]["sub_categories"]|slice(0, 7) %}
+												 <a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a> 
+												 {% endfor %}
+												 <a class="view-all-link" href="{{ categories3[loop.index -1].href }}">
+													{{ collection.moreLink.value }}</a>
+												 </div>
+											 </div>
+											 {% if collection.adOption1.value == 1 %}
+										   <a class="menu-banner mobile-hide" href="{{ collection.adOptionLink1.value }}"> 
+											   <img alt="" class="lazyload" src="{{ image(collection.adOptionImg1.value) }}"> 
+											   <span class="menu-banner-text" style="color:#000000;font-size:2em;">{{ collection.adOptionTitle.value }}</span> 
+											   <span class="menu-banner-shop">{{ collection.adOptionText.value }}</span> 
+											 </a> 
+											 {% endif %}
+										</div>
+									 </div>
+								  </li>
+								  {% endfor %}
+								  {% endif %}
+						  </ul>
+					   </div>
+					</nav>
+
+				   <span data-action="toggle-nav" class="nav-toggle-menu"><span>{{ lang('text_menu') }}</span><i aria-hidden="true" class="fa fa-bars"></i></span>
+
+				   <!-- block mini cart -->
+				   <div class="block-minicart">
+					   <a class="dropdown-toggle" href="javascript:void(0);" role="button" data-toggle="dropdown">
+						   <span class="cart-icon"></span>
+					   </a>
+				   </div><!-- block mini cart -->
+
+				   <div class="block-search">
+					   <div class="block-title">
+						   <span>{{ lang('text_searchbtn') }}</span>
+					   </div>
+					   <div class="block-content">
+						   <div class="form-search">
+							   <form>
+								   <div class="box-group" id="search">
+									   <input type="text" name="search" class="form-control" placeholder="{{ lang('text_search') }}" value="{{ search }}">
+									   <button class="btn btn-search" type="button"><span>{{ lang('text_searchbtn') }}</span></button>
+								   </div>
+							   </form>
+						   </div>
+					   </div>
+				   </div>
+
+				   <div class="dropdown setting">
+					   <a data-toggle="dropdown" role="button" href="#" class="dropdown-toggle "><span>{{ lang('text_settings') }}</span> <i aria-hidden="true" class="fa fa-user"></i></a>
+					   <div class="dropdown-menu  ">
+						   {% if languages|length > 1 %}
+						   <div class="switcher  switcher-language">
+							   <strong class="title">{{ lang('text_select_language') }}</strong>
+							   <form method="post" enctype="multipart/form-data">
+								   <ul class="switcher-options ">
+									   {% for language in languages %}
+									   <li class="switcher-option {{ current_language['code'] == language['code'] ? 'switcher-active' : '' }}">
+										   <a href="#" onclick="$('input[name=\'language_code\']').attr('value', '{{ language['code'] }}'); $(this).closest('form').submit(); return false;">
+											   <img class="switcher-flag" alt="{{ language['name'] }}" src="admin/view/image/flags/{{ language['image'] }}">
+										   </a>
+									   </li>
+									   {% endfor %}
+									   <input type="hidden" name="language_code" value="" />
+									   <input type="hidden" name="redirect" value="{{ redirect }}" />
+								   </ul>
+							   </form>
+						   </div>
+						   {% endif %}
+
+						   {% if currencies|length > 1 %}
+						   <div class="switcher  switcher-currency">
+							   <strong class="title">{{ lang('text_select_currency') }}</strong>
+							   <form action="{{ link('common/home') }}" method="post" enctype="multipart/form-data">
+								   <ul class="switcher-options ">
+									   {% for currency in currencies %}
+									   <li class="switcher-option s{{ current_currency['code'] == currency['code'] ? 'switcher-active' : '' }}">
+										   <a href="#" onclick="$('input[name=\'currency_code\']').attr('value', '{{ currency['code'] }}'); $(this).closest('form').submit(); return false;">
+											   {{ currency['symbol'] }}
+										   </a>
+									   </li>
+									   {% endfor %}
+									   <input type="hidden" name="currency_code" value="" />
+									   <input type="hidden" name="redirect" value="{{ redirect }}" />
+								   </ul>
+							   </form>
+						   </div>
+						   {% endif %}
+
+						   <ul class="account">
+							   <li><a href="{{ link('account/wishlist') }}">{{ lang('text_wishlist') }}</a></li>
+							   <li><a href="{{ link('account/account') }}">{{ lang('text_account') }}</a></li>
+							   <li><a href="{{ link('checkout/checkout') }}">{{ lang('text_checkout') }}</a></li>
+							   {% if logged == false  %}
+								   <li><a href="{{ link('account/login') }}">{{ lang('text_login') }}</a></li>
+							   {% else %}
+								   <li><a href="{{ link('account/logout') }}">{{ lang('text_logout') }}</a></li>
+							   {% endif %}
+						   </ul>
+					   </div>
+				   </div>
+			   </div>
+   </div>
+   </div>
+   
+
+   <!-- ========================  Header content ======================== -->
+   <!-- ========================  Body content ======================== -->
+   <div class="wrapper">
+	   <div class="page">
+		   <div class="main clearfix col1-layout">
+			  
+
+			   <div class="col-main">
+   {% if is_home_page %}
+   <div class="homepagev7-page">
+   {{ regions_data.maincontent.content }}
+</div>
+   {% else %}
+
+	   <div class='row'>
+		   {% if route == "product/category" %}
+		   {% if modules.filter.enabled or modules.mega_filter.enabled %}
+		   <div class='container'>
+			   <div class='row'>
+		   <div class="col-md-3 filters">
+			   {{ regions_data.sidecontent.content }}
+			   {% if modules.mega_filter.enabled %}{{ modules.mega_filter.content }}{% endif %}
+			   {% if modules.filter.enabled %}{{ modules.filter.content }}{% endif %}
+		   </div>
+		   {% endif %}
+		   <div id="content"
+			   class="{{ modules.filter.enabled or modules.mega_filter.enabled ? 'col-md-9' : 'col-md-12' }}">
+			   {{ page_content }}
+		   </div>
+	   </div>
+	   </div>
+		   {% else %}
+		   <div id="content"
+			   class="col-md-12">
+			   {{ page_content }}
+		   </div>
+		   {% endif %}
+	   </div>
+   
+   {% endif %}
+{% if route == "product/product" %}
+
+<div class="bottom-content">
+   {{ regions_data.bottomcontent.content }}
+</div>
+{% endif %}
+</div>
+</div>
+</div>
+</div>
+   <!-- ========================  Body content ======================== -->
+		  <!-- ================== Footer  ================== -->
+{% if footer_data.footerUpperTab.section_state == 'enabled' %}
+<div class="holder bgcolor bgcolor-1 mt-0">
+<div class="container">
+   <div class="row shop-features-style3">
+	   {% for collection in footer_data.footerUpperTab.collections|slice(0,5) %}
+	   <div class="col-md">
+		   <a href="{{ collection.footerUpperTablink.value }}" class="shop-feature light-color">
+		   <div class="shop-feature-icon">
+			   <i class="{{ collection.socialIcon.value }}"></i>
+		   </div>
+		   <div class="shop-feature-text">
+			   <div class="text2">
+				   {{ collection.footerUpperTabText.value }}
+			   </div>
+		   </div>
+		   </a>
+	   </div>
+	   {% endfor %}
+   </div>
+</div>
+</div>
+{% endif %}
+<div class="woodmart-prefooter">
+<div class="container">	
+	   <div class="wpb_column column_container col-sm-12 col-has-fill">
+		   <div class="column-inner">
+		   <div class="wpb_wrapper">
+			   <!-- <div class="row">
+			   <div class="title-wrapper col-md-8 offset-md-4">
+				   <div class="liner-continer">
+					   <h4 class="woodmart-title-container title  woodmart-font-weight-">Subscribe Now</h4>						
+				   </div>
+				   <div class="title-after_title">Sign up to our newsletter for style news, offers, and events.</div>
+			   </div>
+		   </div> -->
+			   <div class="row wpb_row vc_inner vc_row-fluid">
+				   <div class="wpb_column column_container col-md-5">
+				   {% if footer_data.socialColumn.section_state == 'enabled' %}					
+					   <div class="column-inner">
+					   <div class="wpb_wrapper">
+						   <div class="wpb_text_column wpb_content_element">
+							   <div class="wpb_wrapper">
+								   <p><span>{{ footer_data.socialColumn.fields.title.value }}</span></p>
+							   </div>
+						   </div>
+						   <div class="woodmart-social-icons text-left icons-design-default icons-size-large color-scheme-light social-follow social-form-circle">
+							   {% for collection in footer_data.socialColumn.collections %}
+							   <a href="{{ collection.socialLink.value }}" 
+							   target="_blank" class=" woodmart-social-icon social-facebook">
+							   <i class="{{ collection.socialIcon.value }}"></i>
+							   </a>
+							   {%endfor%}
+						   </div>
+					   </div>
+					   </div>
+				   {% endif %}
+			   </div>
+				   <div class="wpb_column column_container col-md-5 offset-md-2">
+					   <div class="column-inner">
+					   <div class="wpb_wrapper">
+						   <div class="wpb_text_column wpb_content_element">
+							   <div class="wpb_wrapper">
+								   <p><span>Please enter your email address:</span></p>
+							   </div>
+						   </div>
+						   <div class="wpb_text_column wpb_content_element vc_custom_1498129733874 color-scheme-dark">
+							   <div class="wpb_wrapper">
+								   <form class="mc4wp-form mc4wp-form-74" action="{{ link('account/register', '', 'SSL') }}">
+								   <div class="mc4wp-form-fields">
+									   <p>
+										   <input type="email" name="EMAIL" placeholder="example@email.com">
+									   </p>
+									   <p>
+										   <input type="submit" value="Subscribe">
+									   </p>
+								   </div>
+								   <div class="mc4wp-response"></div>
+								   </form>
+								   <!-- / Mailchimp for WordPress Plugin -->
+							   </div>
+						   </div>
+					   </div>
+					   </div>
+				   </div>					
+			   </div>
+		   </div>
+		   </div>
+	   </div>	
+   <div class="vc_row-full-width vc_clearfix"></div>
+</div>
+</div>
+<footer class="footer-container color-scheme-light">
+   <div class="container main-footer">
+	  <aside class="footer-sidebar widget-area row" role="complementary">
+	   {% if footer_data.columnlinks.section_state == 'enabled' %}
+		 <div class="footer-column footer-column-1 col-sm-2 col-lg-2">
+			<div id="nav_menu-2" class="woodmart-widget widget footer-widget  footer-widget-collapse widget_nav_menu">
+			   <h5 class="widget-title">{{ footer_data.columnlinks.fields.columnTitle.value }}</h5>
+			   <div class="menu-footer-shopping-orders-container">
+				  <ul id="menu-footer-shopping-orders" class="menu">
+				   {% for collection in footer_data.columnlinks.collections %}
+					 <li id="menu-item-893" class="menu-item">
+						 <a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a>
+					   </li>
+					   {%endfor%}
+					</ul>
+			   </div>
+			</div>
+		 </div>
+		 {% endif %}
+		 {% if footer_data.columnlinksTwo.section_state == 'enabled' %}
+		 <div class="footer-column footer-column-1 col-sm-2 col-lg-2">
+			<div id="nav_menu-2" class="woodmart-widget widget footer-widget  footer-widget-collapse widget_nav_menu">
+			   <h5 class="widget-title">{{ footer_data.columnlinksTwo.fields.columnTitle.value }}</h5>
+			   <div class="menu-footer-shopping-orders-container">
+				  <ul id="menu-footer-shopping-orders" class="menu">
+				   {% for collection in footer_data.columnlinksTwo.collections %}
+					 <li id="menu-item-893" class="menu-item">
+						 <a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a>
+					   </li>
+					   {%endfor%}
+					</ul>
+			   </div>
+			</div>
+		 </div>
+		 {% endif %}
+		 {% if footer_data.columnlinks3.section_state == 'enabled' %}
+		 <div class="footer-column footer-column-1 col-sm-2 col-lg-2">
+			<div id="nav_menu-2" class="woodmart-widget widget footer-widget  footer-widget-collapse widget_nav_menu">
+			   <h5 class="widget-title">{{ footer_data.columnlinks3.fields.columnTitle.value }}</h5>
+			   <div class="menu-footer-shopping-orders-container">
+				  <ul id="menu-footer-shopping-orders" class="menu">
+				   {% for collection in footer_data.columnlinks3.collections %}
+					 <li id="menu-item-893" class="menu-item">
+						 <a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a>
+					   </li>
+					   {%endfor%}
+					</ul>
+			   </div>
+			</div>
+		 </div>
+		 {% endif %}
+		 {% if footer_data.columnlinks4.section_state == 'enabled' %}
+		 <div class="footer-column footer-column-1 col-sm-2 col-lg-2">
+			<div id="nav_menu-2" class="woodmart-widget widget footer-widget  footer-widget-collapse widget_nav_menu">
+			   <h5 class="widget-title">{{ footer_data.columnlinks4.fields.columnTitle.value }}</h5>
+			   <div class="menu-footer-shopping-orders-container">
+				  <ul id="menu-footer-shopping-orders" class="menu">
+				   {% for collection in footer_data.columnlinks4.collections %}
+					 <li id="menu-item-893" class="menu-item">
+						 <a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a>
+					   </li>
+					   {%endfor%}
+					</ul>
+			   </div>
+			</div>
+		 </div>
+		 {% endif %}
+		 {% if footer_data.columnlinks5.section_state == 'enabled' %}
+		 <div class="footer-column footer-column-1 col-sm-2 col-lg-2">
+			<div id="nav_menu-2" class="woodmart-widget widget footer-widget footer-widget-collapse widget_nav_menu">
+			   <h5 class="widget-title">{{ footer_data.columnlinks5.fields.columnTitle.value }}</h5>
+			   <div class="menu-footer-shopping-orders-container">
+				  <ul id="menu-footer-shopping-orders" class="menu">
+				   {% for collection in footer_data.columnlinks5.collections %}
+					 <li id="menu-item-893" class="menu-item">
+						 <a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a>
+					   </li>
+					   {%endfor%}
+					</ul>
+			   </div>
+			</div>
+		 </div>
+		 {% endif %}
+	  </aside>
+	  <!-- .footer-sidebar -->
+   </div>
+   {% if footer_data.getApp.section_state == 'enabled' %}
+   <div class="get-app">
+	   <h5 class="widget-title">
+		   {{ footer_data.getApp.fields.getAppTitle.value }}
+	   </h5>
+	   <div class="app-buttons">
+		   <a href="{{ footer_data.getApp.fields.androidLink.value }}" class="app-btn"><img src="{{ image(footer_data.getApp.fields.androidImage.value) }}" alt="" /></a>
+		   <a href="{{ footer_data.getApp.fields.appStoreLink.value }}" class="app-btn"><img src="{{ image(footer_data.getApp.fields.appStoreImage.value) }}" alt="" /></a>
+   </div>
+   </div>
+   {% endif %}
+   <div class="copyrights-wrapper copyrights-two-columns">
+	  <div class="container">
+		 <div class=" row">
+		   {% if footer_data.delivery.section_state == 'enabled' %}
+		   <div class="col-md-4 reset-mb-10">
+			  <div class="weaccept">
+				  <h5>{{ footer_data.delivery.fields.deliveryText.value }}</h5>
+				  {% for collection in footer_data.delivery.collections %}
+				  <a href="{{ collection.itemlink.value }}" class="wobble-vertical">
+					  <img class=" lazyloaded"  src="{{ image(collection.itemImage.value) }}" alt="" />
+				  </a>
+				  {% endfor %}
+			  </div>							
+		   </div>
+		   {%endif%}
+		   {% if footer_data.footerLogo.section_state == 'enabled' %}
+		   <div class="col-md-4 reset-mb-10">
+			  <div class="footer-logo">
+				  
+				  <a href="{{ link('common/home') }}">
+					  <img class=" lazyloaded"  src="{{ image(footer_data.footerLogo.fields.itemImage.value) }}" alt="" />
+				  </a>
+				 
+			  </div>							
+		   </div>
+		   {%endif%}			
+			{% if footer_data.payments.section_state == 'enabled' %}
+			<div class="col-md-4 reset-mb-10">
+			   <div class="float-right">
+				   <div class="weaccept">
+			   <h5>{{ footer_data.payments.fields.paymentsText.value }}</h5>
+				   {% for collection in footer_data.payments.collections %}
+				   <a href="{{ collection.link.value }}" class="wobble-vertical">
+					   <img class=" lazyloaded"  src="{{ image(collection.paymentImage.value) }}" alt="" />
+				   </a>
+				   {% endfor %}
+			   </div>							
+		   </div>							
+			</div>
+			{%endif%}
+		 </div>
+	  </div>
+   </div>
+   
+</footer>
+<!-- ================== Footer  ================== -->
+{% if footer_data.footerLowerTab.section_state == 'enabled' %}
+<div class="holder bgcolor bgcolor-1 mt-0">
+<div class="container">
+   <div class="row shop-features-style3">
+	   {% for collection in footer_data.footerLowerTab.collections|slice(0,6) %}
+	   <div class="col-md">
+		   <a href="{{ collection.itemlink.value }}" class="shop-feature light-color p-3">
+		   <div class="shop-feature-text">
+			   <div class="text2">
+				   {{ collection.itemText.value }}
+			   </div>
+		   </div>
+		   </a>
+	   </div>
+	   {% endfor %}
+   </div>
+</div>
+</div>
+{% endif %}
+</div>
+
+<div class="modal c_popup-container login-popup loginregister-popup" id="login_modal" 
+tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="c_popup">
+	   <div class="c_close fi fi-cross">
+
+	   </div>
+	   <div class="c_popup_inner">
+	   <div class="account-login clearfix"> 
+		   <div class="page-title"> <h1>{{ lang('button_login') }}</h1> 
+			   <!-- <div class="subscribe-login"> 
+				   <h2 class="popup-title">We noticed you have an account</h2> 
+				   <p class="popup-subtitle">Login to receive a notification when this product arrives</p> 
+			   </div>  -->
+		   </div> 
+		   {% if d_social_login_enabled %}
+			   <div class="socialconnect-lg"> 
+				   <h2 class="title">
+		   <span class="login-part">{{ lang('with_social') }}</span>
+	   </h2> 
+	   <div class="socialconnect-login"> 
+		   {{ d_social_login }}
+	</div> 
+	<h3>{{ lang('with_mail') }}</h3>
+	</div>
+	{% endif %}
+	{% if success %}
+<br>
+<div class="alert alert-success alert-dismissible" role="alert">
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+   {{ success }}
+</div>
+{% endif %}
+
+{% if error_warning %}
+<br>
+<div class="alert alert-warning alert-dismissible" role="alert">
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+   {{ error_warning }}
+</div>
+{% endif %}
+	 
+	   <form class="form-horizontal required-entry" action="{{ link('account/login', '', 'SSL') }}" method="post" enctype="multipart/form-data" id="login" novalidate="novalidate">
+		<p class="error-message no-display"></p> 
+		<div class="form-group"> 
+			<label class="input-box"> 
+				<input type="text" id="loginInputName"  value="{{ email }}" name="email" class="required-entry input-text validate-email validate-length maximum-length-255" autocomplete="email"> 
+				<span class="label visible">{{ lang('entry_email') }}</span>
+			   </label> </div> 
+			   <div class="form-group">
+					<label class="input-box"> 
+					   <input type="password" name="password" class="validate-password required-entry input-text validate-password" id="loginInputEmail" placeholder="{{ lang('entry_password') }}" value="{{ password }}">		
+						<span class="label visible">{{ lang('entry_password') }}</span></label>
+						  </div> 
+					   <div class="buttons-set">
+							<button type="submit" class="btn btn-lg btn-block"> 
+								<span><span>{{ lang('button_login') }}</span>
+							   </span> 
+						   </button> 
+						   {% if redirect %}
+						   <input type="hidden" name="redirect" value="{{ redirect }}" />
+							   {% endif %}
+						   </div>
+					   </form> 
+					   <div class="buttons-set"> 
+						   <a href="{{ link('account/register', '', 'SSL') }}" class="btn btn-white btn-lg btn-block register-link loginregister-link">
+							   <span>{{ lang('Account_Register') }}</span>
+						   </a> 
+					   </div> 
+				   </div>
+   
+   
+   </div></div>
+ </div>
+ <div class="swipe-menu-wrapper no-display" data-cs="swipeMenu">
+   <div class="swipe-menu">
+	  <div class="welcome-container"></div>
+	  <span class="mtitle mobile-topmenu-mtitle desktop-hide"></span> 
+	  <div class="mobile-topmenu desktop-hide"></div>
+   </div>
+</div>
+   <form id="contact-form" action="{{ link('information/contact') }}" method="POST" enctype="multipart/form-data">
+	   <input type="hidden" name="no-validate" value="1" />
+	   <input type="hidden" name="name" value="{{ (customer.getFirstname() ~ ' ' ~ customer.getLastname())|e }}" />
+	   <input type="hidden" name="email" value="{{ customer.getEmail() }}" />
+	   <input type="hidden" name="enquiry" />
+	   <input type="hidden" name="captcha" />
+   </form>
+   
+   <script type="text/javascript">
+	   function contact_us(id) {
+		   $('#contact-form input[name="enquiry"]').val($('#enquiry-' + id).html() + '\n');
+		   $('#contact-form').submit();
+	   }
+   </script>
+	
+		<!--  Common - ExpandCart Default 		-->
+		<!-- <script src="{{ jslink('js/theme/jquery-3.3.1.min.js') }}"></script> -->
+		<script src="{{ jslink('js/theme/jquery-ui.min.js') }}"></script>
+		<!-- <script type="text/javascript" src="{{ jslink('js/theme.js') }}"></script> -->
+		<script type="text/javascript" src="{{ jslink('js/common.js') }}"></script>
+		<script type="text/javascript" src="{{ commonLink('js/common.js') }}"></script>
+	
+	
+		<form id="contact-form" action="{{ link('information/contact') }}" method="POST" enctype="multipart/form-data">
+			<input type="hidden" name="no-validate" value="1" />
+			<input type="hidden" name="name" value="{{ (customer.getFirstname() ~ ' ' ~ customer.getLastname())|e }}" />
+			<input type="hidden" name="email" value="{{ customer.getEmail() }}" />
+			<input type="hidden" name="enquiry" />
+			<input type="hidden" name="captcha" />
+		</form>
+		<script type="text/javascript">
+			function contact_us(id) {
+				$('#contact-form input[name="enquiry"]').val($('#enquiry-' + id).html() + '\n');
+				$('#contact-form').submit();
+			}
+		</script>
+		<!--- Js Wokiee -->
+		<!-- <script src="{{ jslink('js/external/jquery/jquery.min.js') }}"></script> -->
+
+		<!-- <script src="{{ jslink('js/theme/jquery-3.3.1.min.js') }}"></script> -->
+
+		<script src="{{ jslink('js/external/bootstrap/js/bootstrap.min.js') }}"></script>
+		<script src="{{ jslink('js/external/slick/slick.min.js') }}"></script>
+		<script src="{{ jslink('js/external/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+		<script src="{{ jslink('js/external/panelmenu/panelmenu.js') }}"></script>
+		<script src="{{ jslink('js/external/instafeed/instafeed.min.js') }}"></script>
+		<script src="{{ jslink('js/external/rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>
+		<script src="{{ jslink('js/external/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+		<script src="{{ jslink('js/external/countdown/jquery.plugin.min.js') }}"></script>
+		<script src="{{ jslink('js/external/countdown/jquery.countdown.min.js') }}"></script>
+		<script src="{{ jslink('js/external/lazyLoad/lazyload.min.js') }}"></script>
+		<!--- multicart  -->
+		
+	
+		<script>
+			$(window).on('load',function(){
+				$('#exampleModal').modal('show');
+			});
+			function openSearch() {
+				document.getElementById("search-overlay").style.display = "block";
+			}
+		
+			function closeSearch() {
+				document.getElementById("search-overlay").style.display = "none";
+			}
+		</script>
+		
+	<!---sawany-->
+
+
+	<script src="{{ jslink('js/external/jquery/jquery.min.js') }}"></script>
+	
+	<script src="{{ jslink('js/external/bootstrap/js/bootstrap.min.js') }}"></script>
+	<script src="{{ jslink('js/external/countdown/jquery.plugin.min.js') }}"></script>
+	<script src="{{ jslink('js/external/countdown/jquery.countdown.min.js') }}"></script>
+	<script src="{{ jslink('js/external/lazyLoad/lazyload.min.js') }}"></script>
+	<script src="{{ jslink('js/theme/main.js') }}"></script>
+	<script src="{{ jslink('js/theme/ec.js') }}"></script>
+	<script src="{{ jslink('js/theme/core.js') }}"></script>
+	<script src="{{ jslink('js/theme/9f4efc1c-a53a-4a5f-a26f-9b3ecf252563.js') }}"></script>
+	<script src="{{ jslink('js/theme/OneSignalSDK.js') }}"></script>
+	<script src="{{ jslink('js/theme/ab8c92c473fac04d.js') }}"></script>
+	<script src="{{ jslink('js/theme/fbevents.js') }}"></script>
+	<script src="{{ jslink('js/theme/snippet.js') }}"></script>
+	<script src="{{ jslink('js/theme/analytics.js') }}"></script>
+	<script src="{{ jslink('js/theme/trackjs.js') }}"></script>
+	<script src="{{ jslink('js/theme/piwik.js') }}"></script>
+	<script src="{{ jslink('js/theme/gtm.js') }}"></script>
+	<!-- <script src="{{ jslink('js/theme/1601212fe49aabee9c3642416d6fa52d-1591699621.js') }}"></script> -->
+	<script src="{{ jslink('js/slick.js') }}"></script>
+
+	<script src="{{ jslink('js//external/elevatezoom/jquery.elevatezoom.js') }}"></script>	
+	
+	<script src="{{ jslink('js/main-custom.js') }}"></script>
+	<script type="text/javascript" src="{{ jslink('js/theme.js') }}"></script>
+	
+	<!---/sawany-->
+
+
+	{{ body_scripts }}
+
+</body>
+
+</html>

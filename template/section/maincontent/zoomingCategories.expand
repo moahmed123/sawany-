@@ -1,0 +1,49 @@
+<section class="stretcher-wrapper">
+
+            <!-- === stretcher header === -->
+
+            <header>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-8 text-center">
+                        <h1 class="h2 title">{{fields.mainTitle.field_value}}</h1>
+                        <div class="text">
+                            <p>{{fields.secondTitle.field_value}}</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- === stretcher === -->
+
+            <ul class="stretcher">
+
+                <!-- === stretcher item === -->
+                {% for collection in collections %}
+                {% set category =  getCategoryAndChilds(collection['categories1']['field_value'], 500, 500) %}
+                <li class="stretcher-item" style="background-image:url({{ collection.image1.field_value }});">
+                    <!--logo-item-->
+                    <div class="stretcher-logo">
+                        <div class="text">
+                            <span class="text-intro">{{ category[loop.index -1].name }}</span>
+                        </div>
+                    </div>
+                    <!--main text-->
+                    <figure>
+                        <h4>{{collection.title1.field_value}}</h4>
+                        <figcaption>{{collection.text1.field_value}}</figcaption>
+                    </figure>
+                    <!--anchor-->
+                    <a href="#">Anchor link</a>
+                </li>
+                {% endfor %}
+                <!-- === stretcher item more=== -->
+
+                <li class="stretcher-item more">
+                    <div class="more-icon">
+                        <span data-title-show="{{fields.moreBtn.field_value}}" data-title-hide="+"></span>
+                    </div>
+                    <a href="#"></a>
+                </li>
+
+            </ul>
+        </section>

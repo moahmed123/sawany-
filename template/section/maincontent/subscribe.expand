@@ -1,0 +1,27 @@
+<div class="homepagev7-join">
+   <h2 class="home-title">{{fields.subscribeTitle.field_value}}</h2>
+   <p class="home-subtitle">{{fields.subscribeText.field_value}}</p>
+   <div class="inner">
+      <div class="join-col">
+         <p class="col-title">{{fields.subText.field_value}}</p>
+         <form action="" class="form-horizontal">
+            <fieldset>
+               <div class="form-group"> <label class="input-box"> 
+                  <input type="email" name="email" value="" class="input-text validate-email required-entry" 
+                  autocomplete="email"> <span class="label visible">{{ lang('email') }}</span> </label> </div>
+               <div class="form-group"> 
+                  <label class="input-box"> <input type="text" name="firstname" value="" 
+                     class="input-text" maxlength="255" autocomplete="given-name"> 
+                     <span class="label visible">{{ lang('name') }}</span> </label> </div>
+               <div class="buttons-set"> 
+                  <a href="{{ link('account/register', '', 'SSL') }}" class="btn btn-dark">
+                     <span>
+                        <span>{{ lang('create_account') }}</span>
+                     </span>
+                  </a> 
+               </div>
+            </fieldset>
+         </form>
+      </div>
+   </div>
+</div>

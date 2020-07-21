@@ -1,0 +1,188 @@
+{% if success %}
+<br>
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  {{ success }}
+</div>
+{% endif %}
+
+<div id="content row">
+   <!-- breadcrumb start -->
+   <div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                    <ol class="breadcrumb justify-content-start">
+                        {% for breadcrumb in breadcrumbs %}
+                        {% if loop.last %}
+                        <li class="breadcrumb-item active">{{ breadcrumb['text'] }}</li>
+                        {% else %}
+                        <li class="breadcrumb-item"><a href="{{ breadcrumb['href'] }}">{{ breadcrumb['text'] }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb End --> 
+<!-- section start -->
+<section class="compare-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="compare-page">
+                    {% if products %}
+                    <div class="table-wrapper table-responsive">
+                        <table class="table">
+                            
+                            <tbody id="table-compare">
+                            <tr>
+                                <th class="product-name">{{ lang('text_name') }}</th>
+                                {% for product in products %}
+                                <td class="grid-link__title"><a href="{{ products[product['product_id']]['href'] }}">{{ products[product['product_id']]['name'] }}</a></td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <th class="product-name">{{ lang('text_image') }}</th>
+                                {% for product in products %}
+                                <td class="item-row">{% if products[product['product_id']]['thumb'] %}
+                                 <img src="{{ products[product['product_id']]['thumb'] }}" alt="{{ products[product['product_id']]['name'] }}" class="featured-image" />
+                                 {% endif %}</td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <th class="product-name">{{ lang('text_price') }}</th>
+                                {% for product in products %}
+                                <td class="item-row">{% if products[product['product_id']]['price'] %}
+                                {% if not products[product['product_id']]['special'] %}
+                                {{ products[product['product_id']]['price'] }}
+                                {% else %}
+                                 <del class="price-old">{{ products[product['product_id']]['price'] }}</del>
+                                <span class="price-new">{{ products[product['product_id']]['special'] }}</span>
+                                    {% endif %}
+                                {% endif %}</td>
+                                 {% endfor %}
+                            </tr>
+                            <tr>
+                                <th class="product-name">{{ lang('text_model') }}</th>
+                                {% for product in products %}
+                                <td class="available-stock">{{ products[product['product_id']]['model'] }}</td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <th class="product-name">{{ lang('text_manufacturer') }}</th>
+                                {% for product in products %}
+                                <td>{{ products[product['product_id']]['manufacturer'] }}</td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <th class="product-name">{{ lang('text_availability') }}</th>
+                                {% for product in products %}
+                                <td>{{ products[product['product_id']]['availability'] }}</td>
+                                {% endfor %}
+                              </tr>
+                              {% if review_status %}
+                              <tr>
+                                <th class="product-name">{{ lang('text_rating') }}</th>
+                                {% for product in products %}
+                                <td><img src="expandish/view/theme/clearion/image/stars-{{ products[product['product_id']]['rating'] }}.png" alt="{{ products[product['product_id']]['reviews'] }}" /><br />
+                                  {{ products[product['product_id']]['reviews'] }}</td>
+                                {% endfor %}
+                              </tr>
+                              {% endif %}
+                              <tr>
+                                <th>{{ lang('text_summary') }}</th>
+                                {% for product in products %}
+                                <td class="description">{{ products[product['product_id']]['description'] }}</td>
+                                {% endfor %}
+                              </tr>
+                              <tr>
+                                <th>{{ lang('text_weight') }}</th>
+                                {% for product in products %}
+                                <td>{{ products[product['product_id']]['weight'] }}</td>
+                                {% endfor %}
+                              </tr>
+                              <tr>
+                                <th>{{ lang('text_dimension') }}</th>
+                                {% for product in products %}
+                                <td>{{ products[product['product_id']]['length'] }} x {{ products[product['product_id']]['width'] }} x {{ products[product['product_id']]['height'] }}</td>
+                                {% endfor %}
+                              </tr>
+                              <tr>
+                                <th>{{ lang('action') }}</th>
+                                {% for product in products %}
+                                <td>
+                                    <input type="button" value="{{ ('-1' in product.price) or ('-1' in product.special) ? lang('button_req_quote') : lang('button_cart') }}" onclick="addToCart('{{ product['product_id'] }}',1, {{ ('-1' in product.price) or ('-1' in product.special) ? 'true' : 'false' }});" class="btn btn-primary" />
+                                    <a href="{{ product['remove'] }}" class="btn btn-danger">{{ lang('button_remove') }}</a>
+                                </td>
+                                  <div id="enquiry-{{ product.product_id }}"  style="display:none">{{ product.name }}:</div>
+                                
+     
+      {% endfor %}
+                              </tr>
+                            </tbody>
+                            {% for attribute_group in attribute_groups %}
+    <thead>
+      <tr>
+        <th class="compare-attribute" colspan="{{ products|length + 1 }}">{{ attribute_group['name'] }}</th>
+      </tr>
+    </thead>
+    {% for key, attribute in attribute_group['attribute'] %}
+    <tbody>
+      <tr>
+        <th>{{ attribute['name'] }}</th>
+        {% for product in products %}
+        {% if products[product['product_id']]['attribute'][key] %}
+        <td>{{ products[product['product_id']]['attribute'][key] }}</td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% endfor %}
+      </tr>
+    </tbody>
+    {% endfor %}
+    {% endfor %}
+    
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section ends -->
+  
+
+    <div class="container mb-5">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="pull-left">
+                <a href="{{ link('common/home') }}" class="btn btn-solid">{{ lang('button_continue') }}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+  {% else %}
+
+
+    <div class="content">{{ lang('text_empty') }}</div>
+
+
+
+    <div class="container mb-5">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="pull-left">
+                <a href="{{ link('common/home') }}" class="btn btn-inline">{{ lang('button_continue') }}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+  {% endif %}
+  </div>

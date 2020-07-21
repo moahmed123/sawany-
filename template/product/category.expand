@@ -1,0 +1,121 @@
+{{ script('js/jquery/jquery.total-storage.min.js') }}
+<style>
+    .product-title{    
+        text-align: center;
+        text-align: -webkit-center;
+    }
+</style>
+<!-- breadcrumb start -->
+<section class="main-header text-center">
+    <header>
+        <div class="container">
+            <h1 class="h2 title">{{ lang('collection_title')  }}</h1>
+            <ol class="breadcrumb breadcrumb-inverted">
+                <li>
+                    <a href="{{ link('common/home') }}"><span class="lnr lnr-home"></span></a>
+                </li>
+                {% for breadcrumb in breadcrumbs %}
+                        {% if loop.last %}
+                        <li>
+                            {{ breadcrumb['text'] }}
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="{{ breadcrumb['href'] }}">{{ breadcrumb['text'] }}</a>
+                        </li>
+                {% endif %}
+                {% endfor %}                        
+            </ol>
+        </div>
+    </header>
+</section>
+<!-- breadcrumb End -->
+    {% set mfSettings = config(mega_filter_settings) %}
+    {% if mfSettings %}
+        {% if mfilter_json %}
+            <div id="mfilter-json" style="display:none">{{ mfilter_json|base64_encode }}</div>
+        {% endif %}
+        <div id="mfilter-content-container">
+    {% endif %}
+ 
+    <!-- section start -->
+ {% if products %}
+  
+ <section class="products">
+        
+
+                    
+                                    <header>
+                                        <div class="row">
+                                            <div class="col-md-offset-2 col-md-8 text-center">
+                                                <img src="{{ image(image) }}" class="img-fluid blur-up lazyload" alt="">
+                                                <h2 class="title">{{ category_name }}</h2>
+                                                <div class="text">
+                                                    <p>{{ description }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </header>
+                                    <div class="homepagev7-featureproducts categories">
+                                        <div class="items">
+                                                {% for item_product in products %}
+                                                <div class="item">
+                                                    <a href="{{ item_product.href}}">
+                                                       <div class="image">
+                                                          <div class="img">
+                                                              <img class=" ls-is-cached lazyloaded" src="{{ item_product.thumb }}" alt="">
+                                                           </div>
+                                                       </div>
+                                                   </a>
+                                                       <div class="name"><span>{{ item_product.name}}</span></div>
+                                                       <div class="price-box">
+                                                          <p class="price"> {{ item_product.price}}</p>
+                                                          <!-- <p class="special-price"> <span class="price"> ج.م.&rlm;&nbsp;623.44 </span> </p> -->
+                                                       </div>
+                                                       <div class="detail-qty radius form-qty qty-box">
+                                                           <div class="input-group">
+                                                               <span class="input-group-prepend minus-btn">
+                                                                   <button type="button" class="btn-number qty-down qtyminus btn quantity-left-minus" data-type="minus" >
+                                                                       <i class="lnr lnr-chevron-left" aria-hidden="true"></i></button>
+                                                               </span>
+                                                           <input type="text" name="quantity" class="form-control input-qty"
+                                                               value='{{ minimum_limit }}' id="qty1" name="qty1" maxlength="12"
+                                                               minlength="1" class="form-control input-number">
+                                                               <span class="input-group-prepend plus-btn">
+                                                           <button type="button" class="btn-number qty-up qtyplus btn quantity-right-plus" data-type="plus">
+                                                               <i class="lnr lnr-chevron-right" aria-hidden="true"></i></button>
+                                                       </span>
+                                                       </div>
+                                                       </div>
+                                                       <a  onclick="event.preventDefault(); addToCart({{ item_product.product_id }},1, {{ ('-1' in item_product.price) or ('-1' in item_product.special) ? 'true' : 'false' }}); return false;" 
+                                                               href="#" class="btn btn-dark">
+                                                               {{ lang('button_cart') }}
+                                                       </a>
+                                                       <a class="icon-btn"
+                                                       onclick="addToWishList('{{ item_product.product_id }}'); return false;" 
+                                                       title="{{ lang('button_wishlist') }}" data-tooltip="{{ lang('button_wishlist') }}" data-tposition="{{lang('lang_webtt')}}">
+                                                           <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                       </a>
+                                                       
+                                                    
+                                                    </div>
+                                                  
+                                                {%endfor%} 
+                                                </div>
+                                        <div class="product-pagination">
+                                            <div class="theme-paggination-block">
+                                                <div class="row">
+                                                    <div class="col-xl-6 col-md-6 col-sm-12">
+                                                        {{ pagination }}  
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    </section>
+    {% endif %}
+    <!-- section End -->
+    {% if mfSettings %}
+        </div>
+    {% endif %}
+</div>

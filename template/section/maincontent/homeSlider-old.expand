@@ -1,0 +1,37 @@
+<section class="p-0">
+    <div class="slide-1 home-slider">
+        {% for collection in collections %}
+        {% if collection.displayBackgroundOnly.field_value == '1' %}
+        <div>
+            <div class="home text-center">
+                <a href="{{ collection.backgroundlink.field_value }}">
+                <img src="{{collection.slideimage.field_value}}" alt="" class="bg-img blur-up lazyload">
+            </a>
+            </div>
+        </div>
+        {% else %}
+        <div>
+            <div class="home text-center">
+                <img src="{{collection.slideimage.field_value}}" alt="" class="bg-img blur-up lazyload">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="slider-contain">
+                                <div>
+                                    <h4>{{collection.mainheading.field_value}}</h4>
+                                    <h1>{{collection.subheading.field_value}}</h1>
+                                    <p>{{collection.pargheading.field_value}}</p>
+                                    <a href="{{collection.slidelink.field_value}}" class="btn btn-solid">
+                                        {{collection.slideBtn.field_value}}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</section>

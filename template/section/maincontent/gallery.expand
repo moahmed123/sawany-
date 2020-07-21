@@ -1,0 +1,29 @@
+<section class="instagram">
+
+    <!-- === instagram header === -->
+
+    <header>
+        <h2 class="h3 title">
+            {{fields.title.field_value}}<br />
+            <i class="{{fields.socialIcon.field_value}}"></i> <br />
+            {{fields.title2.field_value}}
+        </h2>
+        <div class="text">
+            <p>{{fields.text.field_value}}</p>
+        </div>
+    </header>
+
+    <!-- === instagram gallery === -->
+
+    <div class="gallery clearfix">
+        {% for collection in collections %}
+        {% set featured_brands =  getBrands(collection['brands']['field_value'], 250, 200) %}
+        {% for item_brand  in featured_brands|slice(0,6) %}
+        <a class="item" href="{{item_brand.href}}">
+            <img src="{{item_brand.thumb}}" alt="{{item_brand.slug}}" />
+        </a>
+        {% endfor %}
+        {% endfor %}
+    </div> <!--/gallery-->
+
+</section>

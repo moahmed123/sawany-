@@ -1,0 +1,5 @@
+<div class="homepagev7-promotion">
+   <h2 class="home-title">{{fields.featuresNoImageTitle.field_value}}</h2>
+   <p class="home-subtitle">{{fields.featuresNoImageText.field_value}}</p>
+   <a href="{{fields.itemLink.field_value}}" class="btn btn-dark"><span>{{fields.featuresNoImageBtn.field_value}}</span></a>
+</div>

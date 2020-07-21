@@ -1,0 +1,14 @@
+<a href="{{fields.itemLink.field_value}}" class="homepagev7-editorial right-aligned" >
+   <div class="image">
+      <picture class="cs-picture lazyload-block">
+         <img src="{{fields.featuresRightImageImg.field_value}}" class=" ls-is-cached lazyloaded" alt="" >
+      </picture>
+   </div>
+   <div class="copy">
+      <div class="copy-wrap">
+         <h2 class="home-title">{{fields.featuresRightImageTitle.field_value}}</h2>
+         <div class="home-subtitle">{{fields.featuresRightImageText.field_value}}<br></div>
+         <span class="btn btn-dark"><span>{{fields.featuresRightImageBtn.field_value}} </span></span> 
+      </div>
+   </div>
+</a>

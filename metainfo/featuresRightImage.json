@@ -1,0 +1,97 @@
+{
+    "code": "featuresRightImage",
+    "name": "parallax banner",
+    "type": ["available","live"],
+    "state": "enabled",
+    "is-collection": 0,
+    "description": {
+        "name": "@locales.featuresRightImage",
+        "description": "",
+        "collection-name": "",
+        "item-name": "",
+        "button-name": "",
+        "image": "N/A",
+        "thumbnail": "N/A"
+    },
+    "fields": [    
+        {
+            "code": "featuresRightImageImg",
+            "type": "image",
+            "option-id": "",                    
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.featuresRightImageImg_name",
+                "description": "",
+                "value": "data/custom-sawany/shop-5.jpg"
+            }
+        },
+        {
+            "code": "featuresRightImageTitle",
+            "type": "text",
+            "option-id": "",                    
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.featuresRightImageTitle",
+                "description": "",
+                "value": "@locales.featuresRightImageTitle_val"
+            }
+        },    
+        {
+            "code": "featuresRightImageText",
+            "type": "text",
+            "option-id": "",                    
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.featuresRightImageText",
+                "description": "",
+                "value": "@locales.featuresRightImageText_val"
+            }
+        },    
+        {
+            "code": "featuresRightImageBtn",
+            "type": "text",
+            "option-id": "",                    
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.featuresRightImageBtn",
+                "description": "",
+                "value": "@locales.featuresRightImageBtn_val"
+            }
+        },
+        {
+            "code": "itemLink",
+            "type": "link",
+            "option-id": "",
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.itemLink",
+                "description": "",
+                "value": "#"
+            }
+        }
+               
+    ],
+    "locales": {
+        "en": {
+            "featuresRightImage": "featuresRightImage",
+            "featuresRightImageTitle":"Title",
+            "featuresRightImageTitle_val":"Dress like a BOSS",
+            "featuresRightImageText":"Text",
+            "featuresRightImageText_val":"For a cool and comfortable night’s sleep, look no further than our collection of summer nightwear for boys, girls and babies.",
+            "featuresRightImageBtn":"Button",
+            "featuresRightImageBtn_val":"Read full story",
+            "itemLink":"Link",
+            "featuresRightImageImg":"Section image"
+        },
+        "ar": {
+            "featuresRightImage": "خدمات",
+            "featuresRightImageTitle":"العنوان",
+            "featuresRightImageTitle_val":"ارتد كرئيس",
+            "featuresRightImageText":"النص",
+            "featuresRightImageText_val":"For a cool and comfortable night’s sleep, look no further than our collection of summer nightwear for boys, girls and babies.",
+            "featuresRightImageBtn":"الزر",
+            "featuresRightImageBtn_val":"القصة كاملة",
+            "itemLink":"الرابط"
+        }
+    }
+}

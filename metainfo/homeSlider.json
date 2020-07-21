@@ -1,0 +1,343 @@
+{
+    "code": "homeSlider",
+    "name": "Multiple Widgets",
+    "type": ["available", "live"],
+    "state": "enabled",
+    "is-collection": 1,
+    "description": {
+        "name": "@locales.homeSlider",
+        "description": "",
+        "collection-name": "@locales.homeSlider_cn",
+        "item-name": "@locales.homeSlider_in",
+        "button-name": "@locales.homeSlider_bn",
+        "image": "N/A",
+        "thumbnail": "N/A"
+    },
+    "collections": [
+        {
+            "name": "My Slide",
+            "thumbnail": "N/A",
+            "is-default": 1,
+            "fields": [
+                {
+                    "code": "mainheading",
+                    "type": "text",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_mainheading",
+                        "description": "",
+                        "value": "@locales.homeSlider_mainheading_val"
+                    }
+                },
+                {
+                    "code": "pargheading1",
+                    "type": "text",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_subheading",
+                        "description": "",
+                        "value": "@locales.homeSlider_subheading_val"
+                    }
+                },
+                {
+                    "code": "firstButton",
+                    "type": "text",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.firstButton",
+                        "description": "",
+                        "value": "@locales.firstButton_val"
+                    }
+                },                
+                {
+                    "code": "firstButtonLink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.firstButtonLink",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "displayBackgroundOnly",
+                    "type": "checkbox",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_BackgroundOnly",
+                        "description": "",
+                        "value": "0"
+                    }
+                },
+                {
+                    "code": "backgroundlink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_backgroundlink",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "slideimage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_slideimage",
+                        "description": "",
+                        "value": "data/custom-sawany/gallery-1.jpg"
+                    }
+                },
+                {
+                    "code": "mobileimage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_mobileimage",
+                        "description": "",
+                        "value": "data/custom-sawany/slide_mobile.jpg"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "My Slide",
+            "thumbnail": "N/A",
+            "is-default": 0,
+            "fields": [
+                {
+                    "code": "mainheading",
+                    "type": "text",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_mainheading",
+                        "description": "",
+                        "value": "@locales.homeSlider_mainheading_val"
+                    }
+                },
+                {
+                    "code": "pargheading1",
+                    "type": "text",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_subheading",
+                        "description": "",
+                        "value": "@locales.homeSlider_subheading_val"
+                    }
+                },
+                {
+                    "code": "firstButton",
+                    "type": "text",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.firstButton",
+                        "description": "",
+                        "value": "@locales.firstButton_val"
+                    }
+                },                
+                {
+                    "code": "firstButtonLink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.firstButtonLink",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "displayBackgroundOnly",
+                    "type": "checkbox",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_BackgroundOnly",
+                        "description": "",
+                        "value": "0"
+                    }
+                },
+                {
+                    "code": "backgroundlink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_backgroundlink",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "slideimage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_slideimage",
+                        "description": "",
+                        "value": "data/custom-sawany/slider1.jpg"
+                    }
+                },
+                {
+                    "code": "mobileimage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_mobileimage",
+                        "description": "",
+                        "value": "data/custom-sawany/slide_mobile.jpg"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "My Slide",
+            "thumbnail": "N/A",
+            "is-default": 0,
+            "fields": [
+                {
+                    "code": "mainheading",
+                    "type": "text",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_mainheading",
+                        "description": "",
+                        "value": "@locales.homeSlider_mainheading_val"
+                    }
+                },
+                {
+                    "code": "pargheading1",
+                    "type": "text",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_subheading",
+                        "description": "",
+                        "value": "@locales.homeSlider_subheading_val"
+                    }
+                },
+                {
+                    "code": "firstButton",
+                    "type": "text",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.firstButton",
+                        "description": "",
+                        "value": "@locales.firstButton_val"
+                    }
+                },                
+                {
+                    "code": "firstButtonLink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.firstButtonLink",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "displayBackgroundOnly",
+                    "type": "checkbox",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_BackgroundOnly",
+                        "description": "",
+                        "value": "0"
+                    }
+                },
+                {
+                    "code": "backgroundlink",
+                    "type": "link",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_backgroundlink",
+                        "description": "",
+                        "value": "#"
+                    }
+                },
+                {
+                    "code": "slideimage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_slideimage",
+                        "description": "",
+                        "value": "data/custom-sawany/slide2.jpg"
+                    }
+                },
+                {
+                    "code": "mobileimage",
+                    "type": "image",
+                    "option-id": "",
+                    "multi-lang": "1",
+                    "description": {
+                        "name": "@locales.homeSlider_mobileimage",
+                        "description": "",
+                        "value": "data/custom-sawany/slide_mobile.jpg"
+                    }
+                }
+            ]
+        }        
+    ],
+    "locales": {
+        "en": {
+            "homeSlider": "Slide Show",
+            "homeSlider_cn": "Slide Show",
+            "homeSlider_in": "Slide",
+            "homeSlider_bn": "Add New Slide",
+            "homeSlider_mainheading":"Main header",
+            "homeSlider_mainheading_val":"eCommerce template",
+            "homeSlider_subheading":"Text",
+            "homeSlider_subheading_val":"Score new arrivals from latest electronics",
+            "homeSlider_pargheading":"Text",
+            "homeSlider_pargheading_val":"Multipurpose Ecommerce template ready",
+            "firstButton":"First button",
+            "firstButton_val":"Buy",
+            "firstButtonLink":"Slide link",
+            "homeSlider_BackgroundOnly":"Show background only",
+            "homeSlider_backgroundlink":"Background link",
+            "homeSlider_slideimage":"Slide image",
+            "homeSlider_mobileimage":"Slide image for mobile"
+        },
+        "ar": {
+            "homeSlider": "عرض الشرائح",
+            "homeSlider_cn": "عرض الشرائح",
+            "homeSlider_in": " الشرائح",
+            "homeSlider_bn": "أضف شريحة جديدة",
+            "homeSlider_mainheading":"العنوان الرئيسي",
+            "homeSlider_mainheading_val":"eCommerce template",
+            "homeSlider_subheading":"النص",
+            "homeSlider_subheading_val":"Score new arrivals from latest electronics",
+            "homeSlider_pargheading":"النص",
+            "homeSlider_pargheading_val":"Multipurpose Ecommerce template ready",
+            "firstButton":"الزر الاول",
+            "firstButton_val":"اشتري",
+            "firstButtonLink":"رابط الزر الاول",
+            "homeSlider_BackgroundOnly":"اظهار الصورة فقط",
+            "homeSlider_backgroundlink":"رابط الصورة",
+            "homeSlider_slideimage":"الصورة",
+            "homeSlider_mobileimage":"صورة للموبايل"
+        }
+    }
+}

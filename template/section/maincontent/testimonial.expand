@@ -1,0 +1,18 @@
+<div class="homepagev7-testimonial">
+   <div class="copy">
+      <div class="copy-inner">
+         <div class="logo-decor">
+            <picture class="cs-picture lazyload-block">
+               <img sizes="64px" src="{{fields.testimonialImg.field_value}}" class=" ls-is-cached lazyloaded" alt="" >
+            </picture>
+         </div>
+         <ul data-cs="homepageTestimonial">
+            <li class="testimonial-item">
+               <div class="text"> “{{fields.testimonialText.field_value}}” </div>
+               <div class="name">{{fields.testimonialTitle.field_value}}</div>
+               <div class="location">{{fields.testimonialLocation.field_value}}</div>
+            </li>
+         </ul>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,26 @@
+<section class="instagram">
+
+    <!-- === instagram header === -->
+
+    <header>
+        <h2 class="h3 title">
+            {{fields.title.field_value}}<br />
+            <i class="{{fields.socialIcon.field_value}}"></i> <br />
+            {{fields.title2.field_value}}
+        </h2>
+        <div class="text">
+            <p>{{fields.text.field_value}}</p>
+        </div>
+    </header>
+
+    <!-- === instagram gallery === -->
+
+    <div class="gallery clearfix">
+        {% for collection in collections %}
+        <a class="item" href="{{ collection.itemLink.field_value }}">
+            <img src="{{ collection.itemImage.field_value }}" alt="Alternate Text" />
+        </a>
+        {% endfor %}
+    </div> <!--/gallery-->
+
+</section>

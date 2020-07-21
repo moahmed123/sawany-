@@ -1,0 +1,31 @@
+<section class="owl-icons-wrapper">
+
+    <!-- === header === -->
+
+    <header class="hidden">
+        <div class="text-center"><h2 class="title">Product categories</h2></div>
+    </header>
+
+    <div class="clearfix">
+
+        <div class="owl-icons owl-icons-rounded owl-icons-frontpage">
+
+            <!-- === icon item === -->
+            {% for collection in collections %}
+            {% set category =  getCategoryAndChilds(collection['categories']['field_value'], 500, 500) %}
+            <div>
+                <a href="{{ category[loop.index -1].href }}">
+                <figure>
+                    <img src="{{ collection.itemImage.field_value }}" alt="Alternate Text" />
+                    <figcaption>{{ category[loop.index -1].name }}</figcaption>
+                </figure>
+            </a>
+        </div>
+        {% endfor %}
+            <!-- === icon item === -->
+
+
+
+        </div> <!--/owl-icons-->
+    </div> <!--/container-->
+</section>

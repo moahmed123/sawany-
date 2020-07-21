@@ -1,0 +1,45 @@
+<section class="blog blog-widget blog-animation">
+
+   
+
+    <header>
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8 text-center">
+                <h1 class="h2 title">{{fields.itemBigTitle1.field_value}}</h1>
+                <div class="text">
+                    <p>{{fields.itemSmallTitle1.field_value}}</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="row">
+
+           
+            {% for post in getLatestBlogPosts() %}
+            <div class="col-sm-3">
+                <article>
+                    <a href="assets/images/blog-1.jpg">
+                        <div class="image" style="background-image:url({{ image(post['post_image']) }})">
+                            <img src="{{image(post['post_image'])}}" alt="" />
+                        </div>
+                        <div class="entry entry-table">
+                            <div class="date-wrapper">
+                                <div class="date">
+                                    <span>{{post['created_at']}}</span>
+                                </div>
+                            </div>
+                            <div class="title">
+                                <h2 class="h5">{{post['name']}}</h2>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </div>
+            {% endfor %}
+
+        </div> 
+    </div> 
+</section>

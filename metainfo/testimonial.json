@@ -1,0 +1,98 @@
+{
+    "code": "testimonial",
+    "name": "parallax banner",
+    "type": ["available","live"],
+    "state": "enabled",
+    "is-collection": 0,
+    "description": {
+        "name": "@locales.testimonial",
+        "description": "",
+        "collection-name": "",
+        "item-name": "",
+        "button-name": "",
+        "image": "N/A",
+        "thumbnail": "N/A"
+    },
+    "fields": [    
+        {
+            "code": "testimonialImg",
+            "type": "image",
+            "option-id": "",                    
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.testimonialImg_name",
+                "description": "",
+                "value": "data/custom-sawany/testomonial-logo.png"
+            }
+        },
+        {
+            "code": "testimonialTitle",
+            "type": "text",
+            "option-id": "",                    
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.testimonialTitle",
+                "description": "",
+                "value": "@locales.testimonialTitle_val"
+            }
+        },    
+        {
+            "code": "testimonialText",
+            "type": "text",
+            "option-id": "",                    
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.testimonialText",
+                "description": "",
+                "value": "@locales.testimonialText_val"
+            }
+        },    
+        {
+            "code": "testimonialLocation",
+            "type": "text",
+            "option-id": "",                    
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.testimonialLocation",
+                "description": "",
+                "value": "@locales.testimonialLocation_val"
+            }
+        },
+        {
+            "code": "itemLink",
+            "type": "link",
+            "option-id": "",
+            "multi-lang": "1",
+            "description": {
+                "name": "@locales.itemLink",
+                "description": "",
+                "value": "#"
+            }
+        }
+               
+    ],
+    "locales": {
+        "en": {
+            "testimonial": "testimonial",
+            "testimonialTitle":"Name",
+            "testimonialTitle_val":"Andrea",
+            "testimonialText":"Text",
+            "testimonialText_val":"Your customer service is the best I have ever experienced. Fast, efficient, careful, polite and thoughtful. My favourite children’s store by far!",
+            "testimonialLocation":"Location",
+            "testimonialLocation_val":"USA",
+            "itemLink":"Link",
+            "testimonialImg_name":"Section logo"
+        },
+        "ar": {
+            "testimonial": "توصيات",
+            "testimonialTitle":"الاسم",
+            "testimonialTitle_val":"اندريا",
+            "testimonialText":"النص",
+            "testimonialText_val":"Your customer service is the best I have ever experienced. Fast, efficient, careful, polite and thoughtful. My favourite children’s store by far!",
+            "testimonialLocation":"الموقع",
+            "testimonialLocation_val":"الولايات المتحدة",
+            "itemLink":"الرابط",
+            "testimonialImg_name":"لوجو التوصيات"
+        }
+    }
+}

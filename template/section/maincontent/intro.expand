@@ -1,0 +1,122 @@
+<section class="blog blog-block blog-intro">
+
+    <div class="container">
+
+        <!-- === blog header === -->
+
+
+        <div class="row row-clean">
+
+            <!-- === blog item === -->
+
+            <div class="col-xs-6 col-sm-3">
+                <article>
+                    <a href="{{fields.itemLink1.field_value}}">
+                        <div class="image">
+                            <img src="{{fields.itemImage1.field_value}}" alt="" />
+                        </div>
+                        <div class="entry entry-block">
+                            <div class="date">{{fields.itemSmallTitle1.field_value}}</div>
+                            <div class="title">
+                                <h2 class="h3">{{fields.itemBigTitle1.field_value}}</h2>
+                            </div>
+                            <div class="description">
+                                <p>
+                                    {{fields.itemText1.field_value}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="show-more">
+                            <span class="btn btn-clean">{{fields.itemBtn1.field_value}}</span>
+                        </div>
+                    </a>
+                </article>
+            </div>
+
+            <!-- === blog item === -->
+
+            <div class="col-xs-6 col-sm-3">
+                <article>
+                    <a href="{{fields.itemLink2.field_value}}">
+                        <div class="image">
+                            <img src="{{fields.itemImage2.field_value}}" alt="" />
+                        </div>
+                        <div class="entry entry-block">
+                            <div class="date">{{fields.itemSmallTitle2.field_value}}</div>
+                            <div class="title">
+                                <h2 class="h3">{{fields.itemBigTitle2.field_value}}</h2>
+                            </div>
+                            <div class="description">
+                                <p>
+                                    {{fields.itemText2.field_value}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="show-more">
+                            <span class="btn btn-clean">{{fields.itemBtn2.field_value}}</span>
+                        </div>
+                    </a>
+                </article>
+            </div>
+
+            <!-- === blog item === -->
+
+            <div class="col-xs-6 col-sm-3">
+                <article>
+                    <a href="{{fields.itemLink3.field_value}}">
+                        <div class="image">
+                            <img src="{{fields.itemImage3.field_value}}" alt="" />
+                        </div>
+                        <div class="entry entry-block">
+                            <div class="date">{{fields.itemSmallTitle3.field_value}}</div>
+                            <div class="title">
+                                <h2 class="h3">{{fields.itemBigTitle3.field_value}}</h2>
+                            </div>
+                            <div class="description">
+                                <p>
+                                    {{fields.itemText3.field_value}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="show-more">
+                            <span class="btn btn-clean">{{fields.itemBtn3.field_value}}</span>
+                        </div>
+                    </a>
+                </article>
+            </div>
+
+            <!-- === blog item === -->
+
+            <div class="col-xs-6 col-sm-3">
+                <article>
+                    <a href="{{fields.itemLink4.field_value}}">
+                        <div class="image">
+                            <img src="{{fields.itemImage4.field_value}}" alt="" />
+                        </div>
+                        <div class="entry entry-block">
+                            <div class="date">{{fields.itemSmallTitle4.field_value}}</div>
+                            <div class="title">
+                                <h2 class="h3">{{fields.itemBigTitle4.field_value}}</h2>
+                            </div>
+                            <div class="description">
+                                <p>
+                                    {{fields.itemText4.field_value}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="show-more">
+                            <span class="btn btn-clean">{{fields.itemBtn4.field_value}}</span>
+                        </div>
+                    </a>
+                </article>
+            </div>
+
+        </div> <!--/row-->
+        <!-- === button more === -->
+
+        <div class="wrapper-more">
+            <a href="{{fields.allCategoriesLink.field_value}}" class="btn btn-lg">{{fields.allCategories.field_value}}</a>
+        </div>
+
+    </div> <!--/container-->
+</section>
