@@ -43,8 +43,11 @@
     <div class="container">
         <div class="row">               
         <div class="col-lg-12">
-            <h3> {{ lang('heading_title') }}</h3>
-            <p>{{ lang('text_account_already')|format(link('account/login', '', 'SSL')) }}</p>
+            <h3 class="text-center"> {{ lang('heading_title') }}</h3>
+            <p class="text-center">{{ lang('text_account_already')|format(link('account/login', '', 'SSL')) }}</p>
+            <div class="col-md-12">
+                {% if d_social_login_enabled %}{{ d_social_login }}{% endif %}
+            </div>
             <div class="theme-card">
                 <form class="theme-form" action="{{ link('account/register', '', 'SSL') }}" method="post" id="signup" enctype="multipart/form-data">
                     <h4 class="title-base">{{ lang('text_your_details') }}</h4>
@@ -135,14 +138,19 @@
                                 <div class="form-check">
                                     <label class="form-check-label">
                                         <input type="radio" class="form-check-input" name="customer_group_id" id="customer_group_id{{ customer_group['customer_group_id'] }}" value="{{ customer_group['customer_group_id'] }}" checked="checked">
-                                        {{ customer_group['name'] }}
+                                        <span>
+                                            {{ customer_group['name'] }}
+                                        </span>   
                                     </label>
                                 </div>
                             {% else %}
                                 <div class="form-check">
                                     <label class="form-check-label">
                                         <input type="radio" class="form-check-input" name="customer_group_id" id="customer_group_id{{ customer_group['customer_group_id'] }}" value="{{ customer_group['customer_group_id'] }}">
-                                        {{ customer_group['name'] }}
+                                        <span>
+                                            {{ customer_group['name'] }}
+                                        </span>
+                                        
                                     </label>
                                 </div>
                             {% endif %}
@@ -214,27 +222,36 @@
                     {% if newsletter %}
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="newsletter" id="default1" value="1" checked="checked">
-                            {{ lang('text_yes') }}
+                            <input type="radio" class="form-check-input" name="newsletter" id="default1" value="1" checked="checked">                            
+                            <span>
+                                {{ lang('text_yes') }}
+                            </span>
                         </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label">
                             <input type="radio" class="form-check-input" name="newsletter" id="default2" value="0">
-                            {{ lang('text_no') }}
+                            <span>
+                                {{ lang('text_no') }}
+                            </span>
+                            
                         </label>
                     </div>
                     {% else %}
                     <div class="form-check-inline">
                         <label class="form-check-label">
                             <input type="radio" class="form-check-input" name="newsletter" id="default1" value="1">
-                            {{ lang('text_yes') }}
+                            <span>
+                                {{ lang('text_yes') }}
+                            </span>                            
                         </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label">
                             <input type="radio" class="form-check-input" name="newsletter" id="default2" value="0" checked="checked">
-                            {{ lang('text_no') }}
+                            <span>
+                                {{ lang('text_no') }}
+                            </span>                            
                         </label>
                     </div>
                     {% endif %}
@@ -250,15 +267,12 @@
                         {{ text_agree }}<span class="required">*</span>
                     
                 {% endif %}
-                </div>
-                <div class="col-md-6">
-                    {% if d_social_login_enabled %}{{ d_social_login }}{% endif %}
-                </div>
+                </div>              
             </div>
             <div class="form-row"> 
                 <div class="col-md-6">
                     <input type="submit" value="{{ lang('button_continue') }}"
-                           class="btn btn-solid" {{ text_agree ? 'step="margin:0 10px;"' : '' }}/>
+                           class="btn btn-solid register-btn" {{ text_agree ? 'step="margin:0 10px;"' : '' }}/>
             </div>
             
         </div>

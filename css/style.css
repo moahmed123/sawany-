@@ -12757,7 +12757,7 @@ a.wobble-vertical {
 .section-b-space{
 	margin-bottom: 10px;
 }
-#signup .col-md-6{
+/* #signup .col-md-6{
 	width: 100%;
 	max-width: 100%;
 	flex: 0 0 100%;
@@ -12766,7 +12766,7 @@ a.wobble-vertical {
 	display: inline-block;
 	margin: 1%;
     width: 47%;
-}
+} */
 .login-page{
 	margin-bottom: 20px;
 }
@@ -14158,6 +14158,7 @@ header .minicart-title {
     margin-bottom: 20px;
     margin-top: -10px;
 }
+
 /** End Login **/
 
 
@@ -14270,3 +14271,63 @@ header .minicart-title {
 }
 
 /*********Responsive Home************/
+=======
+
+.header-title{
+	font-size: 20px;
+}
+.login-page #d_social_login .dsl-button {
+    width: 70px;
+    height: 70px;
+}
+@media(max-width: 676px){
+	.pragraph-login {		
+		width: 70%;		
+	}
+	.theme-card .theme-form {
+		width: 65%;
+	}
+	.header-title{
+		font-size: 16px;
+	}
+}
+@media(max-width: 480px){
+	.pragraph-login {		
+		width: 100%;
+		padding: 0 20px;		
+	}
+	.theme-card .theme-form {
+		width: 100%;
+		padding: 0 20px;
+	}
+}
+/** End Login **/
+/** Start Register **/
+#signup{
+	width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+.section-b-space{
+	padding: 20px 0;
+}
+#signup .form-control{
+	height: 35px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+#signup .register-btn{
+	margin: 20px 0 !important;
+    height: auto;
+    padding: 17px 31px;
+    color: #fff;
+    font-weight: 600 !important;
+    border-radius: 33px;
+    font-size: 12px;
+}
+#signup .form-check-input{
+	transform: translate(0px, 5px);
+}
+
+/** End Register **/
+
