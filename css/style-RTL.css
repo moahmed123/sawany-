@@ -12024,7 +12024,7 @@ h1.h2.title {
 	}
 	.slick-prev, .slick-next{
 		height: 70px;
-		background: #fff;
+		background: transparent;
 	}
 	.slick-prev:before, .slick-next:before{
 		line-height: .3;
@@ -14449,6 +14449,9 @@ header .minicart-title {
 	.header-title{
 		font-size: 16px;
 	}
+	.zoomContainer{
+		display: none;
+	}
 }
 @media(max-width: 480px){
 	.pragraph-login {		
@@ -14493,3 +14496,29 @@ header .minicart-title {
 }
 
 /** End Register **/
+
+/** Categories **/
+.homepagev7-featureproducts .col-item.col-btn-product{
+	margin-top: 10px;
+}
+.homepagev7-featureproducts .btn.btn-cate{
+	background-color: #5c5c5c;
+    border: 1px solid #5c5c5c;
+    margin: 12px 0;
+    padding: 11px 30px;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 0;
+    border-radius: 35px;
+}
+/** Common **/
+.header-nav{
+	background-color: #fff;
+}
+.breadcrumb{
+	padding: 10px 0;
+    margin: 0;
+}
+.slider-for-Product .slick-prev:before, .slider-for-Product .slick-next:before{
+	color: #333
+}

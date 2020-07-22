@@ -68,7 +68,8 @@
 	{% if lang('code') == 'ar' %}
 	<link rel="stylesheet" type="text/css" href="{{ csslink('css/rtl.css') }}" />
 	{%endif%}
-	<!-- Jquery For Wekiee New, Old Version Related By App Filter  -->
+	
+	<!-- Jquery For Wekiee New, Old Version Related By App Filter  -->		
 	<script src="{{ jslink('js/external/jquery/jquery.min.js') }}"></script>
 	<script type="text/javascript" src="{{ jslink('js/jquery-ui.min.js') }}"></script>
 	<link rel="stylesheet" type="text/css" href="{{ csslink('css/jquery-ui-1.8.16.custom.css') }}" />
@@ -1312,8 +1313,10 @@
 	<!---sawany-->
 
 
-	<script src="{{ jslink('js/external/jquery/jquery.min.js') }}"></script>
-
+	<!-- <script src="{{ jslink('js/external/jquery/jquery.min.js') }}"></script> -->
+	{% if route != "product/category" %}
+	<script src="{{ jslink('js/theme/1601212fe49aabee9c3642416d6fa52d-1591699621.js') }}"></script>
+	{%endif%}
 	<script src="{{ jslink('js/external/bootstrap/js/bootstrap.min.js') }}"></script>
 	<script src="{{ jslink('js/external/countdown/jquery.plugin.min.js') }}"></script>
 	<script src="{{ jslink('js/external/countdown/jquery.countdown.min.js') }}"></script>
@@ -1330,13 +1333,13 @@
 	<script src="{{ jslink('js/theme/trackjs.js') }}"></script>
 	<script src="{{ jslink('js/theme/piwik.js') }}"></script>
 	<script src="{{ jslink('js/theme/gtm.js') }}"></script>
-	<script src="{{ jslink('js/theme/1601212fe49aabee9c3642416d6fa52d-1591699621.js') }}"></script>
+	<!--  -->
 	<script src="{{ jslink('js/slick.js') }}"></script>
 
 	<script src="{{ jslink('js//external/elevatezoom/jquery.elevatezoom.js') }}"></script>
 
 	<script src="{{ jslink('js/main-custom.js') }}"></script>
-	<script type="text/javascript" src="{{ jslink('js/theme.js') }}"></script>
+	<!-- <script type="text/javascript" src="{{ jslink('js/theme.js') }}"></script> -->
 
 	<!---/sawany-->
 
