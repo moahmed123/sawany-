@@ -56,96 +56,98 @@
     <!--section start-->
 <section class="cart-section section-b-space">
     <div class="container">
+        <h1 class="h2 cart-title"><i class="fa fa-opencart"></i> {{ lang('bag')  }}</h1>
         <form  id="cart-form" action="{{ link('checkout/cart') }}" method="post" enctype="multipart/form-data">
-        <h1>
+        <p class="cart-weight">
             
             {% if weight %}
             &nbsp;({{ weight }})
             {% endif %}
-        </h1>
+        </p>
         <div class="row">
-            <div class="col-sm-12">
-                <table class="table cart-table table-responsive-xs">
+            <div class="col-sm-8">
+                <table class="table cart-table cart-table-head table-responsive-xs">
                     <thead>
                     <tr class="table-head">
-                        <th scope="col">{{ lang('image') }}</th>
-                        <th scope="col">{{ lang('product_name') }}</th>
-                        <th scope="col">{{ lang('price') }}</th>
-                        <th scope="col">{{ lang('quantity') }}</th>
-                        <th scope="col">{{ lang('button_remove') }}</th>
-                        <th scope="col">{{ lang('total') }}</th>
+                        <th>{{ lang('item_details') }}</th>
+                        <th>{{ lang('quantity') }}</th>
+                        <th>{{ lang('price') }}</th>
                     </tr>
                     </thead>
+                </table>
+                <table class="table cart-table table-responsive-xs cart-table-details">
                     {% for product in products %}
                     <tbody>
                     <tr>
-                        <td scope="col">
-                            {% if product['thumb'] %}
-                                <img src="{{ product['thumb'] }}" alt="{{ product['name'] }}">                            
-                            {% endif %}
-                        </td>
-                        <td scope="col">
-                            <a href="{{ product['href'] }}">
-                                {{ product['name'] }}
-                                {% if not product['stock'] %}
-                                    <span class="stock">***</span>
-                                {% endif %}
-                            </a>
-                            <div>
-                                {% for option in product['option'] %}
-                                - <small>{{ option['name'] }}: {{ option['value'] }}</small><br />
-                                {% endfor %}
-                            </div>
-                            {% if product['rentData'] %}
-                            <div>
-                                {{ lang('product_for_rent_from') }}
-                                {{ product['rentData']['range']['from'] }}
-                                {{ lang('product_for_rent_to') }}
-                                {{ product['rentData']['range']['to'] }}
-                                {{ lang('product_for_rent_for') }}
-                                {{ product['rentData']['diff'] }}
-                                {{ lang('text_day') }}
-                            </div>
-                            {% endif %}
-
-                            {% if product['pricePerMeterData'] %}
-                            <div>
-                                {% if product['pricePerMeterData']['skirtings_status']  == 1 %}
-                                - <small>{{ lang('text_skirtings') }}: {{ product['pricePerMeterData']['skirtings'] }} {{ lang('text_meter') }}</small><br/>
-                                {% endif %}
-                                {% if product['pricePerMeterData']['metalprofile_status']  == 1 %}
-                                - <small>{{ lang('text_metalprofiles') }}: {{ product['pricePerMeterData']['metalProfiles'] }} {{ lang('text_metalProfiles_unit') }}</small><br/>
-
-                                {% endif %}
-
-                                - <small>{{ lang('text_amount') }}: {{ product['pricePerMeterData']['underlaymen'] }} {{ lang('text_meter') }}
-                                 {% if product['pricePerMeterData']['main_unit'] == '2' %}
-                                    <span style="font-size: 10px;vertical-align: top;">2</span>
-                                 {% endif %}
-                                </small><br/>
-                            </div>
-                            {% endif %}
-
-                            {% if product['printingDocument'] %}
-                            <div>
-                                - <small>{{ lang('text_pages_num') }}: {{ product['printingDocument']['print_pages'] }}</small><br/>
-
-                                {% if product['printingDocument']['print_cover_name'] %}
-                                - <small>{{ lang('text_cover') }}: {{ product['printingDocument']['print_cover_name'] }}</small><br/>
-                                {% endif %}
-                            </div>
-                            {% endif %}
-
-                            <div>
-                                {% if product['reward'] %}
-                                    <small>{{ product['reward'] }}</small>
-                                {% endif %}
-                            </div>  
-                        </td>
-                        <td scope="col">
-                            <h2>{{ product['price'] }}</h2></td>                       
-                        <td scope="col">
-                            <div class="detach-quantity-desctope qty-box">
+                        <td>
+                            <div class="item-container">
+                                <div class="item-details-container">
+                                    <div class="cart-image">
+                                        {% if product['thumb'] %}
+                                        <img src="{{ product['thumb'] }}" alt="{{ product['name'] }}">                            
+                                        {% endif %}
+                                    </div>
+                                    <div class="cart-item-name">
+                                        <a href="{{ product['href'] }}">
+                                            {{ product['name'] }}
+                                            {% if not product['stock'] %}
+                                                <span class="stock">***</span>
+                                            {% endif %}
+                                        </a>
+                                        <div>
+                                            {% for option in product['option'] %}
+                                            - <small>{{ option['name'] }}: {{ option['value'] }}</small><br />
+                                            {% endfor %}
+                                        </div>
+                                        {% if product['rentData'] %}
+                                        <div>
+                                            {{ lang('product_for_rent_from') }}
+                                            {{ product['rentData']['range']['from'] }}
+                                            {{ lang('product_for_rent_to') }}
+                                            {{ product['rentData']['range']['to'] }}
+                                            {{ lang('product_for_rent_for') }}
+                                            {{ product['rentData']['diff'] }}
+                                            {{ lang('text_day') }}
+                                        </div>
+                                        {% endif %}
+            
+                                        {% if product['pricePerMeterData'] %}
+                                        <div>
+                                            {% if product['pricePerMeterData']['skirtings_status']  == 1 %}
+                                            - <small>{{ lang('text_skirtings') }}: {{ product['pricePerMeterData']['skirtings'] }} {{ lang('text_meter') }}</small><br/>
+                                            {% endif %}
+                                            {% if product['pricePerMeterData']['metalprofile_status']  == 1 %}
+                                            - <small>{{ lang('text_metalprofiles') }}: {{ product['pricePerMeterData']['metalProfiles'] }} {{ lang('text_metalProfiles_unit') }}</small><br/>
+            
+                                            {% endif %}
+            
+                                            - <small>{{ lang('text_amount') }}: {{ product['pricePerMeterData']['underlaymen'] }} {{ lang('text_meter') }}
+                                             {% if product['pricePerMeterData']['main_unit'] == '2' %}
+                                                <span style="font-size: 10px;vertical-align: top;">2</span>
+                                             {% endif %}
+                                            </small><br/>
+                                        </div>
+                                        {% endif %}
+            
+                                        {% if product['printingDocument'] %}
+                                        <div>
+                                            - <small>{{ lang('text_pages_num') }}: {{ product['printingDocument']['print_pages'] }}</small><br/>
+            
+                                            {% if product['printingDocument']['print_cover_name'] %}
+                                            - <small>{{ lang('text_cover') }}: {{ product['printingDocument']['print_cover_name'] }}</small><br/>
+                                            {% endif %}
+                                        </div>
+                                        {% endif %}
+            
+                                        <div>
+                                            {% if product['reward'] %}
+                                                <small>{{ product['reward'] }}</small>
+                                            {% endif %}
+                                        </div>  
+                                    </div>
+                                </div>
+                            
+                            <div class="detach-quantity-desctope qty-box cart-item-quantity">
                                 <div class="align-items-center input-group">                                                        
                                     <input type="text" value="{{ product['quantity'] }}" size="5"
                                             name="quantity[{{ product['key'] }}]" class="form-control input-number" 
@@ -153,17 +155,37 @@
                                             <i class="fa fa-refresh" aria-hidden="true" onclick="$('#cart-form').submit();"></i>
                                 </div>
                             </div>
+                            <div class="cart-item-price">
+                                <p >
+                                    {{ product['price'] }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="d-flex total-product-items">
+                            <div >
+                                <a href="{{ product['remove'] }}" 
+                                title="{{ lang('button_remove') }}" class="icon">
+                                <i class="fa fa-trash-o"></i>
+                                {{ lang('button_remove') }}
+                            </a>
+                            </div>
+                            <div>
+                                {{ product['total'] }}
+                            </div>
                         </td>
-                        <td scope="col">
-                            <a href="{{ product['remove'] }}" title="{{ lang('button_remove') }}" class="icon"><i class="lnr lnr-cross"></i></a>
-                        </td>
-                        <td scope="col">
-                            <h2 class="td-color"> {{ product['total'] }}</h2></td>
+                        
+                        </div>
+                        </tr>
+                        
                     </tr>
                     </tbody>
                     {% endfor %}
                 </table>
             
+                
+                
+            </div>
+            <div class="col-sm-4">
                 <table class="table cart-table table-responsive-md">
                     <tfoot>
                     <tr>
@@ -180,26 +202,23 @@
                     </tr>
                     </tfoot>
                 </table>
-                
+                <div class="row cart-buttons">
+                        <a href="{{ link('checkout/checkout', '', 'SSL') }}" class="btn btn-solid">
+                            <span class="icon icon-check_circle"></span>
+                            {{ lang('button_checkout') }}
+                        </a>
+                        <a href="#" class="btn btn-solid" onclick="$('#cart-form').submit();">
+                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                            {{ lang('update_cart') }}
+                        </a>
+                        <a class="btn btn-solid shopping" href="{{ link('common/home') }}">
+                            {{ lang('button_shopping') }}
+                        </a>
+                        
+                </div>
             </div>
         </div>
-        <div class="row cart-buttons">
-            <div class="col-6">
-                <a href="{{ link('checkout/checkout', '', 'SSL') }}" class="btn btn-solid">
-                    <span class="icon icon-check_circle"></span>
-                    {{ lang('button_checkout') }}
-                </a>
-                <span href="#" class="btn btn-solid" onclick="$('#cart-form').submit();">
-                    <i class="fa fa-refresh" aria-hidden="true"></i>
-                    {{ lang('update_cart') }}
-                </span>
-                <a class="btn btn-solid shopping" href="{{ link('common/home') }}">
-                    {{ lang('button_shopping') }}
-                </a>
-                
-                
-            </div>
-        </div>
+        
     </form>
     </div>
     {% if coupon_status or voucher_status or reward_status or shipping_status %}
