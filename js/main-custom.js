@@ -3416,5 +3416,12 @@ $(window).on('load', function(){
    $(this).css('display','none')
    $('.side-menu-cart').css('display','none')
  })
+ 
+// adding items for mobile side menu
+
+if ($(window).width() < 992) {
+    $('.swipe-menu-wrapper .swipe-menu')
+    .append($('.links.nav-right, .link-wishlist , .cart-li-mobile'))
+    }
        
  
