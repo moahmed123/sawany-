@@ -1097,7 +1097,7 @@
             <ul class="tab-nav clearfix nav nav-tabs nav-tabs--wd" role="tablist">
                 {% set items_products = related_products %}
                 {% set items_count = items_products|length %}
-                {% if related_products %}
+                {% if related_products and  related_products|length > 2 %}
                     <li class="active tab-title">
                         <a href="#Product" aria-controls="home" role="tab" data-toggle="tab"
                         class="text-uppercase" aria-expanded="true">
@@ -1133,7 +1133,7 @@
 
             <!-- Tab panes -->
             <div class="tab-content tab-content--wd">
-                {% if related_products %}
+                {% if related_products and  related_products|length > 2 %}
                 <div role="tabpanel" class="tab-pane active" id="Product">                                        
                     <!-- Related Option Her -->                             
                     <div class="holder related-products">
@@ -1185,7 +1185,7 @@
                 </div>
                 {% endif %}          
                 
-                <div role="tabpanel" class="tab-pane {{related_products ? '': 'active' }}" id="Tab1">
+                <div role="tabpanel" class="tab-pane {{related_products and  related_products|length > 2 ? '': 'active' }}" id="Tab1">
 
                     <!-- sales booster header -->
                     {% if salesBooster and sales_booster['hLayout']['description'] %}
