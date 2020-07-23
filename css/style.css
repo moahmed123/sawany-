@@ -14159,3 +14159,114 @@ header .minicart-title {
     margin-top: -10px;
 }
 /** End Login **/
+
+
+/*********Responsive Home************/
+.mopen-menu {
+	display: none;
+	padding: 17px 25px;
+}
+.fi-h-burger:before {
+    content: "";
+}
+.mobile-text{
+	display: none;
+}
+@media screen and (max-width: 992px){
+	.header {
+		padding: 0;
+		box-shadow: none;
+		height: auto;
+	}
+	.hotline, .hotline > li {
+		float: none;
+	}
+	.mopen-menu, .mobile-text {
+		display: initial;
+	}
+	.links.nav-right, .header-content .nav-right
+	, #wishlist-total, .dropdown-link-label, .open-cart, .fa-opencart,
+	.notification-dropdown {
+		display: none;
+	}
+	.col-md-4.logo-container{
+		width: calc( 100% - 70px );
+    	text-align: right;
+	}
+	.header .logo {
+		width: auto;
+		height: auto;
+		margin-left: auto;
+	}
+	.logged-out .swipe-menu .links {
+		display: block;
+	}
+	.logged-out .swipe-menu .links {
+    margin: 0;
+    display: block !important;
+	}
+	.swipe-menu-wrapper li {
+		display: block !important;
+		float: none;
+		padding: 0;
+	}
+	.swipe-menu-wrapper li a {
+		color: #ffffff !important;
+		padding: 0 15px;
+		border-top: 1px solid #4d4d4d;
+		border-bottom: 1px solid #000;
+		display: block;
+    	line-height: 38px;
+	}
+	.swipe-menu-wrapper li a span {
+		margin: 0 !important;
+	}
+	.swipe-menu-wrapper li a i {
+		display: none;
+	}
+	.swipe-menu-wrapper .col-md-3 {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.swipe-menu-wrapper .mobile-menu {
+		margin: 0;
+	}
+	.submenu-parent>a:before {
+		font-family: "fontawesome";
+		content: "\f054";
+	}
+	.swipe-menu .login-mobile-menu a {
+		line-height: 38px;
+		display: inline-block;
+		width: 47%;
+		text-align: center;
+		border-bottom: none;
+	}
+	.swipe-menu .dropdown:hover .dropdown-menu {
+		display: block;
+		visibility: visible;
+		opacity: 1;
+		position: relative;
+		width: 100%;
+		background: #171717;
+		padding: 0;
+	}
+	.header-content .block-search {
+		float: none;
+	}
+	.block-search .form-search .btn-search {
+		min-width: 0;
+	}
+	
+}
+@media screen and (max-width: 767px){
+	.header .form-search {
+		display: block;
+		width: 100% !important;
+	}
+	.header-nav.mid-header {
+		display: none;
+	}
+}
+
+/*********Responsive Home************/

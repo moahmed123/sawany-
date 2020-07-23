@@ -357,745 +357,762 @@
    </div>
    </div>
    <div class="header">
-   {% if header_data.topBar.section_state == 'enabled' %}
-   <div class="top-info-bar">
-	   <div class="top-info-bar-carousel" >
-		  <a href="{{ header_data.topBar.fields.topBar_link.value }}" class="top-info-bar-item">
-			 <div class="copy-wrap copy-wrap-multi"> 
-			   {{ header_data.topBar.fields.topBar_txt.value }}
-			   </div>
-		  </a>
-	   </div>
-	</div>
-	{% endif %}
-	{% if header_data.loginBar.section_state == 'enabled' %}
-	<div class="header-top">
-	   <div class="container hidden-xs">
-		  <ul class="hotline nav-left">
-			 <li>
-				<span class="wellcome">
-				   {{ header_data.loginBar.fields.loginBar_txt.value }}
-				<a href="{{ link('account/login') }}">{{ lang('Account_Login') }}</a> 
-				or 
-				<a href="{{ link('account/register') }}">{{ lang('Account_Register') }}</a>				 
-				</span>
-			 </li>
-		  </ul>
-		  <ul class="links nav-right">
-		   <li class="dropdown switcher  switcher-language">
-				   <a href="#" class="dropdown-toggle switcher-trigger">
-					<i class="fa fa-bell-o"></i>
-					<i aria-hidden="true" class="fa fa-angle-down"></i>
-				   </a>
-				   <div class="dropdown-menu switcher-options notification-dropdown">
-					   <div class="notification-head">
-						   <h4>{{ lang('notifications') }}</h4>
-						   <a href="#">{{ lang('mark_read') }}</a>
-					   </div>
-					   <ul class="notification-list">
-					   <li class="notification-li">
-						   <a href="#">
-							   <i class="fa fa-window-maximize" aria-hidden="true"></i>
-							   <div class="item-details">
-								   <p>You have 4 orders</p>
-								   <p class="view-notification">View orders</p>
-								   <p class="notification-time">7 hours ago</p>
-							   </div>
-						   </a>
-					   </li>
-					   <li class="notification-li">
-						   <a href="#">
-							   <i class="fa fa-window-maximize" aria-hidden="true"></i>
-							   <div class="item-details">
-								   <p>You have 4 orders</p>
-								   <p class="view-notification">View orders</p>
-								   <p class="notification-time">7 hours ago</p>
-							   </div>
-							   <span class="unread-sign"></span>
-						   </a>
-					   </li>
-					   <li class="notification-li">
-						   <a href="#">
-							   <i class="fa fa-window-maximize" aria-hidden="true"></i>
-							   <div class="item-details">
-								   <p>You have 4 orders</p>
-								   <p class="view-notification">View orders</p>
-								   <p class="notification-time">7 hours ago</p>
-							   </div>
-						   </a>
-					   </li>
-					   <li class="notification-li">
-						   <a href="#">
-							   <i class="fa fa-window-maximize" aria-hidden="true"></i>
-							   <div class="item-details">
-								   <p>You have 4 orders</p>
-								   <p class="view-notification">View orders</p>
-								   <p class="notification-time">7 hours ago</p>
-							   </div>
-						   </a>
-					   </li>
-					   <li class="notification-li">
-						   <a href="#">
-							   <i class="fa fa-window-maximize" aria-hidden="true"></i>
-							   <div class="item-details">
-								   <p>You have 4 orders</p>
-								   <p class="view-notification">View orders</p>
-								   <p class="notification-time">7 hours ago</p>
-							   </div>
-						   </a>
-					   </li>
-				   </ul>
-			   </div>
-		   </li>
-		   {% if languages|length > 1 %}
-		   <li class="dropdown switcher  switcher-language">
-			   <a data-toggle="dropdown" role="button" href="#" class="dropdown-toggle switcher-trigger" aria-expanded="false">
-				   <img class="switcher-flag" alt="{{ current_language.name }}" src="admin/view/image/flags/{{ current_language.image }}">
-				   <span>{{ current_language.name }}</span>
-				   <i aria-hidden="true" class="fa fa-angle-down"></i>
-			   </a>
-			   <form method="post" enctype="multipart/form-data">
-				   <ul class="dropdown-menu switcher-options ">
-					   {% for language in languages %}
-					   <li class="switcher-option">
-						   <a href="#" onclick="$('input[name=\'language_code\']').attr('value', '{{ language.code }}'); $(this).closest('form').submit(); return false;">
-							   <img class="switcher-flag" alt="{{ language.name }}" src="admin/view/image/flags/{{ language.image }}">{{ language.name }}
-						   </a>
-					   </li>
-					   {% endfor %}
-					   <input type="hidden" name="language_code" value="" />
-					   <input type="hidden" name="redirect" value="{{ redirect }}" />
-				   </ul>
-			   </form>
-		   </li>
-		   {% endif %}
-
-		   {% if currencies|length > 1 %}
-		   <li class="dropdown switcher  switcher-currency">
-			   <a data-toggle="dropdown" role="button" href="#" class="dropdown-toggle switcher-trigger"><span>{{ current_currency.symbol }}</span> <i aria-hidden="true" class="fa fa-angle-down"></i></a>
-			   <form action="{{ link('common/home') }}" method="post" enctype="multipart/form-data">
-				   <ul class="dropdown-menu switcher-options ">
-					   {% for currency in currencies %}
-					   <li class="switcher-option">
-						   <a href="#" onclick="$('input[name=\'currency_code\']').attr('value', '{{ currency.code }}'); $(this).closest('form').submit(); return false;">
-							   {{ currency.title }}
-						   </a>
-					   </li>
-					   {% endfor %}
-					   <input type="hidden" name="currency_code" value="" />
-					   <input type="hidden" name="redirect" value="{{ redirect }}" />
-				   </ul>
-			   </form>
-		   </li>
-		   {% endif %}
-		  </ul>
-	   </div>
-	</div>
-	{% endif %}
-	<div class="header-content">
-	   <div class="container">
-		  <div class="row">
-		   {% if header_data.headermain.section_state == 'enabled' %}
-			 <div class="col-md-4 nav-left hidden-xs">
-				<!-- logo -->
-				<strong class="logo">
-				<a href="{{ link('common/home') }}"><img 
-				   src="{{ image(header_data.headermain.fields.logo.value) }}" title="{{ document_title }}" alt="{{ document_title }}"></a>
-				</strong><!-- logo -->
-			 </div>
-			 {% endif %}
-			 <div class="col-md-5 col-lg-6  nav-mind">
-				<!-- block search -->
-				<div class="block-search">
-				   <div class="block-title">
-				   </div>
-				   <div class="block-content">
-					  <div class="form-search">
-						 <form>
-							<div class="box-group" id="search">
-							   <input type="text" name="search" class="form-control" placeholder="Search" 
-							   value="">
-							   <button class="btn btn-search button-search" type="button"></button>
-							</div>
-						 </form>
-					  </div>
-				   </div>
+	{% if header_data.topBar.section_state == 'enabled' %}
+	<div class="top-info-bar">
+		<div class="top-info-bar-carousel" >
+		   <a href="{{ header_data.topBar.fields.topBar_link.value }}" class="top-info-bar-item">
+			  <div class="copy-wrap copy-wrap-multi"> 
+				{{ header_data.topBar.fields.topBar_txt.value }}
 				</div>
-				<!-- block search -->
-			 </div>
-			 <div class="col-md-3 col-lg-2  nav-right">
-				<!-- block mini cart -->
-				<ul class="links">
-					<li>
-					   <li class="link-wishlist"><a href="{{ link('account/wishlist') }}" >
-						   <i class="fa fa-heart-o" aria-hidden="true"></i>
-						   <span id="wishlist-total">
-							   {{wishlist_count }}</span></a></li>
-					</li>
-				   <li class="cart-li"> 
-					   <div class="header-dropdown-container">
-						   <a class=" header-dropdown-inner open-cart" href="javascript:void(0);" id="btn_shopping_bag">
-						   <i class="fa fa-opencart"></i>
-						   <span class="dropdown-link-label">
-							{{ lang('bag') }}                
-						   <strong class="ios-bag-items" id="counterLabel">{{ cart.countProducts() }} {{ lang('items') }}</strong>
-						   </span>
-						   </a>
+		   </a>
+		</div>
+	 </div>
+	 {% endif %}
+	 {% if header_data.loginBar.section_state == 'enabled' %}
+	 <div class="header-top">
+		<div class="container hidden-xs">
+		   <ul class="hotline nav-left">
+			  <li>
+				 <span class="wellcome">
+					{{ header_data.loginBar.fields.loginBar_txt.value }}
+				 <a href="{{ link('account/login') }}">{{ lang('Account_Login') }}</a> 
+				 or 
+				 <a href="{{ link('account/register') }}">{{ lang('Account_Register') }}</a>				 
+				 </span>
+			  </li>
+		   </ul>
+		   <ul class="links nav-right">
+			<li class="dropdown switcher  switcher-language">
+					<a href="#" class="dropdown-toggle switcher-trigger">
+						<span class="mobile-text">{{ lang('notifications') }}</span>
+					 <i class="fa fa-bell-o"></i>
+					 <i aria-hidden="true" class="fa fa-angle-down"></i>
+					</a>
+					<div class="dropdown-menu switcher-options notification-dropdown">
+						<div class="notification-head">
+							<h4>{{ lang('notifications') }}</h4>
+							<a href="#">{{ lang('mark_read') }}</a>
 						</div>
-					  </li>
-				   <li class="first ">
-					  {% if logged == false  %}                
-					  <a type="button" href="javascript:void(0);" class="login-modal-desktop" 
-					  data-toggle="modal" data-target="#login_modal"></a> 
-					  <a type="button" href="{{ link('account/login', '', 'SSL') }}" class="login-modal-mobile">
-				   </a>
-					  {% else %}
-					  <a type="button" href="{{ link('account/logout', '', 'SSL') }}">
-						  {{ lang('AccountLogout')|format(link('account/account', '', 'SSL'), customer.getFirstName(), link('account/logout', '', 'SSL')) }}
-					  </a>
-					  <span>|</span> 
-					   
-					  {% endif %}
-				  </li>
-					  <li class=" last "> 
-						  <a href="{{ link('account/register', '', 'SSL') }}">
-							  <span>{{ lang('Account_Register') }}</span>
-						  </a>     
-					  </li>
-					  
-				</ul>
-				<!-- block mini cart -->
-			 </div>
-		  </div>
-	   </div>
-	</div>
-   <div class="header-nav mid-header">
-		   <div class=" container">
-			   <div class="box-header-nav">
-				   {% if categories|length > 0 and header_data.sliderCategories.section_state == 'enabled' %}
-				   <span data-action="toggle-nav-cat" class="nav-toggle-menu nav-toggle-cat"><span>{{ lang('text_categories') }}</span><i aria-hidden="true" class="fa fa-bars"></i></span>
-				   <div class="block-nav-categori">
-					   {% if header_data.sliderCategories.fields.displaysectiontitle.value == 1 %}
-					   <div class="block-title">
-						   <span>{{ header_data.sliderCategories.fields.sectiontitle.value }}</span>
+						<ul class="notification-list">
+						<li class="notification-li">
+							<a href="#">
+								<i class="fa fa-window-maximize" aria-hidden="true"></i>
+								<div class="item-details">
+									<p>You have 4 orders</p>
+									<p class="view-notification">View orders</p>
+									<p class="notification-time">7 hours ago</p>
+								</div>
+							</a>
+						</li>
+						<li class="notification-li">
+							<a href="#">
+								<i class="fa fa-window-maximize" aria-hidden="true"></i>
+								<div class="item-details">
+									<p>You have 4 orders</p>
+									<p class="view-notification">View orders</p>
+									<p class="notification-time">7 hours ago</p>
+								</div>
+								<span class="unread-sign"></span>
+							</a>
+						</li>
+						<li class="notification-li">
+							<a href="#">
+								<i class="fa fa-window-maximize" aria-hidden="true"></i>
+								<div class="item-details">
+									<p>You have 4 orders</p>
+									<p class="view-notification">View orders</p>
+									<p class="notification-time">7 hours ago</p>
+								</div>
+							</a>
+						</li>
+						<li class="notification-li">
+							<a href="#">
+								<i class="fa fa-window-maximize" aria-hidden="true"></i>
+								<div class="item-details">
+									<p>You have 4 orders</p>
+									<p class="view-notification">View orders</p>
+									<p class="notification-time">7 hours ago</p>
+								</div>
+							</a>
+						</li>
+						<li class="notification-li">
+							<a href="#">
+								<i class="fa fa-window-maximize" aria-hidden="true"></i>
+								<div class="item-details">
+									<p>You have 4 orders</p>
+									<p class="view-notification">View orders</p>
+									<p class="notification-time">7 hours ago</p>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			{% if languages|length > 1 %}
+			<li class="dropdown switcher  switcher-language">
+				<a data-toggle="dropdown" role="button" href="javascript:void(0);" class="dropdown-toggle switcher-trigger" aria-expanded="false">
+					<img class="switcher-flag" alt="{{ current_language.name }}" src="admin/view/image/flags/{{ current_language.image }}">
+					<span>{{ current_language.name }}</span>
+					<i aria-hidden="true" class="fa fa-angle-down"></i>
+				</a>
+				<form method="post" enctype="multipart/form-data">
+					<ul class="dropdown-menu switcher-options ">
+						{% for language in languages %}
+						<li class="switcher-option">
+							<a href="#" onclick="$('input[name=\'language_code\']').attr('value', '{{ language.code }}'); $(this).closest('form').submit(); return false;">
+								<img class="switcher-flag" alt="{{ language.name }}" src="admin/view/image/flags/{{ language.image }}">{{ language.name }}
+							</a>
+						</li>
+						{% endfor %}
+						<input type="hidden" name="language_code" value="" />
+						<input type="hidden" name="redirect" value="{{ redirect }}" />
+					</ul>
+				</form>
+			</li>
+			{% endif %}
+
+			{% if currencies|length > 1 %}
+			<li class="dropdown switcher  switcher-currency">
+				<a data-toggle="dropdown" role="button" href="javascript:void(0);" class="dropdown-toggle switcher-trigger"><span>{{ current_currency.symbol }}</span> <i aria-hidden="true" class="fa fa-angle-down"></i></a>
+				<form action="{{ link('common/home') }}" method="post" enctype="multipart/form-data">
+					<ul class="dropdown-menu switcher-options ">
+						{% for currency in currencies %}
+						<li class="switcher-option">
+							<a href="#" onclick="$('input[name=\'currency_code\']').attr('value', '{{ currency.code }}'); $(this).closest('form').submit(); return false;">
+								{{ currency.title }}
+							</a>
+						</li>
+						{% endfor %}
+						<input type="hidden" name="currency_code" value="" />
+						<input type="hidden" name="redirect" value="{{ redirect }}" />
+					</ul>
+				</form>
+			</li>
+			{% endif %}
+		   </ul>
+		</div>
+	 </div>
+	 {% endif %}
+	 <div class="header-content">
+		<div class="container">
+		   <div class="row">
+			<span class="mopen-menu cs-link tablet-menu-btn fi fi-h-burger">
+				<i class="fa fa-bars" aria-hidden="true"></i>
+			  </span>
+			{% if header_data.headermain.section_state == 'enabled' %}
+			  <div class="col-md-4 nav-left hidden-xs logo-container">
+				 <!-- logo -->
+				 <strong class="logo">
+				 <a href="{{ link('common/home') }}"><img 
+					src="{{ image(header_data.headermain.fields.logo.value) }}" title="{{ document_title }}" alt="{{ document_title }}"></a>
+				 </strong><!-- logo -->
+			  </div>
+			  {% endif %}
+			  
+			  <div class="col-md-5 col-lg-6  nav-mind">
+				 <!-- block search -->
+				 <div class="block-search">
+					<div class="block-title">
+					</div>
+					<div class="block-content">
+					   <div class="form-search">
+						  <form>
+							 <div class="box-group" id="search">
+								<input type="text" name="search" class="form-control" placeholder="Search" 
+								value="">
+								<button class="btn btn-search button-search" type="button"></button>
+							 </div>
+						  </form>
 					   </div>
+					</div>
+				 </div>
+				 <!-- block search -->
+			  </div>
+			  <div class="col-md-3 col-lg-2  nav-right">
+				 <!-- block mini cart -->
+				 <ul class="links">
+					 <li>
+						<li class="link-wishlist"><a href="{{ link('account/wishlist') }}" >
+							<i class="fa fa-heart-o" aria-hidden="true"></i>
+							<span id="wishlist-total">
+								{{wishlist_count }}</span>
+							<span class="mobile-text">
+								{{ lang('textWishlist') }}  
+							</span>
+						</a></li>
+					 </li>
+					<li class="cart-li"> 
+						<div class="header-dropdown-container">
+							<a class=" header-dropdown-inner open-cart" href="javascript:void(0);" 
+							id="btn_shopping_bag">
+							
+							<i class="fa fa-opencart"></i>
+							
+							<span class="dropdown-link-label">
+							 {{ lang('bag') }}                
+							<strong class="ios-bag-items" id="counterLabel">{{ cart.countProducts() }} {{ lang('items') }}</strong>
+							</span>
+							</a>
+						 </div>
+					   </li>
+					   <li class="cart-li-mobile">
+						<a href="{{ link('checkout/cart') }}" class="mobile-text">
+							{{ lang('button_cart') }} 
+					</a>
+					   </li>
+					<li class="first ">
+					   {% if logged == false  %}                
+					   <a type="button" href="javascript:void(0);" class="login-modal-desktop" 
+					   data-toggle="modal" data-target="#login_modal"></a> 
+					   <a type="button" href="{{ link('account/login', '', 'SSL') }}" class="login-modal-mobile">
+					</a>
+					   {% else %}
+					   <a type="button" href="{{ link('account/logout', '', 'SSL') }}">
+						   {{ lang('AccountLogout')|format(link('account/account', '', 'SSL'), customer.getFirstName(), link('account/logout', '', 'SSL')) }}
+					   </a>
+					   <span>|</span> 
+						
 					   {% endif %}
-					   <div class="block-content">
-						   <ul class="ui-categori">
-							   {% set featured_categories =  getCategoryAndChilds( header_data.sliderCategories.fields['categories']['value'], 500, 500) %}
-							   {% for item_category in featured_categories %}
-							   <li class="{{item_category["sub_categories"]|length > 0 ? 'parent' : '' }} {{ loop.index > 7 ? 'cat-link-orther' : '' }}">
-								   <a href="{{ item_category.href }}">
-									   {{ item_category.name }}
-								   </a>
-								   {% if item_category["sub_categories"]|length > 0 %}
-								   <span class="toggle-submenu"></span>
-								   <div class="submenu">
-									   <ul class="categori-list">
-										   <li class="col-sm-3">
-											   <ul>
-												   {% for sub_categories in item_category["sub_categories"] %}
-												   <li><a href="{{ sub_categories.href }}" title="{{sub_categories.name}}">{{ sub_categories.name }}</a></li>
-												   {% endfor %}
-											   </ul>
-										   </li>
-									   </ul>
-								   </div>
-								   {% endif %}
-							   </li>
-							   {% endfor %}
-						   </ul>
-   
-						   {% if featured_categories|length > 7 %}
-						   <div class="view-all-categori">
-							   <a  class="open-cate btn-view-all">{{ lang('text_all_categories') }}</a>
-						   </div>
-						   {% endif %}
-					   </div>
-				   </div>
-				   {% endif %}
-				   <nav class="nav-container mobile-menu search-fade-out" data-cs="mainNav">
-					   <div class="nav-container-inner">
-						  <ul id="nav" class="mobile-menu to-mobile-menu" data-swipe-position=".mobile-topmenu">	
-							 {% if header_data.mainMenuLink.section_state == 'enabled' %}
-								 {% for collection in header_data.mainMenuLink.collections %}
-								 <li class="level0 nav-9 top-level">
-									 <a href="{{ collection.itemlink.value }}">
-									 <span>{{ collection.itemname.value }}</span>
-								 </a>
-							 </li>
-								 {% endfor %}
-								 {% endif %}
-								 {% if header_data.dropDownLink.section_state == 'enabled' %}
-								 <li class="level0 nav-2 top-level parent">
-									 <a href="{{ header_data.dropDownLink.fields.itemlink.value }}"><span>{{ header_data.dropDownLink.fields.itemname.value }}</span></a>
-									 <ul class="level0 mobile-menu mobile-dropdown" style="height: 0px; padding-top: 0px; padding-bottom: 0px;">
-										 {% for collection in header_data.dropDownLink.collections %}
-										<li class="level1 "><a href="{{ collection.itemlink.value }}">
-										 <span>{{ collection.itemname.value }}</span>
-									 </a>
-								 </li>
-								 {% endfor %}
-									 </ul>
-								  </li>
-								  {% endif %}
-								  
-								 {% if header_data.dropDownLink2.section_state == 'enabled' %}
-								 <li class="level0 nav-2 top-level parent">
-									 <a href="{{ header_data.dropDownLink2.fields.itemlink.value }}"><span>{{ header_data.dropDownLink2.fields.itemname.value }}</span></a>
-									 <ul class="level0 mobile-menu mobile-dropdown" style="height: 0px; padding-top: 0px; padding-bottom: 0px;">
-										 {% for collection in header_data.dropDownLink2.collections %}
-										<li class="level1 "><a href="{{ collection.itemlink.value }}">
-										 <span>{{ collection.itemname.value }}</span>
-									 </a>
-								 </li>
-								 {% endfor %}
-									 </ul>
-								  </li>
-								  {% endif %}
-								  {% if header_data.boxMenu.section_state == 'enabled' %}
-								  {% for collection in header_data.boxMenu.collections %}
-								  <li class="level0 nav-2 top-level parent">
-									 <a href="javascript:void(0)"><span>{{ collection.linkName.value }}</span></a>
-									 <div class="level0 dropdown mobile-menu mobile-dropdown">
-										<a class="dropdown-back desktop-hide" 
-										href="{{ link('common/home') }}"><i class="fi fi-left"></i>
-										Back to Main Menu</a> 
-										<div class="dropdown-inner">
-										 {% set categories1 =  getCategoryAndChilds(collection['categories1']['value'], 500, 500) %}
-										   <div class="col-2">
-											  <p class="title mtitle">{{ categories1[loop.index -1].name }}</p>
-											  <div class="dropdown-links jm-dropdown-links"> 
-												 {% for sub_categories in categories1[loop.index -1]["sub_categories"]|slice(0, 7) %}
-												  <a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a> 
-												  {% endfor %}
-												  <a class="view-all-link" href="{{ categories1[loop.index -1].href }}">
-													 {{ collection.moreLink.value }}</a>
-												  </div>
-										   </div>
-										   {% set categories2 =  getCategoryAndChilds(collection['categories2']['value'], 500, 500) %}
-										   <div class="col-2">
-											 <p class="title mtitle">{{ categories2[loop.index -1].name }}</p>
-											 <div class="dropdown-links jm-dropdown-links"> 
-												{% for sub_categories in categories2[loop.index -1]["sub_categories"]|slice(0, 7) %}
-												 <a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a> 
-												 {% endfor %}
-												 <a class="view-all-link" href="{{ categories2[loop.index -1].href }}">
-													{{ collection.moreLink.value }}</a>
-												 </div>
-											 </div>
-											 {% set categories3 =  getCategoryAndChilds(collection['categories3']['value'], 500, 500) %}
-										   <div class="col-2">
-											 <p class="title mtitle">{{ categories3[loop.index -1].name }}</p>
-											 <div class="dropdown-links jm-dropdown-links"> 
-												{% for sub_categories in categories3[loop.index -1]["sub_categories"]|slice(0, 7) %}
-												 <a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a> 
-												 {% endfor %}
-												 <a class="view-all-link" href="{{ categories3[loop.index -1].href }}">
-													{{ collection.moreLink.value }}</a>
-												 </div>
-											 </div>
-											 {% if collection.adOption1.value == 1 %}
-										   <a class="menu-banner mobile-hide" href="{{ collection.adOptionLink1.value }}"> 
-											   <img alt="" class="lazyload" src="{{ image(collection.adOptionImg1.value) }}"> 
-											   <span class="menu-banner-text" style="color:#000000;font-size:2em;">{{ collection.adOptionTitle.value }}</span> 
-											   <span class="menu-banner-shop">{{ collection.adOptionText.value }}</span> 
-											 </a> 
-											 {% endif %}
-										</div>
-									 </div>
-								  </li>
+				   </li>
+					   <li class=" last "> 
+						   <a href="{{ link('account/register', '', 'SSL') }}">
+							   <span>{{ lang('Account_Register') }}</span>
+						   </a>     
+					   </li>
+					   
+				 </ul>
+				 <!-- block mini cart -->
+			  </div>
+		   </div>
+		</div>
+	 </div>
+	<div class="header-nav mid-header">
+            <div class=" container">
+                <div class="box-header-nav">
+                    {% if categories|length > 0 and header_data.sliderCategories.section_state == 'enabled' %}
+                    <span data-action="toggle-nav-cat" class="nav-toggle-menu nav-toggle-cat"><span>{{ lang('text_categories') }}</span><i aria-hidden="true" class="fa fa-bars"></i></span>
+                    <div class="block-nav-categori">
+                        {% if header_data.sliderCategories.fields.displaysectiontitle.value == 1 %}
+                        <div class="block-title">
+                            <span>{{ header_data.sliderCategories.fields.sectiontitle.value }}</span>
+                        </div>
+                        {% endif %}
+                        <div class="block-content">
+                            <ul class="ui-categori">
+                                {% set featured_categories =  getCategoryAndChilds( header_data.sliderCategories.fields['categories']['value'], 500, 500) %}
+                                {% for item_category in featured_categories %}
+                                <li class="{{item_category["sub_categories"]|length > 0 ? 'parent' : '' }} {{ loop.index > 7 ? 'cat-link-orther' : '' }}">
+                                    <a href="{{ item_category.href }}">
+                                        {{ item_category.name }}
+                                    </a>
+                                    {% if item_category["sub_categories"]|length > 0 %}
+                                    <span class="toggle-submenu"></span>
+                                    <div class="submenu">
+                                        <ul class="categori-list">
+                                            <li class="col-sm-3">
+                                                <ul>
+                                                    {% for sub_categories in item_category["sub_categories"] %}
+                                                    <li><a href="{{ sub_categories.href }}" title="{{sub_categories.name}}">{{ sub_categories.name }}</a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    {% endif %}
+                                </li>
+                                {% endfor %}
+                            </ul>
+    
+                            {% if featured_categories|length > 7 %}
+                            <div class="view-all-categori">
+                                <a  class="open-cate btn-view-all">{{ lang('text_all_categories') }}</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
+					<nav class="nav-container mobile-menu search-fade-out" data-cs="mainNav">
+						<div class="nav-container-inner">
+						   <ul id="nav" class="mobile-menu to-mobile-menu" data-swipe-position=".mobile-topmenu">	
+							  {% if header_data.mainMenuLink.section_state == 'enabled' %}
+								  {% for collection in header_data.mainMenuLink.collections %}
+								  <li class="level0 nav-9 top-level">
+									  <a href="{{ collection.itemlink.value }}">
+									  <span>{{ collection.itemname.value }}</span>
+								  </a>
+							  </li>
 								  {% endfor %}
 								  {% endif %}
-						  </ul>
-					   </div>
-					</nav>
-
-				   <span data-action="toggle-nav" class="nav-toggle-menu"><span>{{ lang('text_menu') }}</span><i aria-hidden="true" class="fa fa-bars"></i></span>
-
-				   <!-- block mini cart -->
-				   <div class="block-minicart">
-					   <a class="dropdown-toggle" href="javascript:void(0);" role="button" data-toggle="dropdown">
-						   <span class="cart-icon"></span>
-					   </a>
-				   </div><!-- block mini cart -->
-
-				   <div class="block-search">
-					   <div class="block-title">
-						   <span>{{ lang('text_searchbtn') }}</span>
-					   </div>
-					   <div class="block-content">
-						   <div class="form-search">
-							   <form>
-								   <div class="box-group" id="search">
-									   <input type="text" name="search" class="form-control" placeholder="{{ lang('text_search') }}" value="{{ search }}">
-									   <button class="btn btn-search" type="button"><span>{{ lang('text_searchbtn') }}</span></button>
-								   </div>
-							   </form>
-						   </div>
-					   </div>
-				   </div>
-
-				   <div class="dropdown setting">
-					   <a data-toggle="dropdown" role="button" href="#" class="dropdown-toggle "><span>{{ lang('text_settings') }}</span> <i aria-hidden="true" class="fa fa-user"></i></a>
-					   <div class="dropdown-menu  ">
-						   {% if languages|length > 1 %}
-						   <div class="switcher  switcher-language">
-							   <strong class="title">{{ lang('text_select_language') }}</strong>
-							   <form method="post" enctype="multipart/form-data">
-								   <ul class="switcher-options ">
-									   {% for language in languages %}
-									   <li class="switcher-option {{ current_language['code'] == language['code'] ? 'switcher-active' : '' }}">
-										   <a href="#" onclick="$('input[name=\'language_code\']').attr('value', '{{ language['code'] }}'); $(this).closest('form').submit(); return false;">
-											   <img class="switcher-flag" alt="{{ language['name'] }}" src="admin/view/image/flags/{{ language['image'] }}">
-										   </a>
-									   </li>
-									   {% endfor %}
-									   <input type="hidden" name="language_code" value="" />
-									   <input type="hidden" name="redirect" value="{{ redirect }}" />
-								   </ul>
-							   </form>
-						   </div>
-						   {% endif %}
-
-						   {% if currencies|length > 1 %}
-						   <div class="switcher  switcher-currency">
-							   <strong class="title">{{ lang('text_select_currency') }}</strong>
-							   <form action="{{ link('common/home') }}" method="post" enctype="multipart/form-data">
-								   <ul class="switcher-options ">
-									   {% for currency in currencies %}
-									   <li class="switcher-option s{{ current_currency['code'] == currency['code'] ? 'switcher-active' : '' }}">
-										   <a href="#" onclick="$('input[name=\'currency_code\']').attr('value', '{{ currency['code'] }}'); $(this).closest('form').submit(); return false;">
-											   {{ currency['symbol'] }}
-										   </a>
-									   </li>
-									   {% endfor %}
-									   <input type="hidden" name="currency_code" value="" />
-									   <input type="hidden" name="redirect" value="{{ redirect }}" />
-								   </ul>
-							   </form>
-						   </div>
-						   {% endif %}
-
-						   <ul class="account">
-							   <li><a href="{{ link('account/wishlist') }}">{{ lang('text_wishlist') }}</a></li>
-							   <li><a href="{{ link('account/account') }}">{{ lang('text_account') }}</a></li>
-							   <li><a href="{{ link('checkout/checkout') }}">{{ lang('text_checkout') }}</a></li>
-							   {% if logged == false  %}
-								   <li><a href="{{ link('account/login') }}">{{ lang('text_login') }}</a></li>
-							   {% else %}
-								   <li><a href="{{ link('account/logout') }}">{{ lang('text_logout') }}</a></li>
-							   {% endif %}
+								  {% if header_data.dropDownLink.section_state == 'enabled' %}
+								  <li class="level0 nav-2 top-level parent">
+									  <a href="{{ header_data.dropDownLink.fields.itemlink.value }}"><span>{{ header_data.dropDownLink.fields.itemname.value }}</span></a>
+									  <ul class="level0 mobile-menu mobile-dropdown" style="height: 0px; padding-top: 0px; padding-bottom: 0px;">
+										  {% for collection in header_data.dropDownLink.collections %}
+										 <li class="level1 "><a href="{{ collection.itemlink.value }}">
+										  <span>{{ collection.itemname.value }}</span>
+									  </a>
+								  </li>
+								  {% endfor %}
+									  </ul>
+								   </li>
+								   {% endif %}
+								   
+								  {% if header_data.dropDownLink2.section_state == 'enabled' %}
+								  <li class="level0 nav-2 top-level parent">
+									  <a href="{{ header_data.dropDownLink2.fields.itemlink.value }}"><span>{{ header_data.dropDownLink2.fields.itemname.value }}</span></a>
+									  <ul class="level0 mobile-menu mobile-dropdown" style="height: 0px; padding-top: 0px; padding-bottom: 0px;">
+										  {% for collection in header_data.dropDownLink2.collections %}
+										 <li class="level1 "><a href="{{ collection.itemlink.value }}">
+										  <span>{{ collection.itemname.value }}</span>
+									  </a>
+								  </li>
+								  {% endfor %}
+									  </ul>
+								   </li>
+								   {% endif %}
+								   {% if header_data.boxMenu.section_state == 'enabled' %}
+								   {% for collection in header_data.boxMenu.collections %}
+								   <li class="level0 nav-2 top-level parent">
+									  <a href="javascript:void(0)"><span>{{ collection.linkName.value }}</span></a>
+									  <div class="level0 dropdown mobile-menu mobile-dropdown">
+										 <a class="dropdown-back desktop-hide" 
+										 href="{{ link('common/home') }}"><i class="fi fi-left"></i>
+										 Back to Main Menu</a> 
+										 <div class="dropdown-inner">
+										  {% set categories1 =  getCategoryAndChilds(collection['categories1']['value'], 500, 500) %}
+											<div class="col-2">
+											   <p class="title mtitle">{{ categories1[loop.index -1].name }}</p>
+											   <div class="dropdown-links jm-dropdown-links"> 
+												  {% for sub_categories in categories1[loop.index -1]["sub_categories"]|slice(0, 7) %}
+												   <a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a> 
+												   {% endfor %}
+												   <a class="view-all-link" href="{{ categories1[loop.index -1].href }}">
+													  {{ collection.moreLink.value }}</a>
+												   </div>
+											</div>
+											{% set categories2 =  getCategoryAndChilds(collection['categories2']['value'], 500, 500) %}
+											<div class="col-2">
+											  <p class="title mtitle">{{ categories2[loop.index -1].name }}</p>
+											  <div class="dropdown-links jm-dropdown-links"> 
+												 {% for sub_categories in categories2[loop.index -1]["sub_categories"]|slice(0, 7) %}
+												  <a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a> 
+												  {% endfor %}
+												  <a class="view-all-link" href="{{ categories2[loop.index -1].href }}">
+													 {{ collection.moreLink.value }}</a>
+												  </div>
+											  </div>
+											  {% set categories3 =  getCategoryAndChilds(collection['categories3']['value'], 500, 500) %}
+											<div class="col-2">
+											  <p class="title mtitle">{{ categories3[loop.index -1].name }}</p>
+											  <div class="dropdown-links jm-dropdown-links"> 
+												 {% for sub_categories in categories3[loop.index -1]["sub_categories"]|slice(0, 7) %}
+												  <a href="{{ sub_categories.href }}">{{ sub_categories.name }}</a> 
+												  {% endfor %}
+												  <a class="view-all-link" href="{{ categories3[loop.index -1].href }}">
+													 {{ collection.moreLink.value }}</a>
+												  </div>
+											  </div>
+											  {% if collection.adOption1.value == 1 %}
+											<a class="menu-banner mobile-hide" href="{{ collection.adOptionLink1.value }}"> 
+												<img alt="" class="lazyload" src="{{ image(collection.adOptionImg1.value) }}"> 
+												<span class="menu-banner-text" style="color:#000000;font-size:2em;">{{ collection.adOptionTitle.value }}</span> 
+												<span class="menu-banner-shop">{{ collection.adOptionText.value }}</span> 
+											  </a> 
+											  {% endif %}
+										 </div>
+									  </div>
+								   </li>
+								   {% endfor %}
+								   {% endif %}
 						   </ul>
-					   </div>
-				   </div>
-			   </div>
-   </div>
-   </div>
-   
+						</div>
+					 </nav>
 
-   <!-- ========================  Header content ======================== -->
-   <!-- ========================  Body content ======================== -->
-   <div class="wrapper">
-	   <div class="page">
-		   <div class="main clearfix col1-layout">
-			  
+                    <span data-action="toggle-nav" class="nav-toggle-menu"><span>{{ lang('text_menu') }}</span><i aria-hidden="true" class="fa fa-bars"></i></span>
 
-			   <div class="col-main">
-   {% if is_home_page %}
-   <div class="homepagev7-page">
-   {{ regions_data.maincontent.content }}
+                    <!-- block mini cart -->
+                    <div class="block-minicart">
+                        <a class="dropdown-toggle" href="javascript:void(0);" role="button" data-toggle="dropdown">
+                            <span class="cart-icon"></span>
+                        </a>
+                    </div><!-- block mini cart -->
+
+                    <div class="block-search">
+                        <div class="block-title">
+                            <span>{{ lang('text_searchbtn') }}</span>
+                        </div>
+                        <div class="block-content">
+                            <div class="form-search">
+                                <form>
+                                    <div class="box-group" id="search">
+                                        <input type="text" name="search" class="form-control" placeholder="{{ lang('text_search') }}" value="{{ search }}">
+                                        <button class="btn btn-search" type="button"><span>{{ lang('text_searchbtn') }}</span></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown setting">
+                        <a data-toggle="dropdown" role="button" href="#" class="dropdown-toggle "><span>{{ lang('text_settings') }}</span> <i aria-hidden="true" class="fa fa-user"></i></a>
+                        <div class="dropdown-menu  ">
+                            {% if languages|length > 1 %}
+                            <div class="switcher  switcher-language">
+                                <strong class="title">{{ lang('text_select_language') }}</strong>
+                                <form method="post" enctype="multipart/form-data">
+                                    <ul class="switcher-options ">
+                                        {% for language in languages %}
+                                        <li class="switcher-option {{ current_language['code'] == language['code'] ? 'switcher-active' : '' }}">
+                                            <a href="#" onclick="$('input[name=\'language_code\']').attr('value', '{{ language['code'] }}'); $(this).closest('form').submit(); return false;">
+                                                <img class="switcher-flag" alt="{{ language['name'] }}" src="admin/view/image/flags/{{ language['image'] }}">
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                        <input type="hidden" name="language_code" value="" />
+                                        <input type="hidden" name="redirect" value="{{ redirect }}" />
+                                    </ul>
+                                </form>
+                            </div>
+                            {% endif %}
+
+                            {% if currencies|length > 1 %}
+                            <div class="switcher  switcher-currency">
+                                <strong class="title">{{ lang('text_select_currency') }}</strong>
+                                <form action="{{ link('common/home') }}" method="post" enctype="multipart/form-data">
+                                    <ul class="switcher-options ">
+                                        {% for currency in currencies %}
+                                        <li class="switcher-option s{{ current_currency['code'] == currency['code'] ? 'switcher-active' : '' }}">
+                                            <a href="#" onclick="$('input[name=\'currency_code\']').attr('value', '{{ currency['code'] }}'); $(this).closest('form').submit(); return false;">
+                                                {{ currency['symbol'] }}
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                        <input type="hidden" name="currency_code" value="" />
+                                        <input type="hidden" name="redirect" value="{{ redirect }}" />
+                                    </ul>
+                                </form>
+                            </div>
+                            {% endif %}
+
+                            <ul class="account">
+                                <li><a href="{{ link('account/wishlist') }}">{{ lang('text_wishlist') }}</a></li>
+                                <li><a href="{{ link('account/account') }}">{{ lang('text_account') }}</a></li>
+                                <li><a href="{{ link('checkout/checkout') }}">{{ lang('text_checkout') }}</a></li>
+                                {% if logged == false  %}
+                                    <li><a href="{{ link('account/login') }}">{{ lang('text_login') }}</a></li>
+                                {% else %}
+                                    <li><a href="{{ link('account/logout') }}">{{ lang('text_logout') }}</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+	</div>
+	</div>
+	
+
+	<!-- ========================  Header content ======================== -->
+	<!-- ========================  Body content ======================== -->
+	<div class="wrapper">
+		<div class="page">
+			<div class="main clearfix col1-layout">
+               
+
+				<div class="col-main">
+	{% if is_home_page %}
+	<div class="homepagev7-page">
+	{{ regions_data.maincontent.content }}
 </div>
-   {% else %}
-
-	   <div class='row'>
-		   {% if route == "product/category" %}
-		   {% if modules.filter.enabled or modules.mega_filter.enabled %}
-		   <div class='container'>
-			   <div class='row'>
-		   <div class="col-md-3 filters">
-			   {{ regions_data.sidecontent.content }}
-			   {% if modules.mega_filter.enabled %}{{ modules.mega_filter.content }}{% endif %}
-			   {% if modules.filter.enabled %}{{ modules.filter.content }}{% endif %}
-		   </div>
-		   {% endif %}
-		   <div id="content"
-			   class="{{ modules.filter.enabled or modules.mega_filter.enabled ? 'col-md-9' : 'col-md-12' }}">
-			   {{ page_content }}
-		   </div>
-	   </div>
-	   </div>
-		   {% else %}
-		   <div id="content"
-			   class="col-md-12">
-			   {{ page_content }}
-		   </div>
-		   {% endif %}
-	   </div>
-   
-   {% endif %}
+	{% else %}
+ 
+		<div class='row'>
+			{% if route == "product/category" %}
+			{% if modules.filter.enabled or modules.mega_filter.enabled %}
+			<div class='container'>
+				<div class='row'>
+			<div class="col-md-3 filters">
+				{{ regions_data.sidecontent.content }}
+				{% if modules.mega_filter.enabled %}{{ modules.mega_filter.content }}{% endif %}
+				{% if modules.filter.enabled %}{{ modules.filter.content }}{% endif %}
+			</div>
+			{% endif %}
+			<div id="content"
+				class="{{ modules.filter.enabled or modules.mega_filter.enabled ? 'col-md-9' : 'col-md-12' }}">
+				{{ page_content }}
+			</div>
+		</div>
+		</div>
+			{% else %}
+			<div id="content"
+				class="col-md-12">
+				{{ page_content }}
+			</div>
+			{% endif %}
+		</div>
+	
+	{% endif %}
 {% if route == "product/product" %}
 
 <div class="bottom-content">
-   {{ regions_data.bottomcontent.content }}
+	{{ regions_data.bottomcontent.content }}
 </div>
 {% endif %}
 </div>
 </div>
 </div>
 </div>
-   <!-- ========================  Body content ======================== -->
-		  <!-- ================== Footer  ================== -->
+	<!-- ========================  Body content ======================== -->
+		   <!-- ================== Footer  ================== -->
 {% if footer_data.footerUpperTab.section_state == 'enabled' %}
 <div class="holder bgcolor bgcolor-1 mt-0">
 <div class="container">
-   <div class="row shop-features-style3">
-	   {% for collection in footer_data.footerUpperTab.collections|slice(0,5) %}
-	   <div class="col-md">
-		   <a href="{{ collection.footerUpperTablink.value }}" class="shop-feature light-color">
-		   <div class="shop-feature-icon">
-			   <i class="{{ collection.socialIcon.value }}"></i>
-		   </div>
-		   <div class="shop-feature-text">
-			   <div class="text2">
-				   {{ collection.footerUpperTabText.value }}
-			   </div>
-		   </div>
-		   </a>
-	   </div>
-	   {% endfor %}
-   </div>
+	<div class="row shop-features-style3">
+		{% for collection in footer_data.footerUpperTab.collections|slice(0,5) %}
+		<div class="col-md">
+			<a href="{{ collection.footerUpperTablink.value }}" class="shop-feature light-color">
+			<div class="shop-feature-icon">
+				<i class="{{ collection.socialIcon.value }}"></i>
+			</div>
+			<div class="shop-feature-text">
+				<div class="text2">
+					{{ collection.footerUpperTabText.value }}
+				</div>
+			</div>
+			</a>
+		</div>
+		{% endfor %}
+	</div>
 </div>
 </div>
 {% endif %}
 <div class="woodmart-prefooter">
 <div class="container">	
-	   <div class="wpb_column column_container col-sm-12 col-has-fill">
-		   <div class="column-inner">
-		   <div class="wpb_wrapper">
-			   <!-- <div class="row">
-			   <div class="title-wrapper col-md-8 offset-md-4">
-				   <div class="liner-continer">
-					   <h4 class="woodmart-title-container title  woodmart-font-weight-">Subscribe Now</h4>						
-				   </div>
-				   <div class="title-after_title">Sign up to our newsletter for style news, offers, and events.</div>
-			   </div>
-		   </div> -->
-			   <div class="row wpb_row vc_inner vc_row-fluid">
-				   <div class="wpb_column column_container col-md-5">
-				   {% if footer_data.socialColumn.section_state == 'enabled' %}					
-					   <div class="column-inner">
-					   <div class="wpb_wrapper">
-						   <div class="wpb_text_column wpb_content_element">
-							   <div class="wpb_wrapper">
-								   <p><span>{{ footer_data.socialColumn.fields.title.value }}</span></p>
-							   </div>
-						   </div>
-						   <div class="woodmart-social-icons text-left icons-design-default icons-size-large color-scheme-light social-follow social-form-circle">
-							   {% for collection in footer_data.socialColumn.collections %}
-							   <a href="{{ collection.socialLink.value }}" 
-							   target="_blank" class=" woodmart-social-icon social-facebook">
-							   <i class="{{ collection.socialIcon.value }}"></i>
-							   </a>
-							   {%endfor%}
-						   </div>
-					   </div>
-					   </div>
-				   {% endif %}
-			   </div>
-				   <div class="wpb_column column_container col-md-5 offset-md-2">
-					   <div class="column-inner">
-					   <div class="wpb_wrapper">
-						   <div class="wpb_text_column wpb_content_element">
-							   <div class="wpb_wrapper">
-								   <p><span>Please enter your email address:</span></p>
-							   </div>
-						   </div>
-						   <div class="wpb_text_column wpb_content_element vc_custom_1498129733874 color-scheme-dark">
-							   <div class="wpb_wrapper">
-								   <form class="mc4wp-form mc4wp-form-74" action="{{ link('account/register', '', 'SSL') }}">
-								   <div class="mc4wp-form-fields">
-									   <p>
-										   <input type="email" name="EMAIL" placeholder="example@email.com">
-									   </p>
-									   <p>
-										   <input type="submit" value="Subscribe">
-									   </p>
-								   </div>
-								   <div class="mc4wp-response"></div>
-								   </form>
-								   <!-- / Mailchimp for WordPress Plugin -->
-							   </div>
-						   </div>
-					   </div>
-					   </div>
-				   </div>					
-			   </div>
-		   </div>
-		   </div>
-	   </div>	
-   <div class="vc_row-full-width vc_clearfix"></div>
+		<div class="wpb_column column_container col-sm-12 col-has-fill">
+			<div class="column-inner">
+			<div class="wpb_wrapper">
+				<!-- <div class="row">
+				<div class="title-wrapper col-md-8 offset-md-4">
+					<div class="liner-continer">
+						<h4 class="woodmart-title-container title  woodmart-font-weight-">Subscribe Now</h4>						
+					</div>
+					<div class="title-after_title">Sign up to our newsletter for style news, offers, and events.</div>
+				</div>
+			</div> -->
+				<div class="row wpb_row vc_inner vc_row-fluid">
+					<div class="wpb_column column_container col-md-5">
+					{% if footer_data.socialColumn.section_state == 'enabled' %}					
+						<div class="column-inner">
+						<div class="wpb_wrapper">
+							<div class="wpb_text_column wpb_content_element">
+								<div class="wpb_wrapper">
+									<p><span>{{ footer_data.socialColumn.fields.title.value }}</span></p>
+								</div>
+							</div>
+							<div class="woodmart-social-icons text-left icons-design-default icons-size-large color-scheme-light social-follow social-form-circle">
+								{% for collection in footer_data.socialColumn.collections %}
+								<a href="{{ collection.socialLink.value }}" 
+								target="_blank" class=" woodmart-social-icon social-facebook">
+								<i class="{{ collection.socialIcon.value }}"></i>
+								</a>
+								{%endfor%}
+							</div>
+						</div>
+						</div>
+					{% endif %}
+				</div>
+					<div class="wpb_column column_container col-md-5 offset-md-2">
+						<div class="column-inner">
+						<div class="wpb_wrapper">
+							<div class="wpb_text_column wpb_content_element">
+								<div class="wpb_wrapper">
+									<p><span>Please enter your email address:</span></p>
+								</div>
+							</div>
+							<div class="wpb_text_column wpb_content_element vc_custom_1498129733874 color-scheme-dark">
+								<div class="wpb_wrapper">
+									<form class="mc4wp-form mc4wp-form-74" action="{{ link('account/register', '', 'SSL') }}">
+									<div class="mc4wp-form-fields">
+										<p>
+											<input type="email" name="EMAIL" placeholder="example@email.com">
+										</p>
+										<p>
+											<input type="submit" value="Subscribe">
+										</p>
+									</div>
+									<div class="mc4wp-response"></div>
+									</form>
+									<!-- / Mailchimp for WordPress Plugin -->
+								</div>
+							</div>
+						</div>
+						</div>
+					</div>					
+				</div>
+			</div>
+			</div>
+		</div>	
+	<div class="vc_row-full-width vc_clearfix"></div>
 </div>
 </div>
 <footer class="footer-container color-scheme-light">
-   <div class="container main-footer">
-	  <aside class="footer-sidebar widget-area row" role="complementary">
-	   {% if footer_data.columnlinks.section_state == 'enabled' %}
-		 <div class="footer-column footer-column-1 col-sm-2 col-lg-2">
-			<div id="nav_menu-2" class="woodmart-widget widget footer-widget  footer-widget-collapse widget_nav_menu">
-			   <h5 class="widget-title">{{ footer_data.columnlinks.fields.columnTitle.value }}</h5>
-			   <div class="menu-footer-shopping-orders-container">
-				  <ul id="menu-footer-shopping-orders" class="menu">
-				   {% for collection in footer_data.columnlinks.collections %}
-					 <li id="menu-item-893" class="menu-item">
-						 <a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a>
-					   </li>
-					   {%endfor%}
-					</ul>
-			   </div>
-			</div>
-		 </div>
-		 {% endif %}
-		 {% if footer_data.columnlinksTwo.section_state == 'enabled' %}
-		 <div class="footer-column footer-column-1 col-sm-2 col-lg-2">
-			<div id="nav_menu-2" class="woodmart-widget widget footer-widget  footer-widget-collapse widget_nav_menu">
-			   <h5 class="widget-title">{{ footer_data.columnlinksTwo.fields.columnTitle.value }}</h5>
-			   <div class="menu-footer-shopping-orders-container">
-				  <ul id="menu-footer-shopping-orders" class="menu">
-				   {% for collection in footer_data.columnlinksTwo.collections %}
-					 <li id="menu-item-893" class="menu-item">
-						 <a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a>
-					   </li>
-					   {%endfor%}
-					</ul>
-			   </div>
-			</div>
-		 </div>
-		 {% endif %}
-		 {% if footer_data.columnlinks3.section_state == 'enabled' %}
-		 <div class="footer-column footer-column-1 col-sm-2 col-lg-2">
-			<div id="nav_menu-2" class="woodmart-widget widget footer-widget  footer-widget-collapse widget_nav_menu">
-			   <h5 class="widget-title">{{ footer_data.columnlinks3.fields.columnTitle.value }}</h5>
-			   <div class="menu-footer-shopping-orders-container">
-				  <ul id="menu-footer-shopping-orders" class="menu">
-				   {% for collection in footer_data.columnlinks3.collections %}
-					 <li id="menu-item-893" class="menu-item">
-						 <a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a>
-					   </li>
-					   {%endfor%}
-					</ul>
-			   </div>
-			</div>
-		 </div>
-		 {% endif %}
-		 {% if footer_data.columnlinks4.section_state == 'enabled' %}
-		 <div class="footer-column footer-column-1 col-sm-2 col-lg-2">
-			<div id="nav_menu-2" class="woodmart-widget widget footer-widget  footer-widget-collapse widget_nav_menu">
-			   <h5 class="widget-title">{{ footer_data.columnlinks4.fields.columnTitle.value }}</h5>
-			   <div class="menu-footer-shopping-orders-container">
-				  <ul id="menu-footer-shopping-orders" class="menu">
-				   {% for collection in footer_data.columnlinks4.collections %}
-					 <li id="menu-item-893" class="menu-item">
-						 <a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a>
-					   </li>
-					   {%endfor%}
-					</ul>
-			   </div>
-			</div>
-		 </div>
-		 {% endif %}
-		 {% if footer_data.columnlinks5.section_state == 'enabled' %}
-		 <div class="footer-column footer-column-1 col-sm-2 col-lg-2">
-			<div id="nav_menu-2" class="woodmart-widget widget footer-widget footer-widget-collapse widget_nav_menu">
-			   <h5 class="widget-title">{{ footer_data.columnlinks5.fields.columnTitle.value }}</h5>
-			   <div class="menu-footer-shopping-orders-container">
-				  <ul id="menu-footer-shopping-orders" class="menu">
-				   {% for collection in footer_data.columnlinks5.collections %}
-					 <li id="menu-item-893" class="menu-item">
-						 <a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a>
-					   </li>
-					   {%endfor%}
-					</ul>
-			   </div>
-			</div>
-		 </div>
-		 {% endif %}
-	  </aside>
-	  <!-- .footer-sidebar -->
-   </div>
-   {% if footer_data.getApp.section_state == 'enabled' %}
-   <div class="get-app">
-	   <h5 class="widget-title">
-		   {{ footer_data.getApp.fields.getAppTitle.value }}
-	   </h5>
-	   <div class="app-buttons">
-		   <a href="{{ footer_data.getApp.fields.androidLink.value }}" class="app-btn"><img src="{{ image(footer_data.getApp.fields.androidImage.value) }}" alt="" /></a>
-		   <a href="{{ footer_data.getApp.fields.appStoreLink.value }}" class="app-btn"><img src="{{ image(footer_data.getApp.fields.appStoreImage.value) }}" alt="" /></a>
-   </div>
-   </div>
-   {% endif %}
-   <div class="copyrights-wrapper copyrights-two-columns">
-	  <div class="container">
-		 <div class=" row">
-		   {% if footer_data.delivery.section_state == 'enabled' %}
-		   <div class="col-md-4 reset-mb-10">
-			  <div class="weaccept">
-				  <h5>{{ footer_data.delivery.fields.deliveryText.value }}</h5>
-				  {% for collection in footer_data.delivery.collections %}
-				  <a href="{{ collection.itemlink.value }}" class="wobble-vertical">
-					  <img class=" lazyloaded"  src="{{ image(collection.itemImage.value) }}" alt="" />
-				  </a>
-				  {% endfor %}
-			  </div>							
-		   </div>
-		   {%endif%}
-		   {% if footer_data.footerLogo.section_state == 'enabled' %}
-		   <div class="col-md-4 reset-mb-10">
-			  <div class="footer-logo">
-				  
-				  <a href="{{ link('common/home') }}">
-					  <img class=" lazyloaded"  src="{{ image(footer_data.footerLogo.fields.itemImage.value) }}" alt="" />
-				  </a>
-				 
-			  </div>							
-		   </div>
-		   {%endif%}			
-			{% if footer_data.payments.section_state == 'enabled' %}
+	<div class="container main-footer">
+	   <aside class="footer-sidebar widget-area row" role="complementary">
+		{% if footer_data.columnlinks.section_state == 'enabled' %}
+		  <div class="footer-column footer-column-1 col-sm-2 col-lg-2">
+			 <div id="nav_menu-2" class="woodmart-widget widget footer-widget  footer-widget-collapse widget_nav_menu">
+				<h5 class="widget-title">{{ footer_data.columnlinks.fields.columnTitle.value }}</h5>
+				<div class="menu-footer-shopping-orders-container">
+				   <ul id="menu-footer-shopping-orders" class="menu">
+					{% for collection in footer_data.columnlinks.collections %}
+					  <li id="menu-item-893" class="menu-item">
+						  <a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a>
+						</li>
+						{%endfor%}
+					 </ul>
+				</div>
+			 </div>
+		  </div>
+		  {% endif %}
+		  {% if footer_data.columnlinksTwo.section_state == 'enabled' %}
+		  <div class="footer-column footer-column-1 col-sm-2 col-lg-2">
+			 <div id="nav_menu-2" class="woodmart-widget widget footer-widget  footer-widget-collapse widget_nav_menu">
+				<h5 class="widget-title">{{ footer_data.columnlinksTwo.fields.columnTitle.value }}</h5>
+				<div class="menu-footer-shopping-orders-container">
+				   <ul id="menu-footer-shopping-orders" class="menu">
+					{% for collection in footer_data.columnlinksTwo.collections %}
+					  <li id="menu-item-893" class="menu-item">
+						  <a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a>
+						</li>
+						{%endfor%}
+					 </ul>
+				</div>
+			 </div>
+		  </div>
+		  {% endif %}
+		  {% if footer_data.columnlinks3.section_state == 'enabled' %}
+		  <div class="footer-column footer-column-1 col-sm-2 col-lg-2">
+			 <div id="nav_menu-2" class="woodmart-widget widget footer-widget  footer-widget-collapse widget_nav_menu">
+				<h5 class="widget-title">{{ footer_data.columnlinks3.fields.columnTitle.value }}</h5>
+				<div class="menu-footer-shopping-orders-container">
+				   <ul id="menu-footer-shopping-orders" class="menu">
+					{% for collection in footer_data.columnlinks3.collections %}
+					  <li id="menu-item-893" class="menu-item">
+						  <a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a>
+						</li>
+						{%endfor%}
+					 </ul>
+				</div>
+			 </div>
+		  </div>
+		  {% endif %}
+		  {% if footer_data.columnlinks4.section_state == 'enabled' %}
+		  <div class="footer-column footer-column-1 col-sm-2 col-lg-2">
+			 <div id="nav_menu-2" class="woodmart-widget widget footer-widget  footer-widget-collapse widget_nav_menu">
+				<h5 class="widget-title">{{ footer_data.columnlinks4.fields.columnTitle.value }}</h5>
+				<div class="menu-footer-shopping-orders-container">
+				   <ul id="menu-footer-shopping-orders" class="menu">
+					{% for collection in footer_data.columnlinks4.collections %}
+					  <li id="menu-item-893" class="menu-item">
+						  <a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a>
+						</li>
+						{%endfor%}
+					 </ul>
+				</div>
+			 </div>
+		  </div>
+		  {% endif %}
+		  {% if footer_data.columnlinks5.section_state == 'enabled' %}
+		  <div class="footer-column footer-column-1 col-sm-2 col-lg-2">
+			 <div id="nav_menu-2" class="woodmart-widget widget footer-widget footer-widget-collapse widget_nav_menu">
+				<h5 class="widget-title">{{ footer_data.columnlinks5.fields.columnTitle.value }}</h5>
+				<div class="menu-footer-shopping-orders-container">
+				   <ul id="menu-footer-shopping-orders" class="menu">
+					{% for collection in footer_data.columnlinks5.collections %}
+					  <li id="menu-item-893" class="menu-item">
+						  <a href="{{ collection.link.value }}">{{ collection.namelink.value }}</a>
+						</li>
+						{%endfor%}
+					 </ul>
+				</div>
+			 </div>
+		  </div>
+		  {% endif %}
+	   </aside>
+	   <!-- .footer-sidebar -->
+	</div>
+	{% if footer_data.getApp.section_state == 'enabled' %}
+	<div class="get-app">
+		<h5 class="widget-title">
+			{{ footer_data.getApp.fields.getAppTitle.value }}
+		</h5>
+		<div class="app-buttons">
+			<a href="{{ footer_data.getApp.fields.androidLink.value }}" class="app-btn"><img src="{{ image(footer_data.getApp.fields.androidImage.value) }}" alt="" /></a>
+			<a href="{{ footer_data.getApp.fields.appStoreLink.value }}" class="app-btn"><img src="{{ image(footer_data.getApp.fields.appStoreImage.value) }}" alt="" /></a>
+	</div>
+	</div>
+	{% endif %}
+	<div class="copyrights-wrapper copyrights-two-columns">
+	   <div class="container">
+		  <div class=" row">
+			{% if footer_data.delivery.section_state == 'enabled' %}
 			<div class="col-md-4 reset-mb-10">
-			   <div class="float-right">
-				   <div class="weaccept">
-			   <h5>{{ footer_data.payments.fields.paymentsText.value }}</h5>
-				   {% for collection in footer_data.payments.collections %}
-				   <a href="{{ collection.link.value }}" class="wobble-vertical">
-					   <img class=" lazyloaded"  src="{{ image(collection.paymentImage.value) }}" alt="" />
+			   <div class="weaccept">
+				   <h5>{{ footer_data.delivery.fields.deliveryText.value }}</h5>
+				   {% for collection in footer_data.delivery.collections %}
+				   <a href="{{ collection.itemlink.value }}" class="wobble-vertical">
+					   <img class=" lazyloaded"  src="{{ image(collection.itemImage.value) }}" alt="" />
 				   </a>
 				   {% endfor %}
 			   </div>							
-		   </div>							
 			</div>
 			{%endif%}
-		 </div>
-	  </div>
-   </div>
-   
-</footer>
+			{% if footer_data.footerLogo.section_state == 'enabled' %}
+			<div class="col-md-4 reset-mb-10">
+			   <div class="footer-logo">
+				   
+				   <a href="{{ link('common/home') }}">
+					   <img class=" lazyloaded"  src="{{ image(footer_data.footerLogo.fields.itemImage.value) }}" alt="" />
+				   </a>
+				  
+			   </div>							
+			</div>
+			{%endif%}			
+			 {% if footer_data.payments.section_state == 'enabled' %}
+			 <div class="col-md-4 reset-mb-10">
+				<div class="float-right">
+					<div class="weaccept">
+				<h5>{{ footer_data.payments.fields.paymentsText.value }}</h5>
+					{% for collection in footer_data.payments.collections %}
+					<a href="{{ collection.link.value }}" class="wobble-vertical">
+						<img class=" lazyloaded"  src="{{ image(collection.paymentImage.value) }}" alt="" />
+					</a>
+					{% endfor %}
+				</div>							
+			</div>							
+			 </div>
+			 {%endif%}
+		  </div>
+	   </div>
+	</div>
+	
+ </footer>
 <!-- ================== Footer  ================== -->
 {% if footer_data.footerLowerTab.section_state == 'enabled' %}
 <div class="holder bgcolor bgcolor-1 mt-0">
 <div class="container">
-   <div class="row shop-features-style3">
-	   {% for collection in footer_data.footerLowerTab.collections|slice(0,6) %}
-	   <div class="col-md">
-		   <a href="{{ collection.itemlink.value }}" class="shop-feature light-color p-3">
-		   <div class="shop-feature-text">
-			   <div class="text2">
-				   {{ collection.itemText.value }}
-			   </div>
-		   </div>
-		   </a>
-	   </div>
-	   {% endfor %}
-   </div>
+	<div class="row shop-features-style3">
+		{% for collection in footer_data.footerLowerTab.collections|slice(0,6) %}
+		<div class="col-md">
+			<a href="{{ collection.itemlink.value }}" class="shop-feature light-color p-3">
+			<div class="shop-feature-text">
+				<div class="text2">
+					{{ collection.itemText.value }}
+				</div>
+			</div>
+			</a>
+		</div>
+		{% endfor %}
+	</div>
 </div>
 </div>
 {% endif %}
